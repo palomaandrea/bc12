@@ -7,6 +7,9 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static org.openqa.selenium.Keys.DOWN;
+import static org.openqa.selenium.Keys.ENTER;
+
 public class SeleniumWrapper {
 
     private final WebDriver driver;
