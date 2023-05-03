@@ -18,7 +18,7 @@ public class RumboHomePage extends SeleniumWrapper {
     By btnVueloIdaVuelta = By.className("d-vfn33k");
     By btnVueloSoloIda = By.className("d-1s1pmhl");
     By btnVueloMultidestino = By.className("d-1w89ccl");
-    By btnLimpiarOrigen = By.className("d-1nmp0nm ed5mks90")
+    By btnLimpiarOrigen = By.className("d-1nmp0nm ed5mks90");
     By locatorOrigenVuelo = By.id(":Riqed6lalallbla2m:");
     By LocatorDestinoVuelo = By.id(":Rjaed6lalallbla2m:");
 
@@ -54,9 +54,7 @@ public class RumboHomePage extends SeleniumWrapper {
     public void elegirVueloMiltidestino(){
         click(btnVueloMultidestino);
     }
-    public void elegirVueloMiltidestino(){
-        click(locatorOrigenVuelo);
-    }
+
 
 
     //Métodos HomePage trenes
