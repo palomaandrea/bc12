@@ -1,6 +1,6 @@
-package aut.testcreation.testcases;
+package aut.testcreation.testcases.ejemplosDomingo;
 
-import aut.testcreation.pages.GoogleHomePage;
+import aut.testcreation.pages.RumboHomePage;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import org.junit.jupiter.api.Assertions;
@@ -9,12 +9,12 @@ import org.junit.jupiter.api.Test;
 
 public class atc01_POM extends SeleniumTestBase {
 
-    GoogleHomePage googleHomePage;
+    RumboHomePage googleHomePage;
 
     @Test
     @Tag("regresion")
     void busquedaGoogle(){
-        googleHomePage = new GoogleHomePage(DriverFactory.getDriver());
+        googleHomePage = new RumboHomePage(DriverFactory.getDriver());
         googleHomePage.navegarAlHome();
         googleHomePage.buscarConBotonBuscar("Tsoft");
         Assertions.assertEquals("Tsoft - Buscar con Google",googleHomePage.getUrlTitle());
