@@ -9,13 +9,15 @@ public class VuelosPage extends SeleniumWrapper {
         super(driver);
     }
 
-    By locatorSelectorSentidoViaje = By.xpath("");
-    By locatorTxtIda = By.xpath("");
-    By locatorTxtvuelta = By.xpath("");
-    By locatorSelectorFechaIda = By.xpath("");
-    By locatorSelectorFechaVuelta = By.xpath("");
-    By locatorSelectorPasajeros = By.xpath("");
-    By locatorSelectorMetodoPago = By.xpath("");
-    By locatorBtnBuscar = By.xpath("");
-    By locatorTxtEuropa = By.xpath("");
+    By locatorSelectorSentidoViaje = By.xpath("//div[contains(text(),'Ida y vuelta')]");
+    By locatorInputOrigen = By.xpath("//input[@placeholder= 'Origen']");
+    By locatorInputDestino = By.xpath("//input[@placeholder= 'Destino']");
+    By locatorSelectorFecha = By.xpath("//input[@class='d-aziqil']");
+    By locatorSelectMes = By.xpath("");
+    By locatorSelectIda = By.xpath("");
+    By locatorSelectVuelta = By.xpath("");
+    By locatorSelectorPasajeros = By.xpath("//span[@class='d-5n2gua']");
+    By locatorSelectorMetodoPago = By.xpath("//span[@class='d-ocxq5f']");
+    By locatorBtnBuscar = By.xpath("//input[@type='submit']");
+    By locatorTxtEuropa = By.xpath("//h4[contains(text(),'Vuela a Europa')]");
 }
