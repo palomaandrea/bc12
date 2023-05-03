@@ -6,9 +6,9 @@ import org.openqa.selenium.WebDriver;
 
 import static framework.engine.utils.Constants.BASE_URL_AUT;
 
-public class GoogleHomePage extends SeleniumWrapper {
+public class RumboHomePage extends SeleniumWrapper {
 
-    public GoogleHomePage(WebDriver driver) {
+    public RumboHomePage(WebDriver driver) {
         super(driver);
     }
 
