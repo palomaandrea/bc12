@@ -28,7 +28,7 @@ public class RumboHomePage extends SeleniumWrapper {
     By locatorFechaVuelta = By.xpath("//button[@class='d-1dj49va'][1]");
     By locatorNumeroPasajeros = By.xpath("//span[@class='d-5n2gua']");
     By btnBuscar = By.xpath("//button[@class='d-1jmk4ql']");
-
+    By errOrigenVuelo = By.xpath("//span[@class = 'd-1toc9z2'][contains(text(),'Introduce ciudad o aeropuerto de origen')]");
     //Éste método se usa para todos los casos asi que no borrar:
     public void navegarAlHome() {
         navigateTo(BASE_URL_AUT);
@@ -56,6 +56,11 @@ public class RumboHomePage extends SeleniumWrapper {
         write(origenVuelo, locatorOrigenVuelo);
         sendKeys(DOWN, locatorOrigenVuelo);
         sendKeys(ENTER, locatorOrigenVuelo);
+
+    }
+    public void borrarOrigen() {
+        click(btnLimpiarOrigen);
+
     }
 
     public void ingresarDestino(String destinoVuelo) {
@@ -63,6 +68,7 @@ public class RumboHomePage extends SeleniumWrapper {
         write(destinoVuelo, locatorDestinoVuelo);
         sendKeys(DOWN, locatorDestinoVuelo);
         sendKeys(ENTER, locatorDestinoVuelo);
+
     }
     public void elegirSoloFechaIda() {
         click(locatorVerCalendario);
@@ -78,8 +84,15 @@ public class RumboHomePage extends SeleniumWrapper {
     }
     public void realizarBusqueda() {
         click(btnBuscar);
+        if (isDisplayed(errOrigenVuelo) ){
+            click(locatorOrigenVuelo);
+            click(locatorDestinoVuelo);
+            click(btnBuscar);
+        }
     }
-
+    public String mensajeErrorOrigen() {
+        return getText(errOrigenVuelo);
+    }
 
     //Métodos HomePage trenes
 

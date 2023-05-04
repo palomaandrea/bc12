@@ -3,6 +3,7 @@ package aut.testcreation.testcases;
 import aut.testcreation.pages.RumboHomePage;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -18,11 +19,12 @@ public class TC005_POM extends SeleniumTestBase {
         rumboHomePage.navegarAlHome();
         rumboHomePage.aceptarCoockies();
         rumboHomePage.elegirVueloSoloIda();
-        rumboHomePage.ingresarOrigen("Santiago SCL");
+        rumboHomePage.borrarOrigen();
         rumboHomePage.ingresarDestino("Buenos Aires (BUE)");
         rumboHomePage.elegirSoloFechaIda();
         rumboHomePage.clicNumPasajero();
         rumboHomePage.realizarBusqueda();
+        Assertions.assertEquals(rumboHomePage.mensajeErrorOrigen(), ("Introduce ciudad o aeropuerto de origen"));
 
 
     }
