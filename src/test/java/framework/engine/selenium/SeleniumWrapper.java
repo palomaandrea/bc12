@@ -1,14 +1,10 @@
 package framework.engine.selenium;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
-
-import static org.openqa.selenium.Keys.DOWN;
-import static org.openqa.selenium.Keys.ENTER;
 
 public class SeleniumWrapper {
 
@@ -72,6 +68,12 @@ public class SeleniumWrapper {
 
     public String getUrlTitle(){
         return driver.getTitle();
+    }
+
+    public void esperar(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, 17);
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+        click(locator);
     }
 
 }

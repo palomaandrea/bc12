@@ -1,8 +1,9 @@
-package aut.testcreation.pages;
+package aut.testcreation.pages.vuelos;
 
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import static framework.engine.utils.Constants.BASE_URL_AUT;
 import static org.openqa.selenium.Keys.DOWN;
 import static org.openqa.selenium.Keys.ENTER;
@@ -13,7 +14,7 @@ public class RumboHomePage extends SeleniumWrapper {
         super(driver);
     }
 
-    //Locators para Todos los métodos (sea de vuelo, tren u hotel):
+    //Locators
     By btnAceptarCoockies = By.xpath("//button[@class='iubenda-cs-accept-btn iubenda-cs-btn-primary']");
     By btnVueloIdaVuelta = By.xpath("//div[@class='d-vfn33k']");
     By btnVueloSoloIda = By.xpath("//div[@class='d-1s1pmhl']");
@@ -29,7 +30,7 @@ public class RumboHomePage extends SeleniumWrapper {
     By locatorNumeroPasajeros = By.xpath("//span[@class='d-5n2gua']");
     By btnBuscar = By.xpath("//button[@class='d-1jmk4ql']");
     By errOrigenVuelo = By.xpath("//span[@class = 'd-1toc9z2'][contains(text(),'Introduce ciudad o aeropuerto de origen')]");
-    //Éste método se usa para todos los casos asi que no borrar:
+
     public void navegarAlHome() {
         navigateTo(BASE_URL_AUT);
     }
@@ -38,7 +39,6 @@ public class RumboHomePage extends SeleniumWrapper {
         click(btnAceptarCoockies);
     }
 
-    //Métodos para vuelos:
     public void elegirVueloIdaYVuelta() {
         click(btnVueloIdaVuelta);
     }
@@ -56,11 +56,11 @@ public class RumboHomePage extends SeleniumWrapper {
         write(origenVuelo, locatorOrigenVuelo);
         sendKeys(DOWN, locatorOrigenVuelo);
         sendKeys(ENTER, locatorOrigenVuelo);
-
+        click(locatorOrigenVuelo);
     }
+
     public void borrarOrigen() {
         click(btnLimpiarOrigen);
-
     }
 
     public void ingresarDestino(String destinoVuelo) {
@@ -68,36 +68,36 @@ public class RumboHomePage extends SeleniumWrapper {
         write(destinoVuelo, locatorDestinoVuelo);
         sendKeys(DOWN, locatorDestinoVuelo);
         sendKeys(ENTER, locatorDestinoVuelo);
-
+        click(locatorDestinoVuelo);
     }
+
     public void elegirSoloFechaIda() {
         click(locatorVerCalendario);
         click(locatorFechaSoloIda);
     }
+
     public void elegirFechas() {
         click(locatorVerCalendario);
         click(locatorFechaIda);
         click(locatorFechaVuelta);
     }
-    public void clicNumPasajero(){
+
+    public void clicNumPasajero() {
         click(locatorNumeroPasajeros);
     }
+
     public void realizarBusqueda() {
-        click(btnBuscar);
-        if (isDisplayed(errOrigenVuelo) ){
+        if (isDisplayed(errOrigenVuelo)) {
             click(locatorOrigenVuelo);
             click(locatorDestinoVuelo);
             click(btnBuscar);
+        } else {
+            click(btnBuscar);
         }
     }
+
     public String mensajeErrorOrigen() {
         return getText(errOrigenVuelo);
     }
-
-    //Métodos HomePage trenes
-
-
-    //Métodos HomePage hoteles
-
 
 }

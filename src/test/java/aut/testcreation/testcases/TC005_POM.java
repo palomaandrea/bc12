@@ -1,6 +1,6 @@
 package aut.testcreation.testcases;
 
-import aut.testcreation.pages.RumboHomePage;
+import aut.testcreation.pages.vuelos.RumboHomePage;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import org.junit.jupiter.api.Assertions;
@@ -13,7 +13,7 @@ public class TC005_POM extends SeleniumTestBase {
 
     @Test
     @Tag("Funcional")
-    void buscarVueloIdaNoOk(){
+    void buscarVueloIdaNoOk() {
 
         rumboHomePage = new RumboHomePage(DriverFactory.getDriver());
         rumboHomePage.navegarAlHome();
@@ -25,7 +25,6 @@ public class TC005_POM extends SeleniumTestBase {
         rumboHomePage.clicNumPasajero();
         rumboHomePage.realizarBusqueda();
         Assertions.assertEquals(rumboHomePage.mensajeErrorOrigen(), ("Introduce ciudad o aeropuerto de origen"));
-
 
     }
 }
