@@ -41,7 +41,6 @@ public class SeleniumWrapper {
         js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", elemento);
     }
-
     public void click(By locator){
         driver.findElement(locator).click();
     }
