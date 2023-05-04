@@ -1,4 +1,4 @@
-package aut.testcreation.pages.rumboesabbaro;
+package aut.testcreation.pages.rumboesabbaro.vuelosPages;
 
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
