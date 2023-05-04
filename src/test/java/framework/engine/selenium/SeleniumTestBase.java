@@ -25,11 +25,12 @@ public class SeleniumTestBase {
         String browserName = properties.getProperty("browser");
         driverFactory = new DriverFactory();
         driver = driverFactory.inicializarDriver(browserName);
+        
     }
 
     @AfterEach
     void close(){
-        driver.quit();
+        //driver.quit();
     }
 
 }
