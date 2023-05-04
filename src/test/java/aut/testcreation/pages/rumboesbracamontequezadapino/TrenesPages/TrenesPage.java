@@ -2,7 +2,11 @@ package aut.testcreation.pages.rumboesbracamontequezadapino.TrenesPages;
 
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class TrenesPage extends SeleniumWrapper {
 
@@ -15,9 +19,13 @@ public class TrenesPage extends SeleniumWrapper {
     By locatorSoloIda = By.xpath("//div[contains(text(),'Solo ida')]");
     By locatorIdaYVuelta = By.xpath("//div[contains(text(),'Ida y vuelta')]");
     By locatorLugarOrigen = By.xpath("//input[@placeholder= 'Origen']");
+
+    By locatorSeleccionaCiudad = By.xpath("//li[@data-option-index='0']");
+    By locatorSeleccionaCiudad2 = By.xpath("//li[@data-option-index='7']");
     By locatorLugarDestino = By.xpath("//input[@placeholder= 'Destino']");
-    By locatorFechaIda = By.xpath("//label[contains(text(), 'Fecha de ida')]");
-    By locatorMarcarDiaIda15M = By.xpath("//button[contains(text(), '15')][@class='d-czl827']");
+    By locatorFechaIda = By.xpath("//button[@aria-label='Fecha de ida']");
+    By locatorMarcarDiaIda15 = By.xpath("//button[contains(text(), '15')]");
+    //class="d-1z9ad3" [@class='d-1kuzy14'] //button[contains(text(), '15')]
 
     // Para junio, julio //button[contains(text(), '15')][@class='d-1kuzy14']
 
@@ -26,7 +34,7 @@ public class TrenesPage extends SeleniumWrapper {
     By locatorPasajero = By.xpath("//div[@class='d-1rd1g4p']");
     By locatorAgregarNinio = By.xpath("//button[@class='d-1ch1522']");
     By locatorEdadNinno = By.xpath("//li[contains(text(), '4 años')]");
-    By locatorBtnBuscar = By.xpath("//button[@class='d-1ch1522']");
+    By locatorBtnBuscar = By.xpath("//button[@aria-label='Buscar']");
 
     //https://res.cloudinary.com/lastminute-contenthub/i…s/Europe/Spain/Sevilla/shutterstock_108544976.jpg
     By locatorOfertaSevillaMadrid = By.linkText("https://res.cloudinary.com/lastminute-contenthub/i…s/Europe/Spain/Sevilla/shutterstock_108544976.jpg");
@@ -41,23 +49,44 @@ public class TrenesPage extends SeleniumWrapper {
     public void idaYVuelta(){
         click(findElement(locatorIdaYVuelta));
     }
-    public void escribirOrigen (String origen){
+    public void escribirOrigen (String origen) throws InterruptedException{
         write(origen, locatorLugarOrigen);
+        Thread.sleep(3000);
+        click(locatorSeleccionaCiudad);
+
 
     }
 
-    public void escribirDestino (String destino){
+    public void escribirDestino (String destino) throws InterruptedException{
         write(destino, locatorLugarDestino);
+
     }
 
-    public void fechaIda(){
-        click(findElement(locatorFechaIda));
-        click(findElement(locatorMarcarDiaIda15M));
+    public void marcarDestino() throws InterruptedException{
+
+        Thread.sleep(3000);
+        findElement(locatorSeleccionaCiudad2);
+        click(locatorSeleccionaCiudad2);
+    }
+
+    public void fechaIda() throws InterruptedException{
+        //click(findElement(locatorFechaIda));
+        Thread.sleep(5000);
+        //click(findElement(locatorFechaIda));
+        List < WebElement> dia15 = findElements(locatorMarcarDiaIda15);
+        click(dia15.get(0));
+
+    }
+
+    public void marcarDia() throws InterruptedException{
+        Thread.sleep(3000);
+        List < WebElement> dia15 = findElements(locatorMarcarDiaIda15);
+        click(dia15.get(0));
 
     }
     public void fechasIdaYVuelta(){
         click(findElement(locatorFechaIda));
-        click(findElement(locatorMarcarDiaIda15M));
+        click(findElement(locatorMarcarDiaIda15));
         click(findElement(locatorMarcarDiaVuelta25M));
     }
 
@@ -76,5 +105,9 @@ public class TrenesPage extends SeleniumWrapper {
     }
     public void ofertaABarcelona(){
         click(findElement(locatorOfertaBarcelonaMadrid));
+    }
+
+    public void sendKeys(Keys key){
+        sendKeys(key, locatorFechaIda);
     }
 }
