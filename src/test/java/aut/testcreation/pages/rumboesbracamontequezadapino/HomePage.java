@@ -12,7 +12,7 @@ public class HomePage extends SeleniumWrapper {
     //localizadores
 
     By locatorTrenes = By.linkText("https://www.rumbo.es/trenes/");
-    By locatorVuelos = By.linkText("https://www.rumbo.es/vuelos/");
+    By locatorVuelos = By.xpath("//a[@title='Vuelos']");
     By locatorHoteles = By.linkText("https://www.rumbo.es/hoteles/");
 
     public void irATrenes(){
