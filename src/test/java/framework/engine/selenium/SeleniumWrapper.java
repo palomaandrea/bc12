@@ -4,14 +4,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.JavascriptExecutor;
+
 
 import java.util.List;
 
 public class SeleniumWrapper {
 
     private final WebDriver driver;
+
+    private WebDriverWait wait;
+
     private JavascriptExecutor js;
+
 
     //Constructor Base
     public SeleniumWrapper(WebDriver driver){
@@ -20,11 +27,15 @@ public class SeleniumWrapper {
 
     //Wrappers Selenium
     public WebElement findElement(By locator){
-        return driver.findElement(locator);
+        wait = new WebDriverWait(driver,20);
+        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+
     }
 
     public List<WebElement> findElements (By locator){
-        return driver.findElements(locator);
+        wait = new WebDriverWait(driver,20);
+        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+        //return driver.findElements(locator);
     }
 
     public String getText (By locator){
