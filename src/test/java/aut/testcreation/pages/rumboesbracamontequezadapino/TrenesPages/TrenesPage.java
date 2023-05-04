@@ -1,4 +1,4 @@
-package aut.testcreation.pages.rumboesabbaro.trenes;
+package aut.testcreation.pages.rumboesbracamontequezadapino.TrenesPages;
 
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
@@ -35,11 +35,11 @@ public class TrenesPage extends SeleniumWrapper {
     By locatorOfertaBarcelonaMadrid = By.linkText("https://res.cloudinary.com/lastminute-contenthub/c…ons/Europe/Spain/Barcelona/shutterstock_165497819");
 
     public void soloIda(){
-        click(locatorSoloIda);
+        click(findElement(locatorSoloIda));
     }
 
     public void idaYVuelta(){
-        click(locatorIdaYVuelta);
+        click(findElement(locatorIdaYVuelta));
     }
     public void escribirOrigen (String origen){
         write(origen, locatorLugarOrigen);
@@ -51,30 +51,30 @@ public class TrenesPage extends SeleniumWrapper {
     }
 
     public void fechaIda(){
-        click(locatorFechaIda);
-        click(locatorMarcarDiaIda15M);
+        click(findElement(locatorFechaIda));
+        click(findElement(locatorMarcarDiaIda15M));
 
     }
     public void fechasIdaYVuelta(){
-        click(locatorFechaIda);
-        click(locatorMarcarDiaIda15M);
-        click(locatorMarcarDiaVuelta25M);
+        click(findElement(locatorFechaIda));
+        click(findElement(locatorMarcarDiaIda15M));
+        click(findElement(locatorMarcarDiaVuelta25M));
     }
 
     public void marcarPasajeroYAgregarNinnio(){
-        click(locatorPasajero);
-        click(locatorAgregarNinio);
-        click(locatorEdadNinno);
+        click(findElement(locatorPasajero));
+        click(findElement(locatorAgregarNinio));
+        click(findElement(locatorEdadNinno));
     }
 
     public void clickEnBuscar(){
-        click(locatorBtnBuscar);
+        click(findElement(locatorBtnBuscar));
     }
 
     public void ofertaMadridSevilla(){
-        click(locatorOfertaSevillaMadrid);
+        click(findElement(locatorOfertaSevillaMadrid));
     }
     public void ofertaABarcelona(){
-        click(locatorOfertaBarcelonaMadrid);
+        click(findElement(locatorOfertaBarcelonaMadrid));
     }
 }
