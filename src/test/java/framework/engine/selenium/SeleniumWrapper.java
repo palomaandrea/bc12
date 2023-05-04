@@ -45,6 +45,10 @@ public class SeleniumWrapper {
         driver.findElement(locator).click();
     }
 
+    public void click(WebElement elemento){
+        elemento.click();
+    }
+
     public Boolean isDisplayed(By locator) {
         try {
             return driver.findElement(locator).isDisplayed();
