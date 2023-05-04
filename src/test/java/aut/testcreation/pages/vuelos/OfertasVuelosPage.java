@@ -12,7 +12,6 @@ public class OfertasVuelosPage extends SeleniumWrapper {
     By elegirVuelo = By.xpath("//div[@class='FullTripCard__PaymentContainer-sc-z8znd4-3 juamvE']");
 
     public void elegirPrimerVueloQueAparezca(){
-        esperar(elegirVuelo);
         click(elegirVuelo);
 
     }

@@ -70,10 +70,6 @@ public class SeleniumWrapper {
         return driver.getTitle();
     }
 
-    public void esperar(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 17);
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
-        click(locator);
-    }
+
 
 }
