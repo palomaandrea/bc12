@@ -23,6 +23,7 @@ public class RumboHomePage extends SeleniumWrapper {
     By locatorOrigenVuelo = By.xpath("//input[@id=':Riqed6lalallbla2m:']");
     By locatorDestinoVuelo = By.xpath("//input[@id=':Rjaed6lalallbla2m:']");
     By locatorVerCalendario = By.xpath("//span[@class='d-aziqil']");
+    By locatorFechaSoloIda = By.xpath("//button[@class='d-1kuzy14'][9]");
     By locatorFechaIda = By.xpath("//button[@class='d-zlm2xw'][1]");
     By locatorFechaVuelta = By.xpath("//button[@class='d-1dj49va'][1]");
     By locatorNumeroPasajeros = By.xpath("//span[@class='d-5n2gua']");
@@ -46,7 +47,7 @@ public class RumboHomePage extends SeleniumWrapper {
         click(btnVueloSoloIda);
     }
 
-    public void elegirVueloMiltidestino() {
+    public void elegirVueloMultidestino() {
         click(btnVueloMultidestino);
     }
 
@@ -63,15 +64,19 @@ public class RumboHomePage extends SeleniumWrapper {
         sendKeys(DOWN, locatorDestinoVuelo);
         sendKeys(ENTER, locatorDestinoVuelo);
     }
-
+    public void elegirSoloFechaIda() {
+        click(locatorVerCalendario);
+        click(locatorFechaSoloIda);
+    }
     public void elegirFechas() {
         click(locatorVerCalendario);
         click(locatorFechaIda);
         click(locatorFechaVuelta);
     }
-
-    public void realizarBusqueda() {
+    public void clicNumPasajero(){
         click(locatorNumeroPasajeros);
+    }
+    public void realizarBusqueda() {
         click(btnBuscar);
     }
 

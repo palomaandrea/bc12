@@ -21,6 +21,7 @@ public class TC001_POM extends SeleniumTestBase {
         rumboHomePage.ingresarOrigen("Santiago SCL");
         rumboHomePage.ingresarDestino("Buenos Aires (BUE)");
         rumboHomePage.elegirFechas();
+        rumboHomePage.clicNumPasajero();
         rumboHomePage.realizarBusqueda();
 
     }
