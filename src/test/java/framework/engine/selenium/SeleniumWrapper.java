@@ -6,13 +6,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.JavascriptExecutor;
+
 
 import java.util.List;
 
 public class SeleniumWrapper {
 
     private final WebDriver driver;
+
     private WebDriverWait wait;
+
+    private JavascriptExecutor js;
+
 
     //Constructor Base
     public SeleniumWrapper(WebDriver driver){
@@ -42,7 +48,10 @@ public class SeleniumWrapper {
     public void sendKeys(Keys key, By locator){
         driver.findElement(locator).sendKeys(key);
     }
-
+    public void scroll(WebElement elemento){
+        js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", elemento);
+    }
     public void click(By locator){
         driver.findElement(locator).click();
     }

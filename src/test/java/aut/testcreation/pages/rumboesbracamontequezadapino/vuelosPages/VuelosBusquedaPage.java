@@ -15,4 +15,23 @@ public class VuelosBusquedaPage extends SeleniumWrapper {
     By locatorFilterEscalaIda = By.xpath("");
     By locatorFilterEscalataVuelta = By.xpath("");
     By locatorSelectVuelo = By.xpath("");
+
+    public void filtrarPorElMejor(){
+        click(locatorFilterElmejor);
+    }
+    public void filtrarPorMasBarato(){
+        click(locatorFilterMasBarato);
+    }
+    public void filtrarPorMasRapido(){
+        click(locatorFilterMasRapido);
+    }
+    public void filtrarPorUnaEscala(){
+        scroll(findElement(locatorFilterEscalaIda));
+        click(locatorFilterEscalaIda);
+        click(locatorFilterEscalataVuelta);
+    }
+    public void seleccionarVuelo(){
+        scroll(findElement(locatorSelectVuelo));
+        click(locatorSelectVuelo);
+    }
 }
