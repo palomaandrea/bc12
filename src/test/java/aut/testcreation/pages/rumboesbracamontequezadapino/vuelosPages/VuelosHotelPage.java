@@ -19,15 +19,16 @@ public class VuelosHotelPage extends SeleniumWrapper {
     By locatorInputOrigen = By.xpath("//input[@aria-label='Origen']");
     By locatorDecrementViajerosAdultos = By.xpath("//button[@aria-label='Reducir el número de adultos']");
     By locatorIncrementViajerosAdultos = By.xpath("//button[@aria-label='Aumentar el número de adultos']");
-    By locatorCBClase = By.xpath("//span[contains(text(),'Cualquier clase')]");
-    By locatorCBBusiness = By.xpath("//div[@role='option')]");
+    By locatorCBViajeros = By.xpath("//span[contains(text(),'2 viajeros, 1 habitación')]");
+    By locatorCBClase = By.xpath("//span[@class='css-1sv8ds']");
+    By locatorCBBusiness = By.xpath("//span[contains(text(),'Cualquier clase')]");
     By locatorSelectFecha = By.xpath("//button[@aria-label='Fecha de ida']");
     By locatorSelectFechaIda = By.xpath("//button[contains(text(),'17')]");
     By locatorSelectFechaVuelta = By.xpath("//button[contains(text(),'24')]");
     By locatorBtnBuscar = By.xpath("//button[@type='submit']");
-    By olcatorTxtServicios = By.xpath("//span[contains(text(),'Ver todos los servicios')]");
+    By locatorTxtServicios = By.xpath("//span[contains(text(),'Ver todos los servicios')]");
     By locatorTxtMapa = By.xpath("//button[contains(text(),'Ver mapa')]");
-    By locatorBtnSalir = By.xpath("//svg[@role='button']");
+    By locatorBtnSalir = By.xpath("//svg[@id='cross_svg__stroke']");
     By locatorTxtComentarios = By.xpath("//span[contains(text(),'Ver todos los comentarios')]");
     By locatorBtnTodoIncluido = By.xpath("//button[contains(text(),'Todo incluido')]");
     By locatorTxtConTraslado = By.xpath("//span[contains(text(),'Traslado Incluido')]");
@@ -38,9 +39,9 @@ public class VuelosHotelPage extends SeleniumWrapper {
             click(locatorClear);
             Thread.sleep(2000);
             write(origen, locatorInputOrigen);
-            Thread.sleep(1000);
+            Thread.sleep(2000);
             sendKeys(DOWN, locatorInputOrigen);
-            Thread.sleep(1000);
+            Thread.sleep(2000);
             sendKeys(ENTER, locatorInputOrigen);
         }
     }
@@ -56,13 +57,34 @@ public class VuelosHotelPage extends SeleniumWrapper {
         click(locatorDecrementViajerosAdultos);
         Thread.sleep(1000);
         click(locatorIncrementViajerosAdultos);
+        Thread.sleep(1000);
+        click(locatorCBViajeros);
     }
 
-    public void claseBusiness(){
+    public void claseBusiness()throws InterruptedException{
+        Thread.sleep(1000);
         click(locatorCBClase);
-        List<WebElement> clases = findElements(locatorCBBusiness);
-        click(clases.get(3));
+        Thread.sleep(1000);
+        //List<WebElement> clases = findElements(locatorCBBusiness);
+        //click(clases.get(3));
+
+    }
+    public void buscar(){
         click(locatorBtnBuscar);
+    }
+    public void corroborarInfo()throws InterruptedException{
+        scroll(findElement(locatorTxtMapa));
+        click(locatorTxtMapa);
+        Thread.sleep(1000);
+        click(locatorBtnSalir);
+        Thread.sleep(1000);
+        scroll(findElement(locatorTxtServicios));
+        click(locatorTxtServicios);
+        Thread.sleep(1000);
+        scroll(findElement(locatorTxtComentarios));
+        click(locatorTxtComentarios);
+        click(locatorBtnSalir);
+        Thread.sleep(1000);
     }
 }
 

@@ -17,7 +17,7 @@ public class FlashSalesPage extends SeleniumWrapper {
 
     public void ofertaVuelo() throws InterruptedException{
         scroll(findElement(locatorTxtOfertasDeLaSemana));
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         List<WebElement> ofertasSemana = findElements(locatorSelectOferta);
         click(ofertasSemana.get(1));
     }
