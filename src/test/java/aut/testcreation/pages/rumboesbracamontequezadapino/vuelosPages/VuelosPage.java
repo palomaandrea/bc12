@@ -27,49 +27,43 @@ public class VuelosPage extends SeleniumWrapper {
     By locatorTxtOfertaLondres = By.xpath("//h4[contains(text(),'Londres')]");
 
 
-
-
-    public void seleccionarSentidoViajeIdaYVuelta(){
-        click(locatorSelectorSentidoViaje);
-    }
-    public void ingresarOrigen (String origen) throws InterruptedException {
+    public void viajeiIdaYVuelta(String origen, String destino) throws InterruptedException {
+        click(waitElement(locatorSelectorSentidoViaje));
         write(origen, locatorInputOrigen);
         Thread.sleep(2000);
-        sendKeys (DOWN, locatorInputOrigen);
+        sendKeys(DOWN, locatorInputOrigen);
         Thread.sleep(2000);
         sendKeys(ENTER, locatorInputOrigen);
-    }
-    public void ingresarDestino (String destino) throws InterruptedException {
         write(destino, locatorInputDestino);
         Thread.sleep(2000);
         sendKeys(DOWN, locatorInputDestino);
         Thread.sleep(2000);
         sendKeys(ENTER, locatorInputDestino);
-    }
-
-    public void seleccionarFecha (){
         click(waitElement(locatorSelectIda));
         click(waitElement(locatorSelectVuelta));
-    }
-    public void seleccionarAnadirPasajerosAdultos(){
         click(waitElement(locatorSelectorAnadirAdulto));
     }
-    public void seleccionarMetodoPagoMastercard(){
+
+    public void seleccionarMetodoPagoMastercard() {
         click(locatorSelectorMetodoPago);
         click(locatorSelectorPagoMastercard);
     }
-    public void seleccionarMetodoPagoEconomico(){
+
+    public void seleccionarMetodoPagoEconomico() {
         click(locatorSelectorMetodoPago);
         click(locatorSelectorPagoEconomico);
     }
-    public void vuelaAEuropa(){
+
+    public void vuelaAEuropa() {
         scroll(findElement(locatorTxtEuropa));
         click(waitElement(locatorTxtEuropa));
     }
-    public void buscarVuelo(){
+
+    public void buscarVuelo() {
         click(locatorBtnBuscar);
     }
-    public void ofertaLondres(){
+
+    public void ofertaLondres() {
         scroll(findElement(locatorTxtOfertaLondres));
         click(locatorTxtOfertaLondres);
     }

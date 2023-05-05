@@ -29,11 +29,7 @@ public class VuelosTest extends SeleniumTestBase {
         homePage.navigateTo("https://www.rumbo.es/");
         homePage.cerrarCookis();
         homePage.irAVuelos();
-        vuelosPage.seleccionarSentidoViajeIdaYVuelta();
-        vuelosPage.ingresarOrigen("Madrid (MAD) - Adolfo Suárez Barajas, España");
-        vuelosPage.ingresarDestino("Tokio (TYO) - Todos los aeropuertos, Japón");
-        vuelosPage.seleccionarFecha();
-        vuelosPage.seleccionarAnadirPasajerosAdultos();
+        vuelosPage.viajeiIdaYVuelta("Madrid (MAD) - Adolfo Suárez Barajas, España","Tokio (TYO) - Todos los aeropuertos, Japón");
         vuelosPage.buscarVuelo();
     }
 
@@ -65,12 +61,8 @@ public class VuelosTest extends SeleniumTestBase {
         homePage.navigateTo("https://www.rumbo.es/");
         homePage.cerrarCookis();
         homePage.irAVuelos();
-        vuelosPage.seleccionarSentidoViajeIdaYVuelta();
         vuelosPage.seleccionarMetodoPagoMastercard();
-        vuelosPage.ingresarOrigen("Madrid (MAD) - Adolfo Suárez Barajas, España");
-        vuelosPage.ingresarDestino("Nueva York (JFK) - John F. Kennedy, Estados Unidos");
-        vuelosPage.seleccionarFecha();
-        vuelosPage.seleccionarAnadirPasajerosAdultos();
+        vuelosPage.viajeiIdaYVuelta("Madrid (MAD) - Adolfo Suárez Barajas, España","Nueva York (JFK) - John F. Kennedy, Estados Unidos");
         vuelosPage.buscarVuelo();
         Thread.sleep(10000);
         vuelosBusquedaPage.filtrarPorMasRapido();
