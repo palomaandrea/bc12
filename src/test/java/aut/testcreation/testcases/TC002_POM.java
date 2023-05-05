@@ -15,14 +15,8 @@ public class TC002_POM extends SeleniumTestBase {
     void registroVueloNoOk(){
 
         rumboHomePage = new RumboHomePage(DriverFactory.getDriver());
-        rumboHomePage.navegarAlHome();
-        rumboHomePage.aceptarCoockies();
-        rumboHomePage.elegirVueloIdaYVuelta();
-        rumboHomePage.ingresarOrigen("Santiago SCL");
-        rumboHomePage.ingresarDestino("Buenos Aires (BUE)");
-        rumboHomePage.elegirFechas();
-        rumboHomePage.clicNumPasajero();
-        rumboHomePage.realizarBusqueda();
+        rumboHomePage.formularioHomeIdaYVuelta("Santiago (SCL)", "Buenos Aires (BUE)");
+
 
     }
 }

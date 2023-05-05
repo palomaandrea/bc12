@@ -1,10 +1,10 @@
 package framework.engine.selenium;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
+
 
 public class SeleniumWrapper {
 
@@ -70,6 +70,16 @@ public class SeleniumWrapper {
         return driver.getTitle();
     }
 
+    public void scrolling(By locator) {
+        WebElement element = driver.findElement(locator);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+    }
 
+    public void seleccionarComboBoxPorTextoVisible(By locator, String valor) {
+        WebElement elemento = findElement(locator);
+        Select select = new Select(elemento);
+        select.selectByVisibleText(valor);
+    }
 
 }

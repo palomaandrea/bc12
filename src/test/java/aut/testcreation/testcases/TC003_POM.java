@@ -15,15 +15,7 @@ public class TC003_POM extends SeleniumTestBase {
     void buscarVueloIda(){
 
         rumboHomePage = new RumboHomePage(DriverFactory.getDriver());
-        rumboHomePage.navegarAlHome();
-        rumboHomePage.aceptarCoockies();
-        rumboHomePage.elegirVueloSoloIda();
-        rumboHomePage.ingresarOrigen("Santiago SCL");
-        rumboHomePage.ingresarDestino("Buenos Aires (BUE)");
-        rumboHomePage.elegirSoloFechaIda();
-        rumboHomePage.clicNumPasajero();
-        rumboHomePage.realizarBusqueda();
-
+        rumboHomePage.formularioSoloIda("Santiago (SCL)", "Buenos Aires (BUE)");
 
     }
 }

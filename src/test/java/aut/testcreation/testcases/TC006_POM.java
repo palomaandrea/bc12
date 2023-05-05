@@ -15,9 +15,6 @@ public class TC006_POM extends SeleniumTestBase {
     void buscarVueloMultidestinoNoOk(){
 
         rumboHomePage = new RumboHomePage(DriverFactory.getDriver());
-        rumboHomePage.navegarAlHome();
-        rumboHomePage.aceptarCoockies();
-        rumboHomePage.elegirVueloMultidestino();
-
+        rumboHomePage.opcionMultidestino();
     }
 }

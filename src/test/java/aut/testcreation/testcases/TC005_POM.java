@@ -16,14 +16,7 @@ public class TC005_POM extends SeleniumTestBase {
     void buscarVueloIdaNoOk() {
 
         rumboHomePage = new RumboHomePage(DriverFactory.getDriver());
-        rumboHomePage.navegarAlHome();
-        rumboHomePage.aceptarCoockies();
-        rumboHomePage.elegirVueloSoloIda();
-        rumboHomePage.borrarOrigen();
-        rumboHomePage.ingresarDestino("Buenos Aires (BUE)");
-        rumboHomePage.elegirSoloFechaIda();
-        rumboHomePage.clicNumPasajero();
-        rumboHomePage.realizarBusqueda();
+        rumboHomePage.formularioIdaSinOrigen("Buenos Aires (BUE)");
         Assertions.assertEquals(rumboHomePage.mensajeErrorOrigen(), ("Introduce ciudad o aeropuerto de origen"));
 
     }

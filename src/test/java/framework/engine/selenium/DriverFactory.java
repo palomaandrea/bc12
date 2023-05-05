@@ -27,14 +27,14 @@ public class DriverFactory {
                 hiloLocal.set(new FirefoxDriver());
                 getDriver().manage().deleteAllCookies();
                 getDriver().manage().window().maximize();
-                getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+                getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
                 return getDriver();
             case "edge":
                 WebDriverManager.edgedriver().setup();
                 hiloLocal.set(new EdgeDriver());
                 getDriver().manage().deleteAllCookies();
                 getDriver().manage().window().maximize();
-                getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+                getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
                 return getDriver();
             case "chrome":
                 WebDriverManager.chromedriver().setup();
@@ -57,6 +57,9 @@ public class DriverFactory {
             case "edge":
                 WebDriverManager.edgedriver().setup();
                 return new EdgeDriver();
+            case "chrome":
+                WebDriverManager.chromedriver().setup();
+                return new ChromeDriver();
             default:
                 throw new RuntimeException("Error en el webdriver: " + webDriver);
         }

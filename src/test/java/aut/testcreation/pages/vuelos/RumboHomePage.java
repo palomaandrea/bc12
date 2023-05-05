@@ -31,73 +31,70 @@ public class RumboHomePage extends SeleniumWrapper {
     By btnBuscar = By.xpath("//button[@class='d-1jmk4ql']");
     By errOrigenVuelo = By.xpath("//span[@class = 'd-1toc9z2'][contains(text(),'Introduce ciudad o aeropuerto de origen')]");
 
-    public void navegarAlHome() {
+    public void formularioHomeIdaYVuelta(String origenVuelo, String destinoVuelo) {
         navigateTo(BASE_URL_AUT);
-    }
-
-    public void aceptarCoockies() {
         click(btnAceptarCoockies);
-    }
-
-    public void elegirVueloIdaYVuelta() {
         click(btnVueloIdaVuelta);
-    }
-
-    public void elegirVueloSoloIda() {
-        click(btnVueloSoloIda);
-    }
-
-    public void elegirVueloMultidestino() {
-        click(btnVueloMultidestino);
-    }
-
-    public void ingresarOrigen(String origenVuelo) {
         click(btnLimpiarOrigen);
         write(origenVuelo, locatorOrigenVuelo);
         sendKeys(DOWN, locatorOrigenVuelo);
         sendKeys(ENTER, locatorOrigenVuelo);
         click(locatorOrigenVuelo);
-    }
-
-    public void borrarOrigen() {
-        click(btnLimpiarOrigen);
-    }
-
-    public void ingresarDestino(String destinoVuelo) {
         click(locatorDestinoVuelo);
         write(destinoVuelo, locatorDestinoVuelo);
         sendKeys(DOWN, locatorDestinoVuelo);
         sendKeys(ENTER, locatorDestinoVuelo);
         click(locatorDestinoVuelo);
-    }
-
-    public void elegirSoloFechaIda() {
-        click(locatorVerCalendario);
-        click(locatorFechaSoloIda);
-    }
-
-    public void elegirFechas() {
         click(locatorVerCalendario);
         click(locatorFechaIda);
         click(locatorFechaVuelta);
-    }
-
-    public void clicNumPasajero() {
         click(locatorNumeroPasajeros);
+        click(btnBuscar);
     }
 
-    public void realizarBusqueda() {
-        if (isDisplayed(errOrigenVuelo)) {
-            click(locatorOrigenVuelo);
-            click(locatorDestinoVuelo);
-            click(btnBuscar);
-        } else {
-            click(btnBuscar);
-        }
+
+
+    public void formularioSoloIda(String origenVuelo, String destinoVuelo) {
+        navigateTo(BASE_URL_AUT);
+        click(btnAceptarCoockies);
+        click(btnVueloSoloIda);
+        click(btnLimpiarOrigen);
+        write(origenVuelo, locatorOrigenVuelo);
+        sendKeys(DOWN, locatorOrigenVuelo);
+        sendKeys(ENTER, locatorOrigenVuelo);
+        click(locatorOrigenVuelo);
+        click(locatorDestinoVuelo);
+        click(locatorDestinoVuelo);
+        write(destinoVuelo, locatorDestinoVuelo);
+        sendKeys(DOWN, locatorDestinoVuelo);
+        sendKeys(ENTER, locatorDestinoVuelo);
+        click(locatorVerCalendario);
+        click(locatorFechaSoloIda);
+        click(locatorNumeroPasajeros);
+        click(btnBuscar);
     }
 
+    public void opcionMultidestino(){
+        navigateTo(BASE_URL_AUT);
+        click(btnAceptarCoockies);
+        click(btnVueloMultidestino);
+    }
+
+    public void formularioIdaSinOrigen(String destinoVuelo) {
+        navigateTo(BASE_URL_AUT);
+        click(btnAceptarCoockies);
+        click(btnVueloSoloIda);
+        click(btnLimpiarOrigen);
+        click(locatorDestinoVuelo);
+        write(destinoVuelo, locatorDestinoVuelo);
+        sendKeys(DOWN, locatorDestinoVuelo);
+        sendKeys(ENTER, locatorDestinoVuelo);
+        click(locatorVerCalendario);
+        click(locatorFechaSoloIda);
+        click(locatorNumeroPasajeros);
+        click(btnBuscar);
+    }
     public String mensajeErrorOrigen() {
         return getText(errOrigenVuelo);
     }
-
 }
