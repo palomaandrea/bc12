@@ -37,10 +37,12 @@ public class TrenesPage extends SeleniumWrapper {
     By locatorBtnBuscar = By.xpath("//button[@aria-label='Buscar']");
 
     //https://res.cloudinary.com/lastminute-contenthub/i…s/Europe/Spain/Sevilla/shutterstock_108544976.jpg
-    By locatorOfertaSevillaMadrid = By.linkText("https://res.cloudinary.com/lastminute-contenthub/i…s/Europe/Spain/Sevilla/shutterstock_108544976.jpg");
+    By locatorOfertaSevillaMadrid = By.xpath("//img[@alt='Madrid - Sevilla']");
 
     //https://res.cloudinary.com/lastminute-contenthub/c…ons/Europe/Spain/Barcelona/shutterstock_165497819
     By locatorOfertaBarcelonaMadrid = By.linkText("https://res.cloudinary.com/lastminute-contenthub/c…ons/Europe/Spain/Barcelona/shutterstock_165497819");
+
+    By locatorObtenerMensajeSinDispo = By.xpath("//span[contains(text(), 'No hemos encontrado ninguna')]");
 
     public void soloIda(){
         click(findElement(locatorSoloIda));
@@ -58,7 +60,12 @@ public class TrenesPage extends SeleniumWrapper {
     }
 
     public void escribirDestino (String destino) throws InterruptedException{
+        click(locatorLugarDestino);
         write(destino, locatorLugarDestino);
+        click(locatorLugarDestino);
+        write(destino, locatorLugarDestino);
+        findElement(locatorSeleccionaCiudad);
+        click(locatorSeleccionaCiudad);
 
     }
 
@@ -109,5 +116,13 @@ public class TrenesPage extends SeleniumWrapper {
 
     public void sendKeys(Keys key){
         sendKeys(key, locatorFechaIda);
+    }
+
+    public String obtenerMensajeSinDispo(){
+        return getText(locatorObtenerMensajeSinDispo);
+    }
+
+    public void bajarAOfertas(){
+        scrolling(findElement(locatorOfertaSevillaMadrid));
     }
 }
