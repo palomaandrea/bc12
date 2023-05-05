@@ -16,10 +16,8 @@ public class VuelosPage extends SeleniumWrapper {
     By locatorSelectorSentidoViaje = By.xpath("//div[contains(text(),'Ida y vuelta')]");
     By locatorInputOrigen = By.xpath("//input[@aria-label= 'Origen']");
     By locatorInputDestino = By.xpath("//input[@aria-label= 'Destino']");
-    By locatorSelectorFecha = By.xpath("//span[@class='d-aziqil']");
     By locatorSelectIda = By.xpath("//button[contains(text(), '17')]");
     By locatorSelectVuelta = By.xpath("//button[contains(text(), '24')]");
-    By locatorSelectorPasajeros = By.xpath("//span[@class='d-5n2gua']");
     By locatorSelectorAnadirAdulto = By.xpath("//button[@aria-label='Aumentar el número de adultos']");
     By locatorSelectorMetodoPago = By.xpath("//span[@class='d-ocxq5f']");
     By locatorSelectorPagoMastercard = By.xpath("//li[contains(text(),'Mastercard')]");
@@ -65,7 +63,7 @@ public class VuelosPage extends SeleniumWrapper {
     }
     public void vuelaAEuropa(){
         scroll(findElement(locatorTxtEuropa));
-        click(locatorTxtEuropa);
+        click(waitElement(locatorTxtEuropa));
     }
     public void buscarVuelo(){
         click(locatorBtnBuscar);
