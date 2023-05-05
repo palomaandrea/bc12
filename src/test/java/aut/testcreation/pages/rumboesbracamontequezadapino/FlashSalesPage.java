@@ -15,8 +15,9 @@ public class FlashSalesPage extends SeleniumWrapper {
     By locatorTxtOfertasDeLaSemana = By.xpath("//span[contains(text(),'Ofertas de la semana')]");
     By locatorSelectOferta = By.xpath("//div[@class='slick-list']");
 
-    public void ofertaVuelo(){
+    public void ofertaVuelo() throws InterruptedException{
         scroll(findElement(locatorTxtOfertasDeLaSemana));
+        Thread.sleep(2000);
         List<WebElement> ofertasSemana = findElements(locatorSelectOferta);
         click(ofertasSemana.get(1));
     }
