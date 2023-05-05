@@ -13,10 +13,10 @@ public class TC005_POM extends SeleniumTestBase {
 
     @Test
     @Tag("Funcional")
-    void buscarVueloIdaNoOk() {
+    void buscarVueloIdaNoOk() throws InterruptedException {
 
         rumboHomePage = new RumboHomePage(DriverFactory.getDriver());
-        rumboHomePage.formularioIdaSinOrigen("Buenos Aires (BUE)");
+        rumboHomePage.formularioIdaSinOrigen(true,"Buenos Aires (BUE)");
         Assertions.assertEquals(rumboHomePage.mensajeErrorOrigen(), ("Introduce ciudad o aeropuerto de origen"));
 
     }

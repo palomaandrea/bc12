@@ -12,8 +12,9 @@ public class TarifaVueloPage extends SeleniumWrapper {
     By elegirTarifaClassic = By.xpath("//button[@class='Button-sc-1bbve8d-0 gzlNtv']");
     By getElegirTarifaFlex = By.xpath("//button[@class='Button-sc-1bbve8d-0 ghhXOt']");
 
-    public void elegirTarifa() {
+    public void elegirTarifa() throws InterruptedException {
         scrolling(elegirTarifaClassic);
+        Thread.sleep(1000);
         click(elegirTarifaClassic);
     }
 
