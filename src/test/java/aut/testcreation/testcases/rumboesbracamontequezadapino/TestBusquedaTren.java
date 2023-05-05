@@ -37,7 +37,7 @@ public class TestBusquedaTren extends SeleniumTestBase {
         trenesPage.bajarAOfertas();
         trenesPage.ofertaMadridSevilla();
         Thread.sleep(3000);
-        trenesPage.moverseALaSegundaPestaña();
+        trenesPage.moverseALaSegundaPestana();
         Assertions.assertEquals(trenesPage.obtenerMensajeSinDispo(), "No hemos encontrado ninguna oferta que se ajuste a los criterios de búsqueda, probablemente por falta de disponibilidad en fechas o destino. Por favor, vuelve a intentarlo seleccionando una fecha diferente.");
         Thread.sleep(3000);
     }

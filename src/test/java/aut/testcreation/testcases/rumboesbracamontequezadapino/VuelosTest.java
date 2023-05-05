@@ -1,4 +1,5 @@
 package aut.testcreation.testcases.rumboesbracamontequezadapino;
+import aut.testcreation.pages.rumboesbracamontequezadapino.CheckoutPage;
 import aut.testcreation.pages.rumboesbracamontequezadapino.HomePage;
 import aut.testcreation.pages.rumboesbracamontequezadapino.TrenesPages.TrenesPage;
 import aut.testcreation.pages.rumboesbracamontequezadapino.vuelosPages.*;
@@ -15,6 +16,7 @@ public class VuelosTest extends SeleniumTestBase {
     VuelosEuropaPage vuelosEuropaPage;
     VuelosNoResult vuelosNoResult;
     VuelosCheckoutCartPage vuelosCheckoutCartPage;
+    CheckoutPage checkoutPage;
 
     @Test
     public void CP001_BusquedaVuelo_IdaYVuelta_MasBarato_OK() throws InterruptedException {
@@ -41,7 +43,9 @@ public class VuelosTest extends SeleniumTestBase {
         homePage.cerrarCookis();
         homePage.irAVuelos();
         vuelosPage.vuelaAEuropa();
+        vuelosPage.moverseALaSegundaPestana();
         vuelosEuropaPage.vuelaALisboa();
+        vuelosEuropaPage.moverseALaTerceraPestana();
         Assertions.assertEquals(vuelosNoResult.mensajeSinVuelos(),"No hemos encontrado ninguna oferta que se ajuste a los criterios de búsqueda, probablemente por falta de disponibilidad en fechas o destino. Por favor, vuelve a intentarlo seleccionando una fecha diferente.");
     }
 
@@ -51,6 +55,7 @@ public class VuelosTest extends SeleniumTestBase {
         vuelosPage = new VuelosPage(DriverFactory.getDriver());
         vuelosBusquedaPage = new VuelosBusquedaPage(DriverFactory.getDriver());
         vuelosCheckoutCartPage = new VuelosCheckoutCartPage(DriverFactory.getDriver());
+        checkoutPage = new CheckoutPage(DriverFactory.getDriver());
         homePage.navigateTo("https://www.rumbo.es/");
         homePage.cerrarCookis();
         homePage.irAVuelos();
@@ -61,10 +66,15 @@ public class VuelosTest extends SeleniumTestBase {
         vuelosPage.seleccionarFecha();
         vuelosPage.seleccionarAnadirPasajerosAdultos();
         vuelosPage.buscarVuelo();
-        Thread.sleep(9000);
+        Thread.sleep(10000);
         vuelosBusquedaPage.filtrarPorMasRapido();
         Thread.sleep(9000);
+        vuelosBusquedaPage.filtrarPorUnaEscala();
+        Thread.sleep(9000);
         vuelosBusquedaPage.seleccionarVuelo();
+        vuelosCheckoutCartPage.elegirClassic();
+        checkoutPage.verDetallesViaje();
+        Assertions.assertEquals(checkoutPage.mensajeDetalleVuelo(),"Detalles del viaje");
 
     }
 
