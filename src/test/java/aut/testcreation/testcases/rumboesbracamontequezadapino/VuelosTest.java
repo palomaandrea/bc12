@@ -41,7 +41,9 @@ public class VuelosTest extends SeleniumTestBase {
         homePage.cerrarCookis();
         homePage.irAVuelos();
         vuelosPage.vuelaAEuropa();
+        vuelosPage.moverseALaSegundaPestana();
         vuelosEuropaPage.vuelaALisboa();
+        vuelosEuropaPage.moverseALaTerceraPestana();
         Assertions.assertEquals(vuelosNoResult.mensajeSinVuelos(),"No hemos encontrado ninguna oferta que se ajuste a los criterios de búsqueda, probablemente por falta de disponibilidad en fechas o destino. Por favor, vuelve a intentarlo seleccionando una fecha diferente.");
     }
 
@@ -61,11 +63,12 @@ public class VuelosTest extends SeleniumTestBase {
         vuelosPage.seleccionarFecha();
         vuelosPage.seleccionarAnadirPasajerosAdultos();
         vuelosPage.buscarVuelo();
-        Thread.sleep(9000);
+        Thread.sleep(10000);
         vuelosBusquedaPage.filtrarPorMasRapido();
         Thread.sleep(9000);
+        vuelosBusquedaPage.filtrarPorUnaEscala();
+        Thread.sleep(9000);
         vuelosBusquedaPage.seleccionarVuelo();
-
     }
 
 }

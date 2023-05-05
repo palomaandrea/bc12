@@ -15,8 +15,9 @@ public class VuelosBusquedaPage extends SeleniumWrapper {
     By locatorFilterElmejor = By.xpath("//h5[contains(text(),'El mejor')]");
     By locatorFilterMasBarato = By.xpath("//h5[contains(text(),'Más barato')]");
     By locatorFilterMasRapido = By.xpath("//h5[contains(text(),'Más rápido')]");
-    By locatorFilterEscalaIda = By.xpath("");
-    By locatorFilterEscalataVuelta = By.xpath("");
+    By locatorFilterEscalas = By.xpath("//span[contains(text(),'Escalas')]");
+    By locatorFilterEscalaIda = By.xpath("//div[@class='CheckboxListstyled__CheckboxListWrapper-cncr__sc-epivn3-0 ldnIlp'][0]");
+    By locatorFilterEscalaVuelta = By.xpath("//div[@class='CheckboxListstyled__CheckboxListWrapper-cncr__sc-epivn3-0 ldnIlp'][1]");
     By locatorSelectVuelo = By.xpath("//div[@class='FullTripCard__SelectedPriceContainer-sc-z8znd4-4 cbaIot']");
 
     public void filtrarPorElMejor() {
@@ -28,17 +29,21 @@ public class VuelosBusquedaPage extends SeleniumWrapper {
     }
 
     public void filtrarPorMasRapido() {
-        click(waitElement(locatorFilterMasRapido));
+        click(locatorFilterMasRapido);
     }
 
-    public void filtrarPorUnaEscala() {
-        scroll(findElement(locatorFilterEscalaIda));
-        click(locatorFilterEscalaIda);
-        click(locatorFilterEscalataVuelta);
+    public void filtrarPorUnaEscala() throws InterruptedException {
+        scroll(findElement(locatorFilterEscalas));
+        List<WebElement> escalasIda = findElements(locatorFilterEscalaIda);
+        click(escalasIda.get(1));
+        Thread.sleep(9000);
+        List<WebElement> escalasVuelta = findElements(locatorFilterEscalaVuelta);
+        click(escalasVuelta.get(1));
     }
 
-    public void seleccionarVuelo() throws InterruptedException{
-            List<WebElement> vuelos = findElements(locatorSelectVuelo);
-            click(vuelos.get(0));
+    public void seleccionarVuelo() throws InterruptedException {
+        scroll(findElement(locatorSelectVuelo));
+        List<WebElement> vuelos = findElements(locatorSelectVuelo);
+        click(vuelos.get(0));
     }
 }

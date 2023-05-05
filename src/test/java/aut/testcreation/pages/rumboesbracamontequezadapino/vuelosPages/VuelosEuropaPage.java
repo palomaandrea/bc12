@@ -9,16 +9,14 @@ public class VuelosEuropaPage extends SeleniumWrapper {
         super(driver);
     }
 
-    By locatorTxtDestinosUrbanos = By.xpath("//body/div[1]/div[5]/div[2]/div[1]/div[2]/div[1]/div[1]/div[3]')]')]");
-    By locatorTxtVuelaALisboa = By.xpath("//h4[contains(text(),'Vuela a Lisboa')]");
+    By locatorTxtDestinosUrbanos = By.xpath("//h3[contains(text(),'Destinos urbanos')]");
+    By locatorTxtVuelaALisboa = By.xpath("//figure[@class='e2zssff0 d-1u3qkqc e1cdiu7b0']");
 
     public void vuelaALisboa()throws InterruptedException {
-        if(isDisplayed(locatorTxtDestinosUrbanos)){
+            Thread.sleep(2000);
             scroll(findElement(locatorTxtDestinosUrbanos));
             Thread.sleep(1000);
             click(waitElement(locatorTxtVuelaALisboa));
-        }else {
-            navigateTo("https://www.rumbo.es/es/vuelos/europa.html?int_type=CMS_FLI&int_campaign=CNT&int_detail=PHP_FLI_RMB_europa_1&subsource=S02HPB30S10RR01");
-        }
+
     }
 }

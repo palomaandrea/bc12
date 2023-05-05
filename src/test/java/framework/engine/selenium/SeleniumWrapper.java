@@ -118,7 +118,7 @@ public class SeleniumWrapper {
         js.executeScript("arguments[0].scrollIntoView(true);", elemento);
     }
 
-    public void moverseALaSegundaPestaña() {
+    public void moverseALaSegundaPestana() {
         // Obtiene la lista de identificadores de las pestañas abiertas
         List<String> tabHandles = new ArrayList<>(driver.getWindowHandles());
 
@@ -127,6 +127,11 @@ public class SeleniumWrapper {
 
         // Abre la segunda página en la nueva pestaña
         //driver.get("URL de la segunda página");
+    }
+    public void moverseALaTerceraPestana() {
+        List<String> tabHandles = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabHandles.get(2));
+
     }
 }
 
