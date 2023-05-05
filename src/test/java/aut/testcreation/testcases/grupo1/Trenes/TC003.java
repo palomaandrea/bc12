@@ -16,7 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
-public class TC001 {
+public class TC003 {
     WebDriver driver; //Creación de atributo WebDriver
     WebDriverWait wait;
 
