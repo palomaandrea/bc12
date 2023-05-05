@@ -7,6 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 import java.util.List;
@@ -27,7 +30,7 @@ public class SeleniumWrapper {
 
     //Wrappers Selenium
     public WebElement findElement(By locator){
-        wait = new WebDriverWait(driver,20);
+        wait = new WebDriverWait(driver,30);
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 
     }
@@ -46,6 +49,7 @@ public class SeleniumWrapper {
         driver.findElement(locator).sendKeys(inputText);
     }
     public void sendKeys(Keys key, By locator){
+
         driver.findElement(locator).sendKeys(key);
     }
     public void scroll(WebElement elemento){
@@ -90,5 +94,16 @@ public class SeleniumWrapper {
     public String getUrlTitle(){
         return driver.getTitle();
     }
+    public WebElement waitElement(Keys enter, By localizador){
+        wait = new WebDriverWait(driver,20);
+
+       return wait.until(ExpectedConditions.presenceOfElementLocated(localizador));
+    }
+    public WebElement waitElement(By localizador){
+        wait = new WebDriverWait(driver,20);
+
+        return wait.until(ExpectedConditions.presenceOfElementLocated(localizador));
+    }
+
 
 }
