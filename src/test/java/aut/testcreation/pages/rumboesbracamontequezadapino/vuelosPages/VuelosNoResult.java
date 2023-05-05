@@ -8,5 +8,9 @@ public class VuelosNoResult extends SeleniumWrapper {
     public VuelosNoResult(WebDriver driver) {
         super(driver);
     }
-    By locatorTxtSinVuelos = By.xpath("");
+    By locatorTxtSinVuelos = By.xpath("//span[@id='noResultsText']");
+
+    public String mensajeSinVuelos(){
+        return getText(locatorTxtSinVuelos);
+    }
 }

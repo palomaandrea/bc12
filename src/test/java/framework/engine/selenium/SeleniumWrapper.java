@@ -4,8 +4,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.JavascriptExecutor;
-
-
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +23,7 @@ public class SeleniumWrapper {
     }
 
     //Wrappers Selenium
+
     public WebElement findElement(By locator) {
         wait = new WebDriverWait(driver, 20);
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
@@ -45,7 +44,7 @@ public class SeleniumWrapper {
         driver.findElement(locator).sendKeys(inputText);
     }
 
-    public void sendKeys(Keys key, By locator) {
+    public void sendKeys(Keys key, By locator){
         driver.findElement(locator).sendKeys(key);
     }
 
@@ -94,6 +93,17 @@ public class SeleniumWrapper {
     public String getUrlTitle() {
         return driver.getTitle();
     }
+    public WebElement waitElement(Keys enter, By localizador){
+        wait = new WebDriverWait(driver,20);
+
+       return wait.until(ExpectedConditions.presenceOfElementLocated(localizador));
+    }
+    public WebElement waitElement(By localizador){
+        wait = new WebDriverWait(driver,20);
+
+        return wait.until(ExpectedConditions.presenceOfElementLocated(localizador));
+    }
+
 
     public class ManejoEncodingUFT8 {
 

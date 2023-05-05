@@ -17,23 +17,24 @@ public class HomePage extends SeleniumWrapper {
     By locatorVuelos = By.xpath("//a[@title='Vuelos']");
 
     By locatorHoteles = By.linkText("https://www.rumbo.es/hoteles/");
-
     By locatorRechazarCookis = By.xpath("//button[contains(text(), 'Rechazar todo')]");
 
-    public void cerrarCookis(){
-        if(isDisplayed(locatorRechazarCookis)){
-        click(findElement(locatorRechazarCookis));
-    }}
+    public void cerrarCookis() {
+        if (isDisplayed(locatorRechazarCookis)) {
+            click(findElement(locatorRechazarCookis));
+        }
+    }
 
-    public void irATrenes(){
+    public void irATrenes() {
         click(findElement(locatorTrenes));
     }
 
-    public void irAVuelos(){
+    public void irAVuelos() {
         click(locatorVuelos);
     }
 
-    public void irAHoteles(){
+    public void irAHoteles() {
         click(locatorHoteles);
     }
+
 }
