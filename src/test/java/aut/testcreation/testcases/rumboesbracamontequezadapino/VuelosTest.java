@@ -1,24 +1,28 @@
 package aut.testcreation.testcases.rumboesbracamontequezadapino;
 import aut.testcreation.pages.rumboesbracamontequezadapino.CheckoutPage;
+import aut.testcreation.pages.rumboesbracamontequezadapino.FlashSalesPage;
 import aut.testcreation.pages.rumboesbracamontequezadapino.HomePage;
-import aut.testcreation.pages.rumboesbracamontequezadapino.TrenesPages.TrenesPage;
 import aut.testcreation.pages.rumboesbracamontequezadapino.vuelosPages.*;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
 
 public class VuelosTest extends SeleniumTestBase {
     HomePage homePage;
     VuelosPage vuelosPage;
     VuelosBusquedaPage vuelosBusquedaPage;
     VuelosEuropaPage vuelosEuropaPage;
+    VuelosALondresPage vuelosALondresPage;
     VuelosNoResult vuelosNoResult;
     VuelosCheckoutCartPage vuelosCheckoutCartPage;
+    VuelosHotelPage vuelosHotelPage;
     CheckoutPage checkoutPage;
+    FlashSalesPage flashSalesPage;
 
     @Test
+    @Tag("baja")
     public void CP001_BusquedaVuelo_IdaYVuelta_MasBarato_OK() throws InterruptedException {
         homePage = new HomePage(DriverFactory.getDriver());
         vuelosPage= new VuelosPage(DriverFactory.getDriver());
@@ -34,6 +38,7 @@ public class VuelosTest extends SeleniumTestBase {
     }
 
     @Test
+    @Tag("baja")
     public void CP002_BusquedaVuelo_DestinosUrbanos_NOOK() throws InterruptedException {
         homePage = new HomePage(DriverFactory.getDriver());
         vuelosPage = new VuelosPage(DriverFactory.getDriver());
@@ -50,7 +55,8 @@ public class VuelosTest extends SeleniumTestBase {
     }
 
     @Test
-    public void CP003_BusquedaVueloInternacional_IdaYVuelta_Mastercard_MasRapido_Conescalas() throws InterruptedException {
+    @Tag("media")
+    public void CP003_BVI_Mastercard_MasRapido_CEscalas() throws InterruptedException {
         homePage = new HomePage(DriverFactory.getDriver());
         vuelosPage = new VuelosPage(DriverFactory.getDriver());
         vuelosBusquedaPage = new VuelosBusquedaPage(DriverFactory.getDriver());
@@ -77,5 +83,34 @@ public class VuelosTest extends SeleniumTestBase {
         Assertions.assertEquals(checkoutPage.mensajeDetalleVuelo(),"Detalles del viaje");
 
     }
+    @Test
+    public void CP004_BV_IdaYVuelta_Ofertas_ClaseTurista_MasEconomico() throws InterruptedException{
+        homePage = new HomePage(DriverFactory.getDriver());
+        vuelosPage = new VuelosPage(DriverFactory.getDriver());
+        vuelosALondresPage = new VuelosALondresPage(DriverFactory.getDriver());
+        vuelosBusquedaPage = new VuelosBusquedaPage(DriverFactory.getDriver());
+        vuelosCheckoutCartPage = new VuelosCheckoutCartPage(DriverFactory.getDriver());
+        checkoutPage = new CheckoutPage(DriverFactory.getDriver());
+        homePage.navigateTo("https://www.rumbo.es/");
+        homePage.cerrarCookis();
+        homePage.irAVuelos();
+        vuelosPage.ofertaLondres();
+        //vuelosALondresPage.viajeALondres("Madrid (MAD) Adolfo Suárez Barajas, España");
+    }
 
+    @Test
+    public void CP006_BV_UR_OfertasHotel() throws InterruptedException{
+        homePage = new HomePage(DriverFactory.getDriver());
+        flashSalesPage = new FlashSalesPage(DriverFactory.getDriver());
+        vuelosHotelPage = new VuelosHotelPage(DriverFactory.getDriver());
+        homePage.navigateTo("https://www.rumbo.es/");
+        homePage.cerrarCookis();
+        homePage.irAFlashSales();
+        flashSalesPage.ofertaVuelo();
+        flashSalesPage.moverseALaSegundaPestana();
+        vuelosHotelPage.ingresarorigen("Madrid (MAD) - Adolfo Suárez Barajas, España");
+        vuelosHotelPage.seleccionarFechaIdaYVuelta();
+        vuelosHotelPage.numeroDeAdultos();
+        vuelosHotelPage.claseBusiness();
+    }
 }

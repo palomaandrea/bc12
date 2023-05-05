@@ -24,6 +24,7 @@ public class VuelosPage extends SeleniumWrapper {
     By locatorSelectorPagoEconomico = By.xpath("//li[contains(text(),'económico')]");
     By locatorBtnBuscar = By.xpath("//button[@aria-label='Buscar']");
     By locatorTxtEuropa = By.xpath("//h4[contains(text(),'Vuela a Europa')]");
+    By locatorTxtOfertaLondres = By.xpath("//h4[contains(text(),'Londres')]");
 
 
 
@@ -67,6 +68,10 @@ public class VuelosPage extends SeleniumWrapper {
     }
     public void buscarVuelo(){
         click(locatorBtnBuscar);
+    }
+    public void ofertaLondres(){
+        scroll(findElement(locatorTxtOfertaLondres));
+        click(locatorTxtOfertaLondres);
     }
 
 }
