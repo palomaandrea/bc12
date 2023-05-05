@@ -16,7 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
-public class TC004 {
+public class TC006 {
     WebDriver driver; //Creación de atributo WebDriver
     WebDriverWait wait;
 
@@ -37,12 +37,6 @@ public class TC004 {
 
     @FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[2]/div[3]/div[1]/div/div[2]/div/section/div/div[1]/div[2]/button[2]")
     WebElement btnmasadultos;
-
-    @FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[2]/div[3]/div[1]/div/div[2]/div/section/div/div[2]/button/div")
-    WebElement btnmasninios;
-
-    @FindBy(xpath = "//*[@id=\"hub-csw-container\"]/div/div/form/div[2]/div[3]/div[1]/div/div[2]/div/section/div/div[2]/div/div/ul/li[11]")
-    WebElement btnninio10anios;
 
     @FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[2]/div[4]/div/button")
     WebElement btnbuscar;
@@ -69,7 +63,7 @@ public class TC004 {
     }
 
     @Test
-    void CP001_TC004_NOOK_() throws InterruptedException {
+    void CP001_TC006_NOOK_() throws InterruptedException {
 
         //Aqui crearemos el test
         btnaceptar.click();
@@ -102,14 +96,8 @@ public class TC004 {
 
         btnmasadultos.click();
         btnmasadultos.click();
-        btnmasadultos.click();
-
-        btnmasninios.click();
-        btnninio10anios.click();
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-
 
         btnbuscar.click();
 
