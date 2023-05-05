@@ -33,16 +33,16 @@ public class VuelosPage extends SeleniumWrapper {
     }
     public void ingresarOrigen (String origen) throws InterruptedException {
         write(origen, locatorInputOrigen);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         sendKeys (DOWN, locatorInputOrigen);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         sendKeys(ENTER, locatorInputOrigen);
     }
     public void ingresarDestino (String destino) throws InterruptedException {
         write(destino, locatorInputDestino);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         sendKeys(DOWN, locatorInputDestino);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         sendKeys(ENTER, locatorInputDestino);
     }
 
