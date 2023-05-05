@@ -3,6 +3,8 @@ package framework.engine.selenium;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.JavascriptExecutor;
+
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -11,9 +13,11 @@ import java.util.List;
 public class SeleniumWrapper {
 
     private final WebDriver driver;
+
     private WebDriverWait wait;
 
     private JavascriptExecutor js;
+
 
     //Constructor Base
     public SeleniumWrapper(WebDriver driver) {
@@ -43,6 +47,12 @@ public class SeleniumWrapper {
 
     public void sendKeys(Keys key, By locator) {
         driver.findElement(locator).sendKeys(key);
+    }
+
+
+    public void scroll(WebElement elemento) {
+        js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", elemento);
     }
 
     public void click(By locator) {
@@ -87,18 +97,18 @@ public class SeleniumWrapper {
 
     public class ManejoEncodingUFT8 {
 
-    public static String fixEncoding(String text) {
-        byte[] utf8Bytes = text.getBytes(StandardCharsets.ISO_8859_1);
-        return new String(utf8Bytes, StandardCharsets.UTF_8);
+        public static String fixEncoding(String text) {
+            byte[] utf8Bytes = text.getBytes(StandardCharsets.ISO_8859_1);
+            return new String(utf8Bytes, StandardCharsets.UTF_8);
+        }
     }
-}
 
-    public void scrolling(WebElement elemento){
+    public void scrolling(WebElement elemento) {
         js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", elemento);
     }
 
-    public void moverseALaSegundaPestaña(){
+    public void moverseALaSegundaPestaña() {
         // Obtiene la lista de identificadores de las pestañas abiertas
         List<String> tabHandles = new ArrayList<>(driver.getWindowHandles());
 
@@ -109,4 +119,5 @@ public class SeleniumWrapper {
         //driver.get("URL de la segunda página");
     }
 }
+
 

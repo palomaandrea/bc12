@@ -27,6 +27,8 @@ public class VuelosPage extends SeleniumWrapper {
     By locatorBtnBuscar = By.xpath("//button[@type='submit']");
     By locatorTxtEuropa = By.xpath("//h4[contains(text(),'Vuela a Europa')]");
 
+
+
     public void seleccionarSentidoViajeIdaYVuelta(){
         click(locatorSelectorSentidoViaje);
     }
@@ -62,6 +64,7 @@ public class VuelosPage extends SeleniumWrapper {
         click(locatorBtnBuscar);
     }
     public void vuelaAEuropa(){
+        scroll(findElement(locatorTxtEuropa));
         click(locatorTxtEuropa);
     }
 }
