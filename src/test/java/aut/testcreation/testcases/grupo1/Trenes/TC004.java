@@ -1,6 +1,7 @@
 package aut.testcreation.testcases.grupo1.Trenes;
 
-//solo ida
+//ida y vuelta
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
@@ -15,7 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
-public class TC002 {
+public class TC004 {
     WebDriver driver; //Creación de atributo WebDriver
     WebDriverWait wait;
 
@@ -25,27 +26,26 @@ public class TC002 {
     WebElement btnaceptar;
     @FindBy(xpath = "/html/body/div[1]/div[1]/div/div[2]/div/div/div[3]/div/div[2]/div/ul/li[8]/div/a" )
     WebElement btntrenes;
-
-    @FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[1]/div/div/div[2]")
-    WebElement btnsoloida;
-
-    @FindBy(xpath = "//*[@id=':Rqhl6lalaqlql2m:']")
-    WebElement btnclickdestino;
-
-    @FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[2]/div[2]/div/div/div/div/button")
+    @FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[2]/div[2]/div[1]/div/fieldset/div[1]/button")
     WebElement btnclickdia;
 
     @FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[2]/div[2]/div[1]/div/div/div/div/section/div/div/div[2]/div[2]/button[15]")
     WebElement btndiaida;
 
-    //@FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[2]/div[2]/div[1]/div/div/div/div/section/div/div/div[3]/div[2]/button[2]")
-    //WebElement btndiavuelta;
+    @FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[2]/div[2]/div[1]/div/div/div/div/section/div/div/div[3]/div[2]/button[2]")
+    WebElement btndiavuelta;
 
     @FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[2]/div[3]/div[1]/div/div[2]/div/section/div/div[1]/div[2]/button[2]")
     WebElement btnmasadultos;
 
-    @FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[2]/div[4]/div/button")
-    WebElement btnbuscar;
+    @FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[2]/div[3]/div[1]/div/div[2]/div/section/div/div[2]/button/div")
+    WebElement btnmasninios;
+
+    @FindBy(xpath = "//*[@id=\"hub-csw-container\"]/div/div/form/div[2]/div[3]/div[1]/div/div[2]/div/section/div/div[2]/div/div/ul/li[11]")
+    WebElement btnninio3anios;
+
+    //@FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[2]/div[4]/div/button")
+    //WebElement btnbuscar;
 
     @BeforeAll
     static void preparacionClase(){
@@ -69,7 +69,7 @@ public class TC002 {
     }
 
     @Test
-    void CP001_TC002_NOOK_() throws InterruptedException {
+    void CP001_TC004_NOOK_() throws InterruptedException {
 
         //Aqui crearemos el test
         btnaceptar.click();
@@ -77,16 +77,12 @@ public class TC002 {
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        btnsoloida.click();
-
         By locatorbtnorigen = By.xpath("//*[@id=':Rmhl6lalaqlql2m:']");
         WebElement btnorigen = wait.until(ExpectedConditions.presenceOfElementLocated(locatorbtnorigen));
 
         btnorigen.sendKeys("A Coruña");
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        btnclickdestino.click();
 
         By locatorbtndestino = By.xpath("//*[@id=':Rqhl6lalaqlql2m:']");
         WebElement btndestino = wait.until(ExpectedConditions.presenceOfElementLocated(locatorbtndestino));
@@ -100,18 +96,26 @@ public class TC002 {
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-       // btndiavuelta.click();
+        btndiavuelta.click();
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         btnmasadultos.click();
+        btnmasadultos.click();
+        btnmasadultos.click();
+
+        btnmasninios.click();
+        btnninio3anios.click();
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        btnbuscar.click();
+
+
+        //btnbuscar.click();
 
 
     }
+
 
     @AfterEach
     void posTests(){

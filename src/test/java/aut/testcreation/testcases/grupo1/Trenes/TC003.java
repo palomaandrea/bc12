@@ -35,8 +35,8 @@ public class TC003 {
     @FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[2]/div[2]/div[1]/div/div/div/div/section/div/div/div[3]/div[2]/button[2]")
     WebElement btndiavuelta;
 
-    //@FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[2]/div[3]/div[1]/div/div[2]/div/section/div/div[1]/div[2]/button[2]")
-    //WebElement btnmasadultos;
+    @FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[2]/div[3]/div[1]/div/div[2]/div/section/div/div[1]/div[2]/button[2]")
+    WebElement btnmasadultos;
 
     @FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[2]/div[4]/div/button")
     WebElement btnbuscar;
@@ -63,7 +63,7 @@ public class TC003 {
     }
 
     @Test
-    void CP001_TC001_NOOK_() throws InterruptedException {
+    void CP001_TC003_NOOK_() throws InterruptedException {
 
         //Aqui crearemos el test
         btnaceptar.click();
@@ -94,7 +94,13 @@ public class TC003 {
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        //btnmasadultos.click();
+        btnmasadultos.click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        btnmasadultos.click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        btnmasadultos.click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        btnmasadultos.click();
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
