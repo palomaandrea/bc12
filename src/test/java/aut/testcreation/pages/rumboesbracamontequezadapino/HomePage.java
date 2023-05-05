@@ -18,6 +18,7 @@ public class HomePage extends SeleniumWrapper {
 
     By locatorHoteles = By.linkText("https://www.rumbo.es/hoteles/");
     By locatorRechazarCookis = By.xpath("//button[contains(text(), 'Rechazar todo')]");
+    By locatorFlashsales = By.xpath("//a[@title='Flash Sales']");
 
     public void cerrarCookis() {
         if (isDisplayed(locatorRechazarCookis)) {
@@ -35,6 +36,11 @@ public class HomePage extends SeleniumWrapper {
 
     public void irAHoteles() {
         click(locatorHoteles);
+    }
+
+    public void irAFlashSales(){
+        scroll(findElement(locatorFlashsales));
+        click(locatorFlashsales);
     }
 
 }
