@@ -34,4 +34,6 @@ public class VuelosBusquedaPage extends SeleniumWrapper {
         scroll(findElement(locatorSelectVuelo));
         click(locatorSelectVuelo);
     }
+
+
 }

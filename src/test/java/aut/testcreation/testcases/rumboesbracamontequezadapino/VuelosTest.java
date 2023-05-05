@@ -9,17 +9,23 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
 public class VuelosTest extends SeleniumTestBase {
-    WebDriver driver;
     HomePage homepage;
     VuelosPage vuelosPage;
     VuelosBusquedaPage vuelosBusquedaPage;
 
     @Test
-    public void CP001_BusquedaVuelo_IdaYVuelta_MasBarato_OK(){
+    public void CP001_BusquedaVuelo_IdaYVuelta_MasBarato_OK() throws InterruptedException {
         homepage = new HomePage(DriverFactory.getDriver());
         vuelosPage= new VuelosPage(DriverFactory.getDriver());
         homepage.navigateTo("https://www.rumbo.es/");
-
+        homepage.cerrarCookis();
+        homepage.irAVuelos();
+        vuelosPage.seleccionarSentidoViajeIdaYVuelta();
+        vuelosPage.ingresarOrigen("Madrid (MAD) - Adolfo Suárez Barajas, España");
+        vuelosPage.ingresarDestino("Tokio (TYO) - Todos los aeropuertos, Japón");
+        vuelosPage.seleccionarFecha();
+        vuelosPage.seleccionarAnadirPasajerosAdultos();
+        vuelosPage.buscarVuelo();
     }
 
 
