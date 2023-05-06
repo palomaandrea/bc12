@@ -32,7 +32,7 @@ public class RumboHomePage extends SeleniumWrapper {
     By locatorNumeroPasajeros = By.xpath("//span[@class='d-5n2gua']");
     By btnBuscar = By.xpath("//button[@class='d-1jmk4ql']");
     By errOrigenVuelo = By.xpath("//span[@class = 'd-1toc9z2'][contains(text(),'Introduce ciudad o aeropuerto de origen')]");
-
+    By btnBuscarMulti = By.xpath("//div[@class='ButtonPrimitiveContentChildren__StyledButtonPrimitiveContentChildren-sc-mra4yy-0 dLfJcB'] [contains(text(), 'Buscar')]");
     public void formularioHomeIdaYVuelta(boolean limpiarOrigen, String origenVuelo, String destinoVuelo) throws InterruptedException {
         navigateTo(BASE_URL_AUT);
         click(btnAceptarCoockies);
@@ -61,9 +61,6 @@ public class RumboHomePage extends SeleniumWrapper {
         click(locatorNumeroPasajeros);
         click(btnBuscar);
     }
-
-
-
 
     public void formularioSoloIda(boolean limpiarOrigen, String origenVuelo, String destinoVuelo) throws InterruptedException {
         navigateTo(BASE_URL_AUT);
