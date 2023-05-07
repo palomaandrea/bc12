@@ -1,9 +1,11 @@
 package aut.testcreation.pages.vuelos;
 
+import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -16,8 +18,6 @@ public class RumboHomePage extends SeleniumWrapper {
     public RumboHomePage(WebDriver driver) {
         super(driver);
     }
-
-    //Locators
     By btnAceptarCoockies = By.xpath("//button[@class='iubenda-cs-accept-btn iubenda-cs-btn-primary']");
     By btnVueloIdaVuelta = By.xpath("//div[@class='d-vfn33k']");
     By btnVueloSoloIda = By.xpath("//div[@class='d-1s1pmhl']");
@@ -32,7 +32,7 @@ public class RumboHomePage extends SeleniumWrapper {
     By locatorNumeroPasajeros = By.xpath("//span[@class='d-5n2gua']");
     By btnBuscar = By.xpath("//button[@class='d-1jmk4ql']");
     By errOrigenVuelo = By.xpath("//span[@class = 'd-1toc9z2'][contains(text(),'Introduce ciudad o aeropuerto de origen')]");
-    By btnBuscarMulti = By.xpath("//div[@class='ButtonPrimitiveContentChildren__StyledButtonPrimitiveContentChildren-sc-mra4yy-0 dLfJcB'] [contains(text(), 'Buscar')]");
+
     public void formularioHomeIdaYVuelta(boolean limpiarOrigen, String origenVuelo, String destinoVuelo) throws InterruptedException {
         navigateTo(BASE_URL_AUT);
         click(btnAceptarCoockies);
@@ -43,17 +43,17 @@ public class RumboHomePage extends SeleniumWrapper {
         }
         click(locatorOrigenVuelo);
         write(origenVuelo, locatorOrigenVuelo);
-        Thread.sleep(1000);
+        Thread.sleep(700);
         sendKeys(DOWN, locatorOrigenVuelo);
-        Thread.sleep(1000);
+        Thread.sleep(700);
         sendKeys(ENTER, locatorOrigenVuelo);
         click(locatorDestinoVuelo);
         write(destinoVuelo, locatorDestinoVuelo);
-        Thread.sleep(1000);
+        Thread.sleep(700);
         sendKeys(DOWN, locatorDestinoVuelo);
-        Thread.sleep(1000);
+        Thread.sleep(700);
         sendKeys(ENTER, locatorDestinoVuelo);
-        Thread.sleep(1000);
+        Thread.sleep(700);
         click(locatorDestinoVuelo);
         click(locatorVerCalendario);
         click(locatorFechaIda);
@@ -72,28 +72,30 @@ public class RumboHomePage extends SeleniumWrapper {
         }
         click(locatorOrigenVuelo);
         write(origenVuelo, locatorOrigenVuelo);
-        Thread.sleep(1000);
+        Thread.sleep(700);
         sendKeys(DOWN, locatorOrigenVuelo);
-        Thread.sleep(1000);
+        Thread.sleep(700);
         sendKeys(ENTER, locatorOrigenVuelo);
-        Thread.sleep(1000);
+        Thread.sleep(700);
         click(locatorDestinoVuelo);
         write(destinoVuelo, locatorDestinoVuelo);
-        Thread.sleep(1000);
+        Thread.sleep(700);
         sendKeys(DOWN, locatorDestinoVuelo);
-        Thread.sleep(1000);
+        Thread.sleep(700);
         sendKeys(ENTER, locatorDestinoVuelo);
-        Thread.sleep(1000);
+        Thread.sleep(700);
         click(locatorFechaSoloIda);
         click(locatorNumeroPasajeros);
         click(btnBuscar);
     }
 
-    public void opcionMultidestino(){
+    public void opcionMultidestino() {
         navigateTo(BASE_URL_AUT);
         click(btnAceptarCoockies);
         click(btnVueloMultidestino);
     }
+
+
 
     public void formularioIdaSinOrigen(boolean limpiarOrigen, String destinoVuelo) throws InterruptedException {
         navigateTo(BASE_URL_AUT);
@@ -105,16 +107,17 @@ public class RumboHomePage extends SeleniumWrapper {
         }
         click(locatorDestinoVuelo);
         write(destinoVuelo, locatorDestinoVuelo);
-        Thread.sleep(1000);
+        Thread.sleep(700);
         sendKeys(DOWN, locatorDestinoVuelo);
-        Thread.sleep(1000);
+        Thread.sleep(700);
         sendKeys(ENTER, locatorDestinoVuelo);
-        Thread.sleep(1000);
-        click(locatorVerCalendario);
+        Thread.sleep(700);
+        //click(locatorVerCalendario);
         click(locatorFechaSoloIda);
         click(locatorNumeroPasajeros);
         click(btnBuscar);
     }
+
     public String mensajeErrorOrigen() {
         return getText(errOrigenVuelo);
     }

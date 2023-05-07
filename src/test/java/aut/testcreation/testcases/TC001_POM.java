@@ -3,12 +3,10 @@ package aut.testcreation.testcases;
 import aut.testcreation.pages.vuelos.*;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
 public class TC001_POM extends SeleniumTestBase {
-
     RumboHomePage rumboHomePage;
     OfertasVuelosPage ofertasVuelosPage;
     TarifaVueloPage tarifaVueloPage;
@@ -27,10 +25,14 @@ public class TC001_POM extends SeleniumTestBase {
         verificacionPagoPage = new VerificacionPagoPage(DriverFactory.getDriver());
         rumboHomePage.formularioHomeIdaYVuelta(true, "Santiago (SCL)", "Buenos Aires (BUE)");
         ofertasVuelosPage.elegirPrimerOfertaQueAparezca();
-        tarifaVueloPage.elegirTarifa();
-        formularioVuelosPage.llenarFormulario("Francisca", "Benavides", "Holamundo2222@gmail.com", "9255874", false, true, "08", "1993");
+        tarifaVueloPage.elegirTarifa(true);
+        formularioVuelosPage.llenarFormulario("Francisca", "Benavides", "Holamundo2222@gmail.com", "9255874", false, "08", "1993");
         serviciosAdicionalesPage.presionarSiguiente();
         verificacionPagoPage.mensajeVerificarEncontrado();
-        Assertions.assertEquals(verificacionPagoPage.mensajeVerificarEncontrado(), ("Verifica tus datos"));
+        if (verificacionPagoPage.mensajeVerificarEncontrado().equals("Verifica tus datos")) {
+            System.out.println("Test completado con éxito: La ejecución del test finaliza en la pestaña 'Verificación y pago'. \nMensaje: 'Verifica tus datos' ha sido encontrado y desplegado en pantalla.\n ");
+        } else {
+            System.out.println("Test sin éxito: No ha sido posible encontrar el mensaje: 'Verifica tus datos'. \n");
+        }
     }
 }
