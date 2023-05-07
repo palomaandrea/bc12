@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 public class TC001 {
     WebDriver driver; //Creación de atributo WebDriver
+
     WebDriverWait wait;
 
     JavascriptExecutor js;
