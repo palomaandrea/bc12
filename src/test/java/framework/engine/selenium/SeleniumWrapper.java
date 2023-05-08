@@ -145,6 +145,15 @@ public class SeleniumWrapper {
         List<WebElement> day = findElements(locatorDia);
         click(day.get(11));
     }
+    public void seleccionaDosDias(int dia1, int dia2) throws InterruptedException{
+        By locatorDiaIda= By.xpath("//button[contains(text(), "+dia1+")]");
+        By locatorDiaVuelta= By.xpath("//button[contains(text(), "+dia2+")]");
+        Thread.sleep(3000);
+        List < WebElement> diaIda = findElements(locatorDiaIda);
+        click(diaIda.get(0));
+        List < WebElement> diaVuelta = findElements(locatorDiaVuelta);
+        click(diaVuelta.get(0));
+    }
 
     /* void switchToMapa() throws InterruptedException {
         By locatorIFMapa = By.xpath("//iframe[@id='ssIFrame_google']");
