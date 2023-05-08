@@ -101,6 +101,7 @@ public class SeleniumWrapper {
     }
     public WebElement waitElement(By localizador){
         wait = new WebDriverWait(driver,20);
+
         return wait.until(ExpectedConditions.presenceOfElementLocated(localizador));
     }
 
@@ -126,36 +127,36 @@ public class SeleniumWrapper {
         driver.switchTo().window(tabHandles.get(nro));
 
     }
-    public void moverseALaTerceraPestana() {
-        List<String> tabHandles = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tabHandles.get(2));
 
+    public void moverseAOtraPestana(String text) {
+        for (String pestana : driver.getWindowHandles()) {
+            driver.switchTo().window(pestana);
+            if (driver.getTitle().contains(text)) {
+                return;
+            }
+        }
     }
-    public void moverseALaCuartaPestana() {
-        List<String> tabHandles = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tabHandles.get(3));
-
-    }
-
     public void esperarAQueLaPaginaCargue(){
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
     }
+    public void seleccionaUnDia(int dia)throws InterruptedException{
+        By locatorDia = By.xpath("//button[contains(text(), "+dia+")]");
+        Thread.sleep(3000);
+        List<WebElement> day = findElements(locatorDia);
+        click(day.get(11));
+    }
 
-    public void seleccionaUnDia(int dia) throws InterruptedException{
-        By locatorDia= By.xpath("//button[contains(text(), "+dia+")]");
+    /* void switchToMapa() throws InterruptedException {
+        By locatorIFMapa = By.xpath("//iframe[@id='ssIFrame_google']");
+        By locatorBtnSalir = By.xpath("//svg[@aria-label='close']");
+        WebElement iframeElement = driver.findElement(locatorIFMapa);
         Thread.sleep(3000);
-        List < WebElement> dia1 = findElements(locatorDia);
-        click(dia1.get(0));
-    }
-    public void seleccionaDosDias(int dia1, int dia2) throws InterruptedException{
-        By locatorDiaIda= By.xpath("//button[contains(text(), "+dia1+")]");
-        By locatorDiaVuelta= By.xpath("//button[contains(text(), "+dia2+")]");
-        Thread.sleep(3000);
-        List < WebElement> diaIda = findElements(locatorDiaIda);
-        click(diaIda.get(0));
-        List < WebElement> diaVuelta = findElements(locatorDiaVuelta);
-        click(diaVuelta.get(0));
-    }
+        driver.switchTo().frame(iframeElement);
+        System.out.println(driver.getCurrentUrl());
+        click(locatorBtnSalir);
+        click(locatorBtnSalir);
+        driver.switchTo().defaultContent();*/
+
 }
 
 
