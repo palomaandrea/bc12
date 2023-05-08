@@ -22,7 +22,7 @@ public class TC002_POM extends SeleniumTestBase {
         rumboHomePage.ingresarDestino("Buenos Aires (BUE)");
         rumboHomePage.elegirFechas();
         rumboHomePage.clicNumPasajero();
-        rumboHomePage.realizarBusqueda();
+        //rumboHomePage.realizarBusqueda();
 
     }
 }

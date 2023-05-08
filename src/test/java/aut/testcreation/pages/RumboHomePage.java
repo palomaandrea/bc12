@@ -15,6 +15,7 @@ public class RumboHomePage extends SeleniumWrapper {
 
     //Locators para Todos los métodos (sea de vuelo, tren u hotel):
     By btnAceptarCoockies = By.xpath("//button[@class='iubenda-cs-accept-btn iubenda-cs-btn-primary']");
+    By btnTrenes = By.xpath("/html/body/div[1]/div[1]/div/div[2]/div/div/div[3]/div/div[2]/div/ul/li[8]/div/a");
     By btnVueloIdaVuelta = By.xpath("//div[@class='d-vfn33k']");
     By btnVueloSoloIda = By.xpath("//div[@class='d-1s1pmhl']");
     By btnVueloMultidestino = By.xpath("//*[@class='d-1w89ccl']");
@@ -36,6 +37,10 @@ public class RumboHomePage extends SeleniumWrapper {
 
     public void aceptarCoockies() {
         click(btnAceptarCoockies);
+    }
+
+    public  void  elegirTrenes (){
+        click(btnTrenes);
     }
 
     //Métodos para vuelos:
