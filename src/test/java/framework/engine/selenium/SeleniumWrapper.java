@@ -1,11 +1,11 @@
 package framework.engine.selenium;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.openqa.selenium.Keys.DOWN;
 import static org.openqa.selenium.Keys.ENTER;
@@ -72,6 +72,39 @@ public class SeleniumWrapper {
 
     public String getUrlTitle(){
         return driver.getTitle();
+    }
+
+    // Métodos de espera
+    public WebElement waitForElementToBeClickable(By locator, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    public WebElement waitForElementToBeVisible(By locator, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public Boolean waitForUrlToContain(String urlPart, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+        return wait.until(ExpectedConditions.urlContains(urlPart));
+    }
+
+    public void waitInMs(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void implicitWait(int seconds) {
+        driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+    }
+
+    public  void scroll (String xpath){
+        WebElement element = driver.findElement(By.xpath(xpath));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
 }
