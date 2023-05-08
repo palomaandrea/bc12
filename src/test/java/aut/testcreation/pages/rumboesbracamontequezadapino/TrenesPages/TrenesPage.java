@@ -4,9 +4,8 @@ import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import java.util.List;
+
 
 public class TrenesPage extends SeleniumWrapper {
 
@@ -25,7 +24,7 @@ public class TrenesPage extends SeleniumWrapper {
     By locatorFechaIda = By.xpath("//button[@aria-label='Fecha de ida']");
 
     int diaIda;
-    By locatorMarcarDiaIda15 = By.xpath("//button[contains(text(), "+diaIda+")]");
+    //By locatorMarcarDiaIda15 = By.xpath("//button[contains(text(), "+diaIda+")]");
     int diaVuelta;
 
     By locatorMarcarDiaVuelta25 = By.xpath("//button[contains(text(), "+diaVuelta+")]");
