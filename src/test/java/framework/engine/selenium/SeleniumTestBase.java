@@ -1,12 +1,10 @@
 package framework.engine.selenium;
 
 import framework.engine.utils.LoadProperties;
-import io.qameta.allure.Description;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
-
 import java.util.Properties;
 
 public class SeleniumTestBase {
@@ -25,7 +23,6 @@ public class SeleniumTestBase {
         String browserName = properties.getProperty("browser");
         driverFactory = new DriverFactory();
         driver = driverFactory.inicializarDriver(browserName);
-        
     }
 
     @AfterEach

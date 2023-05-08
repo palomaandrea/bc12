@@ -3,32 +3,73 @@ package aut.testcreation.pages.vuelos;
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import static framework.engine.utils.Constants.BASE_URL_AUT;
-import static org.openqa.selenium.Keys.DOWN;
+import org.openqa.selenium.WebElement;
+
+import java.util.Arrays;
+import java.util.List;
+
 import static org.openqa.selenium.Keys.ENTER;
 
 public class MultidestinoPage extends SeleniumWrapper {
-    public MultidestinoPage(WebDriver driver) { super(driver);}
-
-    //Locators
-    By btnLimpiarCampo1 = By.xpath("//div[@data-test='PlacePickerInputPlace-close']");
-    By btnLimpiarCampo2 = By.xpath("//*[@class='Icon__StyledIcon-sc-psgqgs-0 jIyban closeIcon']");
-    By locatorIngresarOrigenMulti = By.xpath("//div[@class='SearchFieldstyled__SearchFieldLabel-sc-1f3jsso-4 XIFZe'][contains(text(),'Origen')]");
-    //By locatorIngresarDestinoMulti = By.xpath("//div[@class='SearchFieldstyled__SearchFieldLabel-sc-1f3jsso-4 XIFZe'][contains(text(),'Destino')]");
-    By locatorAceptarCoockiesMulti = By.xpath("//div[@class='ButtonPrimitiveContentChildren__StyledButtonPrimitiveContentChildren-sc-mra4yy-0 dLfJcB'][contains(text(),'Aceptar')]");
-
-
-    public void borrarPreIngresados() {
-        isDisplayed(btnLimpiarCampo1);
-        click(btnLimpiarCampo1);
+    public MultidestinoPage(WebDriver driver) {
+        super(driver);
     }
 
+    By locatorInputs = By.xpath("//input[@class='SearchFieldstyled__SearchFieldInput-sc-1f3jsso-5 jYLahH']");
+    By btnBorrarTodos = By.xpath("//div[@class='ButtonPrimitiveContentChildren__StyledButtonPrimitiveContentChildren-sc-mra4yy-0 NRXsW'][contains(text(),'Borrar todos')]");
+    By locatoraceptarCookies = By.xpath("//button[@id='cookies_accept']");
+    By btnBuscarMulti = By.xpath("//div[@class='ButtonPrimitiveContentChildren__StyledButtonPrimitiveContentChildren-sc-mra4yy-0 dLfJcB'] [contains(text(), 'Buscar')]");
+    By locatorTextoError = By.xpath("//p[@class='Text__StyledText-sc-1dj99rd-0 kocnUz']");
 
+    public void borrarPreIngresados(boolean limpiarCampos, String origenPrimero, String destinoPrimero, String origenSegundo, String destinoSegundo) throws InterruptedException {
+        Thread.sleep(3000);
+        switchToTabByTitleContains("Viajes de");
+        try {
+            if (limpiarCampos) {
+                click(btnBorrarTodos);
+            }
+        } catch (Exception e) {
+            System.out.println("Error: Campos no se han limpiado con éxito");
+        }
 
+        List<WebElement> inputs = findElements(locatorInputs);
+        WebElement primerInput = inputs.get(0);
+        primerInput.click();
+        primerInput.sendKeys(origenPrimero);
+        Thread.sleep(1000);
+        primerInput.sendKeys(ENTER);
+        Thread.sleep(1000);
+        WebElement segundoInput = inputs.get(1);
+        segundoInput.click();
+        segundoInput.sendKeys(destinoPrimero);
+        Thread.sleep(1000);
+        segundoInput.sendKeys(ENTER);
+        Thread.sleep(1000);
+        WebElement tercerInput = inputs.get(3);
+        tercerInput.sendKeys(origenSegundo);
+        Thread.sleep(1000);
+        tercerInput.sendKeys(ENTER);
+        Thread.sleep(1000);
+        WebElement cuartoInput = inputs.get(4);
+        cuartoInput.click();
+        cuartoInput.sendKeys(destinoSegundo);
+        Thread.sleep(1000);
+        cuartoInput.sendKeys(ENTER);
+        Thread.sleep(1000);
+        click(btnBuscarMulti);
+        click(locatoraceptarCookies);
+    }
 
-
-
-
-
+    public String mensajeErrorMultidestino() {
+        return getText(locatorTextoError);
+    }
 
 }
+
+
+
+
+
+
+
+
