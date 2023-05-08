@@ -1,7 +1,10 @@
 package aut.testcreation.testcases;
 
-import aut.testcreation.pages.vuelos.MultidestinoPage;
+
 import aut.testcreation.pages.vuelos.RumboHomePage;
+
+import aut.testcreation.pages.vuelos.MultidestinoPage;
+
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import org.junit.jupiter.api.Test;

@@ -44,9 +44,9 @@ public class RumboHomePage extends SeleniumWrapper {
         sendKeys(ENTER, locatorOrigenVuelo);
         click(locatorDestinoVuelo);
         write(destinoVuelo, locatorDestinoVuelo);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         sendKeys(DOWN, locatorDestinoVuelo);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         sendKeys(ENTER, locatorDestinoVuelo);
         Thread.sleep(1000);
         click(locatorDestinoVuelo);

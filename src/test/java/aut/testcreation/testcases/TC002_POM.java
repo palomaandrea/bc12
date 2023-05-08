@@ -29,7 +29,7 @@ public class TC002_POM extends SeleniumTestBase {
         if (serviciosAdicionalesPage.mensajeServiciosAdicEncontrado().equals("Servicios adicionales")) {
             System.out.println("Test completado con éxito: La ejecución del test finaliza en la pestaña 'Servicios adicionales'. \nMensaje: 'Servicios adicionales' ha sido encontrado y desplegado en pantalla.\n ");
         } else {
-            System.out.println("Test sin éxito: No ha sido posible encontrar el mensaje: 'Servicios adicionales'. \n");
+            System.out.println("Test  sin éxito: No ha sido posible encontrar el mensaje: 'Servicios adicionales'. \n");
         }
     }
 }

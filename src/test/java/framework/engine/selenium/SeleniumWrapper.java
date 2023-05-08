@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+
 public class SeleniumWrapper {
 
     private final WebDriver driver;
@@ -126,6 +127,7 @@ public class SeleniumWrapper {
         WebElement element = driver.findElement(By.xpath(xpath));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
+
 
 
 }
