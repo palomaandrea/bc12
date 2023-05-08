@@ -1,5 +1,5 @@
 package aut.testcreation.steps;
-import aut.testcreation.pages.RumboHomePage;
+import aut.testcreation.pages.vuelos.RumboHomePage;
 import aut.testplan.sprint.GoogleTestRunner;
 import io.cucumber.java8.En;
 import org.junit.jupiter.api.Assertions;
