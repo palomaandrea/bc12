@@ -101,7 +101,6 @@ public class SeleniumWrapper {
     }
     public WebElement waitElement(By localizador){
         wait = new WebDriverWait(driver,20);
-
         return wait.until(ExpectedConditions.presenceOfElementLocated(localizador));
     }
 
@@ -140,6 +139,22 @@ public class SeleniumWrapper {
 
     public void esperarAQueLaPaginaCargue(){
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
+    }
+
+    public void seleccionaUnDia(int dia) throws InterruptedException{
+        By locatorDia= By.xpath("//button[contains(text(), "+dia+")]");
+        Thread.sleep(3000);
+        List < WebElement> dia1 = findElements(locatorDia);
+        click(dia1.get(0));
+    }
+    public void seleccionaDosDias(int dia1, int dia2) throws InterruptedException{
+        By locatorDiaIda= By.xpath("//button[contains(text(), "+dia1+")]");
+        By locatorDiaVuelta= By.xpath("//button[contains(text(), "+dia2+")]");
+        Thread.sleep(3000);
+        List < WebElement> diaIda = findElements(locatorDiaIda);
+        click(diaIda.get(0));
+        List < WebElement> diaVuelta = findElements(locatorDiaVuelta);
+        click(diaVuelta.get(0));
     }
 }
 

@@ -26,8 +26,11 @@ public class BusquedaTrenNormal extends SeleniumWrapper {
         click(findElement(locatorNuevaBusqueda));
     }
 
-    public void masBarato(){
-        click(findElement(locatorBtnMasBarato));
+    public void masBarato()throws InterruptedException{
+        //Thread.sleep(3000);
+        findElement(locatorBtnMasBarato);
+        click(waitElement(locatorBtnMasBarato));
+        click(waitElement(locatorBtnMasBarato));
     }
 
     public void estacionAlmeria() throws InterruptedException{
