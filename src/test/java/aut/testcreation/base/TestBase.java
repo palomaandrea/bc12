@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
+
     public WebDriver driver;
 
     @BeforeAll
@@ -27,6 +28,6 @@ public class TestBase {
 
     @AfterEach
     public void close(){
-        driver.close();
+        //driver.close();
     }
 }

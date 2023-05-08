@@ -1,9 +1,6 @@
 package aut.testcreation.base;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,6 +14,7 @@ public class SeleniumBase {
     private JavascriptExecutor js;
 
     //Constructor
+
     public SeleniumBase(WebDriver driver) {
         this.driver = driver;
     }
@@ -48,6 +46,9 @@ public class SeleniumBase {
     }
     public void escribir(String texto, By localizador){
         driver.findElement(localizador).sendKeys(texto);
+    }
+    public void escribir(Keys keys, By localizador){
+        driver.findElement(localizador).sendKeys(keys);
     }
     public void escribir(String texto, WebElement elemento){
         elemento.sendKeys(texto);

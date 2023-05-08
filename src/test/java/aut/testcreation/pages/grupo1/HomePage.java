@@ -5,7 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class HomePage extends SeleniumBase {
-    public HomePage(WebDriver driver) {super(driver);}
+    public HomePage(WebDriver driver) {
+        super(driver);
+    }
 
     //Locators
     By btnAceptarCookies=By.xpath("//button[contains(@class, 'iubenda-cs-accept-btn') and contains(@class, 'iubenda-cs-btn-primary') and contains(text(), 'Aceptar todo')]");
