@@ -1,6 +1,5 @@
 package aut.testcreation.testcases.ejemplosDomingo;
-
-import aut.testcreation.pages.trenes.RumboHomePage;
+import aut.testcreation.pages.vuelos.RumboHomePage;
 import framework.engine.selenium.SeleniumTestBase;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;

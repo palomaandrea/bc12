@@ -39,6 +39,7 @@ public class RumboHomePage extends SeleniumWrapper {
         click(btnAceptarCoockies);
     }
 
+
     public  void  elegirTrenes (){
         click(btnTrenes);
     }
@@ -99,10 +100,9 @@ public class RumboHomePage extends SeleniumWrapper {
         return getText(errOrigenVuelo);
     }
 
-    //Métodos HomePage trenes
 
 
-    //Métodos HomePage hoteles
+
 
 
 }

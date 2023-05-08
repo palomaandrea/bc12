@@ -67,20 +67,24 @@ public class Trenes extends SeleniumWrapper {
 
     }
 
-    public void completarInputOrigen(String xpath,String texto){
+    public void completarInputOrigen(String xpath,String texto) throws InterruptedException {
         esperarVisibleLocated(xpath,10);
         clickear(xpath);
-        teclaAbajo(xpath);
         escribirInput(xpath, texto);
+        Thread.sleep(2000);
         teclaAbajo(xpath);
+        Thread.sleep(2000);
         teclaEnter(xpath);
     }
 
-    public void completarInputDestino(String xpath, String texto){
+    public void completarInputDestino(String xpath, String texto) throws InterruptedException {
         esperarVisibleLocated(xpath,10);
         clickear(xpath);
+        Thread.sleep(2000);
         escribirInput(xpath, texto);
+        Thread.sleep(2000);
         teclaAbajo(xpath);
+        Thread.sleep(2000);
         teclaEnter(xpath);
         scroll(xpath);
     }

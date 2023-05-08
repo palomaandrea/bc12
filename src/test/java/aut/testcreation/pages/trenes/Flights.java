@@ -26,12 +26,16 @@ public class Flights extends SeleniumWrapper {
         waitForElementToBeVisible(By.xpath(xpath), tiempo);
     }
 
-    public void  esperarClickeable(String xpath, int tiempo){
+    public void  esperarClickeable(String xpath, int tiempo) throws InterruptedException {
+        if(isEnabled(By.xpath(xpath))){
+            System.out.println("esta ok");}
+        Thread.sleep(2000);
         waitForElementToBeClickable(By.xpath(xpath), tiempo);
     }
 
 
-    public  void clickear(String xpath){
+    public  void clickear(String xpath) throws InterruptedException {
+        Thread.sleep(2000);
         click(By.xpath(xpath));
     }
 
@@ -56,13 +60,13 @@ public class Flights extends SeleniumWrapper {
 
     }
 
-    public  void  esperarElementos(String xpath, int tiempo){
+    public  void  esperarElementos(String xpath, int tiempo) throws InterruptedException {
         esperarClickeable(xpath,tiempo);
         clickear(xpath);
         implicitWait(10);
     }
 
-    public void completarInputOrigen(String xpath,String texto){
+    public void completarInputOrigen(String xpath,String texto) throws InterruptedException {
         esperarVisibleLocated(xpath,10);
         clickear(xpath);
         teclaAbajo(xpath);
@@ -70,7 +74,7 @@ public class Flights extends SeleniumWrapper {
         teclaAbajo(xpath);
         teclaEnter(xpath);
     }
-    public void completarInputDestino(String xpath,String texto){
+    public void completarInputDestino(String xpath,String texto) throws InterruptedException {
         clickear(xpath);
         escribirInput(xpath, texto);
         teclaAbajo(xpath);
@@ -83,14 +87,14 @@ public class Flights extends SeleniumWrapper {
         teclaEnter(xpath);
     }
 
-    public void seleccionarFechaIda(String xpath, String xpath2){
+    public void seleccionarFechaIda(String xpath, String xpath2) throws InterruptedException {
         scroll(xpath);
         esperarVisibleLocated(xpath,10);
         clickear(xpath);
         clickear(xpath2);
 
     }
-    public  void  seleccionarPasajeros(String xpath, String xpath2, String xpath3,String xpath4){
+    public  void  seleccionarPasajeros(String xpath, String xpath2, String xpath3,String xpath4) throws InterruptedException {
         scroll(xpath);
         esperarVisibleLocated(xpath,10);
         clickear(xpath);
@@ -103,7 +107,7 @@ public class Flights extends SeleniumWrapper {
 
 
     }
-    public void clickBuscar(String xpath){
+    public void clickBuscar(String xpath) throws InterruptedException {
         esperarVisibleLocated(xpath,10);
         clickear(xpath);
     }

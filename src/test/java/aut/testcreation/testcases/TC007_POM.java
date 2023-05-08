@@ -16,7 +16,7 @@ public class TC007_POM extends SeleniumTestBase {
 
     @Test
     @Tag("funcional")
-    void registroTrenesPrueba() {
+    void registroTrenesPrueba() throws InterruptedException {
 
         //Precondiciones
         rumboHomePage = new RumboHomePage(DriverFactory.getDriver());
@@ -44,10 +44,9 @@ public class TC007_POM extends SeleniumTestBase {
         trenes.clickBuscar("/html/body/div[1]/div[2]/div/div[2]/div/div/div[5]/div/div/div/div/div/form/div[2]/div[4]/div/button");
         //paso 8
         flights = new Flights(DriverFactory.getDriver());
-        flights.esperarClickeable("//h5[contains(text(),'El mejor')]", 10);
+        flights.esperarClickeable("//h5[contains(text(),'Más barato')]", 10);
         //paso 9
-        flights.esperarClickeable("//h5[contains(text(),'El mejor')]", 10);
-        flights.clickear("//h5[contains(text(),'El mejor')]");
+        flights.clickear("//h5[contains(text(),'Más barato')]");
 
 
     }
