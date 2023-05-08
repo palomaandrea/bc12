@@ -37,6 +37,9 @@ public class TC002 {
 
     @FindBy(xpath = "//*[@id=\"hub-csw-container\"]/div/div[2]/div/form/div/div[2]/div[1]/div/fieldset/div[1]/button")
     WebElement btnFechaEntrada;
+
+    @FindBy(xpath = "//*[@id=\"hub-csw-container\"]/div/div[2]/div/form/div/div[2]/div[1]/div/div")
+    WebElement divCalDesplegado;
     @FindBy(xpath = "//*[@id=\"hub-csw-container\"]/div/div[2]/div/form/div/div[2]/div[1]/div/div/header/div/div/div/button[2]")
     WebElement btnClikFechaFlexible;
 
@@ -75,7 +78,7 @@ public class TC002 {
 
 
     @Test
-    void CP001_TC002_OK_() throws InterruptedException {
+    void CP002_TC002_OK_() throws InterruptedException {
 
         //Aqui crearemos el test
         btnRechazarCookies.click();
@@ -85,26 +88,14 @@ public class TC002 {
             inputCualquierDestino.click();
         }
         btnFechaEntrada.click();
-        if(btnFechaEntrada.isDisplayed() && btnFechaEntrada.isSelected() ){
-            btnClikFechaFlexible.click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        if(btnFechaEntrada.isSelected()){
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            if(divCalDesplegado.isEnabled()){
+                driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                btnClikFechaFlexible.click();
+            }
         }
-        btnClikFechaFlexible.isEnabled();
-        btn23Noches.click();
-
-        if(btn23Noches.isDisplayed()){
-            btnCualquierFecha.click();
-        }
-
-        btnHuespedesHabitaciones.click();
-        btnBuscar.click();
-
-
-
-
-
-
-
-
 
 
 
