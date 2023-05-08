@@ -29,7 +29,7 @@ public class VuelosBusquedaPage extends SeleniumWrapper {
     }
 
     public void filtrarPorMasRapido() {
-        click(locatorFilterMasRapido);
+        click(waitElement(locatorFilterMasRapido));
     }
 
     public void filtrarPorUnaEscala() throws InterruptedException {

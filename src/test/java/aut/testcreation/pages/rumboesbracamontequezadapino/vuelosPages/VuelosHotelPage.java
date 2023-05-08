@@ -28,7 +28,7 @@ public class VuelosHotelPage extends SeleniumWrapper {
     By locatorBtnBuscar = By.xpath("//button[@type='submit']");
     By locatorTxtServicios = By.xpath("//span[contains(text(),'Ver todos los servicios')]");
     By locatorTxtMapa = By.xpath("//button[contains(text(),'Ver mapa')]");
-    By locatorBtnSalir = By.xpath("//svg[@id='cross_svg__stroke']");
+    By locatorBtnSalir = By.xpath("//body/reach-portal[1]/div[3]/div[1]/div[1]/div[1]/*[1]");
     By locatorTxtComentarios = By.xpath("//span[contains(text(),'Ver todos los comentarios')]");
     By locatorBtnTodoIncluido = By.xpath("//button[contains(text(),'Todo incluido')]");
     By locatorTxtConTraslado = By.xpath("//span[contains(text(),'Traslado Incluido')]");
@@ -46,10 +46,11 @@ public class VuelosHotelPage extends SeleniumWrapper {
         }
     }
     public void seleccionarFechaIdaYVuelta() throws InterruptedException{
+        Thread.sleep(3000);
         click(locatorSelectFecha);
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         click(locatorSelectFechaIda);
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         click(locatorSelectFechaVuelta);
     }
     public void numeroDeAdultos() throws InterruptedException{

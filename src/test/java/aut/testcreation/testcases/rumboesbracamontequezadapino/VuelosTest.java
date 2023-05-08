@@ -8,11 +8,15 @@ import framework.engine.selenium.SeleniumTestBase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 public class VuelosTest extends SeleniumTestBase {
+    WebDriver driver;
     HomePage homePage;
     VuelosPage vuelosPage;
     VuelosBusquedaPage vuelosBusquedaPage;
+    VuelosMultidestinoPage vuelosMultidestinoPage;
     VuelosEuropaPage vuelosEuropaPage;
     VuelosALondresPage vuelosALondresPage;
     VuelosNoResult vuelosNoResult;
@@ -46,8 +50,8 @@ public class VuelosTest extends SeleniumTestBase {
         vuelosPage.vuelaAEuropa();
         vuelosPage.moverseAOtraPestana(1);
         vuelosEuropaPage.vuelaALisboa();
-        vuelosEuropaPage.moverseALaTerceraPestana();
-        Assertions.assertEquals(vuelosNoResult.mensajeSinVuelos(),"No hemos encontrado ninguna oferta que se ajuste a los criterios de búsqueda, probablemente por falta de disponibilidad en fechas o destino. Por favor, vuelve a intentarlo seleccionando una fecha diferente.");
+        vuelosEuropaPage.moverseAOtraPestana(2);
+        Assertions.assertEquals(vuelosNoResult.mensajeSinVuelos(),"La fecha de la búsqueda ha cambiado");
     }
 
     @Test
@@ -62,7 +66,7 @@ public class VuelosTest extends SeleniumTestBase {
         homePage.cerrarCookis();
         homePage.irAVuelos();
         vuelosPage.seleccionarMetodoPagoMastercard();
-        vuelosPage.viajeiIdaYVuelta("Madrid (MAD) - Adolfo Suárez Barajas, España","Nueva York (JFK) - John F. Kennedy, Estados Unidos");
+        vuelosPage.viajeiIdaYVuelta("Madrid (MAD) - Adolfo Suárez Barajas, España","París (PAR) - Todos los aeropuertos, Francia");
         vuelosPage.buscarVuelo();
         Thread.sleep(10000);
         vuelosBusquedaPage.filtrarPorMasRapido();
@@ -77,12 +81,13 @@ public class VuelosTest extends SeleniumTestBase {
     }
     @Test
     public void CP004_BV_IdaYVuelta_Ofertas_ClaseTurista_MasEconomico() throws InterruptedException{
-        homePage = new HomePage(DriverFactory.getDriver());
-        vuelosPage = new VuelosPage(DriverFactory.getDriver());
-        vuelosALondresPage = new VuelosALondresPage(DriverFactory.getDriver());
-        vuelosBusquedaPage = new VuelosBusquedaPage(DriverFactory.getDriver());
-        vuelosCheckoutCartPage = new VuelosCheckoutCartPage(DriverFactory.getDriver());
-        checkoutPage = new CheckoutPage(DriverFactory.getDriver());
+        driver = DriverFactory.getDriver();
+        homePage = new HomePage(driver);
+        vuelosPage = new VuelosPage(driver);
+        vuelosALondresPage = new VuelosALondresPage(driver);
+        vuelosBusquedaPage = new VuelosBusquedaPage(driver);
+        vuelosCheckoutCartPage = new VuelosCheckoutCartPage(driver);
+        checkoutPage = new CheckoutPage(driver);
         homePage.navigateTo("https://www.rumbo.es/");
         homePage.cerrarCookis();
         homePage.irAVuelos();
@@ -91,19 +96,36 @@ public class VuelosTest extends SeleniumTestBase {
     }
 
     @Test
+    public void  CP005_BV_Multidestinos() throws InterruptedException{
+        driver = DriverFactory.getDriver();
+        homePage = new HomePage(driver);
+        vuelosPage = new VuelosPage(driver);
+        vuelosMultidestinoPage = new VuelosMultidestinoPage(driver);
+        homePage.navigateTo("https://www.rumbo.es/");
+        homePage.cerrarCookis();
+        homePage.irAVuelos();
+        vuelosPage.IrAMultidestino();
+        vuelosPage.moverseAOtraPestana(1);
+        vuelosMultidestinoPage.viajeMultidestino(true,"Santiago de Chile","Nueva York","Miami","Santiago de Chile");
+    }
+
+
+    @Test
     public void CP006_BV_UR_OfertasHotel() throws InterruptedException{
-        homePage = new HomePage(DriverFactory.getDriver());
-        flashSalesPage = new FlashSalesPage(DriverFactory.getDriver());
-        vuelosHotelPage = new VuelosHotelPage(DriverFactory.getDriver());
+        driver = DriverFactory.getDriver();
+        homePage = new HomePage(driver);
+        flashSalesPage = new FlashSalesPage(driver);
+        vuelosHotelPage = new VuelosHotelPage(driver);
         homePage.navigateTo("https://www.rumbo.es/");
         homePage.cerrarCookis();
         homePage.irAFlashSales();
         flashSalesPage.ofertaVuelo();
-        flashSalesPage.moverseALaSegundaPestana();
-        vuelosHotelPage.ingresarorigen("Madrid (MAD) - Adolfo Suárez Barajas, España");
+        flashSalesPage.moverseAOtraPestana(1);
         vuelosHotelPage.seleccionarFechaIdaYVuelta();
         vuelosHotelPage.numeroDeAdultos();
         vuelosHotelPage.corroborarInfo();
+        System.out.println(driver.getCurrentUrl());
+
         //vuelosHotelPage.claseBusiness();
         vuelosHotelPage.buscar();
     }

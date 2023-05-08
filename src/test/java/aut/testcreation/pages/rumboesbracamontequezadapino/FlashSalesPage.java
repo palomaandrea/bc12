@@ -19,6 +19,7 @@ public class FlashSalesPage extends SeleniumWrapper {
         scroll(findElement(locatorTxtOfertasDeLaSemana));
         Thread.sleep(5000);
         List<WebElement> ofertasSemana = findElements(locatorSelectOferta);
+        Thread.sleep(5000);
         click(ofertasSemana.get(1));
     }
 }
