@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import java.util.List;
 
-import static org.openqa.selenium.Keys.TAB;
+import static org.openqa.selenium.Keys.*;
 
 public class FormularioVuelosPage extends SeleniumWrapper {
     public FormularioVuelosPage(WebDriver driver) {
@@ -26,9 +26,11 @@ public class FormularioVuelosPage extends SeleniumWrapper {
     By btnSiguiente = By.xpath("//button[@data-test='lead-generation-submit-btn']");
     By locatorMsjeErrorAnnio = By.xpath("//div[contains(text(),'El adulto debe tener más de 12 años')]");
     By locatorBoxEquipaje = By.xpath("//div[@class='css-1akh2al']");
-
-
-    public void llenarFormulario(String nombreContacto, String apellidoContacto, String emailContacto, String telefonoContacto, boolean deseaSerLlamadoSr, String dia, String annio) {
+    By locatorNombreSegundoPasajero = By.xpath("//input[@name='groups.1.travellers.2.name']");
+    By locatorApellidoSegundoPasajero = By.xpath("//input[@data-test='input-groups.1.travellers.2.surname']");
+    By locatorDiaNacSegundoPasajero = By.xpath("//input[@data-test='input-groups.1.travellers.2.dateOfBirth-day']");
+    By locatorAnnioNacSegundoPasajero = By.xpath("//input[@data-test='input-groups.1.travellers.2.dateOfBirth-year']");
+    public void formularioDosPasajeros(String nombreContacto, String apellidoContacto, String emailContacto, String telefonoContacto, boolean deseaSerLlamadoSr, boolean sgdoPasajeroDeseaSerLlamadoSr, String dia, String annio , String nombreSgdoPasajero, String apellidoSgdoPasajero, String diaNacimientoSgdoPasajero, String annioNacimientoSgdoPasajero) throws InterruptedException {
         click(locatorNombreContacto);
         write(nombreContacto, locatorNombreContacto);
         sendKeys(TAB, locatorNombreContacto);
@@ -40,15 +42,35 @@ public class FormularioVuelosPage extends SeleniumWrapper {
         scrolling(locatorPasajero);
         List<WebElement> checks = findElements(checkBox);
         if (deseaSerLlamadoSr) {
-            checks.get(0).click();
-        } else {
             checks.get(1).click();
+        } else {
+            checks.get(2).click();
         }
         scrolling(locatorDiaNacimientoPasajero);
         click(locatorDiaNacimientoPasajero);
         write(dia, locatorDiaNacimientoPasajero);
         seleccionarComboBoxPorTextoVisible(locatorMesNacimientoPasajero, "enero");
         write(annio, locatorAnioNacimientoContacto);
+        if (sgdoPasajeroDeseaSerLlamadoSr) {
+            checks.get(3).click();
+        } else {
+            checks.get(4).click();
+        }
+        click(locatorNombreSegundoPasajero);
+        write(nombreSgdoPasajero, locatorNombreSegundoPasajero);
+        click(locatorApellidoSegundoPasajero);
+        write(apellidoSgdoPasajero, locatorApellidoSegundoPasajero);
+        Thread.sleep(5000);
+        click(locatorDiaNacSegundoPasajero);
+        write(diaNacimientoSgdoPasajero, locatorDiaNacSegundoPasajero);
+        List<WebElement> mesNacimientoPasajero = findElements(locatorMesNacimientoPasajero);
+        WebElement pasajero2 = mesNacimientoPasajero.get(1);
+        pasajero2.click();
+        pasajero2.sendKeys(DOWN);
+        pasajero2.sendKeys(DOWN);
+        pasajero2.sendKeys(ENTER);
+        click(locatorAnnioNacSegundoPasajero);
+        write(annioNacimientoSgdoPasajero, locatorAnnioNacSegundoPasajero);
         scrolling(locatorEquipaje);
         click(btnSiguiente);
     }
@@ -94,6 +116,37 @@ public class FormularioVuelosPage extends SeleniumWrapper {
     public String mensajeErrorAnnioEncontrado() {
         return getText(locatorMsjeErrorAnnio);
     }
+
+
+
+    public void llenarFormulario(String nombreContacto, String apellidoContacto, String emailContacto, String telefonoContacto, boolean deseaSerLlamadoSr, String dia, String annio) {
+        click(locatorNombreContacto);
+        write(nombreContacto, locatorNombreContacto);
+        sendKeys(TAB, locatorNombreContacto);
+        write(apellidoContacto, locatorApellidoContacto);
+        sendKeys(TAB, locatorApellidoContacto);
+        write(emailContacto, locatorEmailContacto);
+        click(locatorTelefonoContacto);
+        write(telefonoContacto, locatorTelefonoContacto);
+        scrolling(locatorPasajero);
+        List<WebElement> checks = findElements(checkBox);
+        if (deseaSerLlamadoSr) {
+            checks.get(1).click(); //Verificar
+        } else {
+            checks.get(2).click();
+        }
+        scrolling(locatorDiaNacimientoPasajero);
+        click(locatorDiaNacimientoPasajero);
+        write(dia, locatorDiaNacimientoPasajero);
+        seleccionarComboBoxPorTextoVisible(locatorMesNacimientoPasajero, "enero");
+        write(annio, locatorAnioNacimientoContacto);
+        scrolling(locatorEquipaje);
+        click(btnSiguiente);
+    }
+
+
+
+
 
 }
 

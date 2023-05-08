@@ -16,6 +16,12 @@ public class TC006_POM extends SeleniumTestBase {
         rumboHomePage = new RumboHomePage(DriverFactory.getDriver());
         multidestinoPage = new MultidestinoPage(DriverFactory.getDriver());
         rumboHomePage.opcionMultidestino();
-        multidestinoPage.borrarPreIngresados(true);
+        multidestinoPage.borrarPreIngresados(true, "Santiago de chile","Santiago de chile","Santiago de chile","Santiago de chile");
+        multidestinoPage.mensajeErrorMultidestino();
+        if (multidestinoPage.mensajeErrorMultidestino().equals("Prueba seleccionar fechas distintas o destinos cercanos.")) {
+            System.out.println("Test completado con éxito: La ejecución del test finaliza con el mensaje de error esperado al ingresar mismos orígenes y destinos. \nMensaje: 'Prueba seleccionar fechas distintas o destinos cercanos' ha sido encontrado y desplegado en pantalla.\n ");
+        } else {
+            System.out.println("Test sin éxito: No ha sido posible encontrar el mensaje de error esperado. \n");
+        }
     }
 }

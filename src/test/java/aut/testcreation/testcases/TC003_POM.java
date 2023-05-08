@@ -6,7 +6,6 @@ import aut.testcreation.pages.vuelos.RumboHomePage;
 import aut.testcreation.pages.vuelos.TarifaVueloPage;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class TC003_POM extends SeleniumTestBase {
@@ -17,15 +16,14 @@ public class TC003_POM extends SeleniumTestBase {
 
     @Test
     void registroVueloNoOk() throws InterruptedException {
-
         rumboHomePage = new RumboHomePage(DriverFactory.getDriver());
         ofertasVuelosPage = new OfertasVuelosPage(DriverFactory.getDriver());
         tarifaVueloPage = new TarifaVueloPage(DriverFactory.getDriver());
         formularioVuelosPage = new FormularioVuelosPage(DriverFactory.getDriver());
-        rumboHomePage.formularioHomeIdaYVuelta(true, "Santiago (SCL)", "Buenos Aires (BUE)");
+        rumboHomePage.formularioHomeIdaYVuelta("Santiago (SCL)", "Cancún (CUN)", false);
         ofertasVuelosPage.elegirPrimerOfertaQueAparezca();
         tarifaVueloPage.elegirTarifa(true);
-        formularioVuelosPage.llenarFormulario("Francisca", "Benavides", "Holamundo2222@gmail.com", "9255874", false,  "08", "2022");
+        formularioVuelosPage.llenarFormulario("Francisca", "Benavides", "Holamundo2222@gmail.com", "9255874", false, "08", "2022");
         if (formularioVuelosPage.mensajeErrorAnnioEncontrado().equals("El adulto debe tener más de 12 años")) {
             System.out.println("Al escribir año de nacimiento 2022, el sistema muestra mensaje de error esperado.");
         } else {

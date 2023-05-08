@@ -1,5 +1,6 @@
 package aut.testcreation.pages.vuelos;
 
+import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,20 +20,30 @@ public class OfertasVuelosPage extends SeleniumWrapper {
     By locatorSoloIda = By.xpath("//div[@class='css-1s1pmhl']");
     By btnLimpiar = By.xpath("//button[@class='css-1nmp0nm ed5mks90']");
     By locatorOrigen = By.xpath("//input[@aria-label='Origen']");
-    By locatorDestino  = By.xpath("//input[@aria-label='Destino']");
+    By locatorDestino = By.xpath("//input[@aria-label='Destino']");
     By btnBuscarOtraVez = By.xpath("//button[@aria-label='Buscar']");
     By locatorElegirLatam = By.xpath("//input[@id='id-LATAM Airlines Group']");
+    By locatorElegirUnited = By.xpath("//input[@id='id-United Airlines']");
+
     By btnVerMas = By.xpath("//button[@class='Link__StyledLink-sc-y3byev-0 kXjsgw Link__BaseLinkButton-sc-y3byev-1 jzRcNR'][contains(text(),'Ver más')]");
 
     public void elegirPrimerOfertaQueAparezca() throws InterruptedException {
+        Thread.sleep(3000);
+        switchToTabByTitleContains("Rumbo");
+        scrolling(btnVerMas);
+        Thread.sleep(1000);
+        click(btnVerMas);
         Thread.sleep(2000);
+        click(locatorElegirUnited);
+        Thread.sleep(4000);
         findElement(locatorElegirVuelo);
         Thread.sleep(2500);
         click(locatorElegirVuelo);
     }
 
     public void contarNumOfertas() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(3000);
+        switchToTabByTitleContains("Rumbo");
         List<WebElement> ofertas = findElements(locatorOfertas);
         int num_ofertas = ofertas.size();
         if (num_ofertas == 15) {
@@ -42,30 +53,29 @@ public class OfertasVuelosPage extends SeleniumWrapper {
         }
     }
 
-    public void modificarVuelo(boolean cambiarOrigenYdestino, String origenVuelo, String destinoVuelo) throws InterruptedException {
+    public void modificarVuelo(String origenVuelo, String destinoVuelo) throws InterruptedException {
         Thread.sleep(4000);
+        switchToTabByTitleContains("Rumbo");
         click(locatorModificarVuelo);
         click(locatorSoloIda);
         List<WebElement> limpiar = findElements(btnLimpiar);
-        if (cambiarOrigenYdestino){
-            limpiar.get(0).click();
-            limpiar.get(1).click();
-            click(locatorOrigen);
-            write(origenVuelo, locatorOrigen);
-            Thread.sleep(700);
-            sendKeys(DOWN, locatorOrigen);
-            Thread.sleep(700);
-            sendKeys(ENTER, locatorOrigen);
-            Thread.sleep(700);
-            click(locatorDestino);
-            write(destinoVuelo, locatorDestino);
-            Thread.sleep(700);
-            sendKeys(DOWN, locatorDestino);
-            Thread.sleep(700);
-            sendKeys(ENTER, locatorDestino);
-            Thread.sleep(700);
-            click(btnBuscarOtraVez);
-        }
+        limpiar.get(0).click();
+        limpiar.get(1).click();
+        click(locatorOrigen);
+        write(origenVuelo, locatorOrigen);
+        Thread.sleep(1000);
+        sendKeys(DOWN, locatorOrigen);
+        Thread.sleep(1000);
+        sendKeys(ENTER, locatorOrigen);
+        Thread.sleep(1000);
+        click(locatorDestino);
+        write(destinoVuelo, locatorDestino);
+        Thread.sleep(1000);
+        sendKeys(DOWN, locatorDestino);
+        Thread.sleep(1000);
+        sendKeys(ENTER, locatorDestino);
+        Thread.sleep(1000);
+        click(btnBuscarOtraVez);
         Thread.sleep(3000);
         scrolling(btnVerMas);
         click(btnVerMas);

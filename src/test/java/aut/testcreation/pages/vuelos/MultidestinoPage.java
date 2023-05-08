@@ -1,28 +1,29 @@
 package aut.testcreation.pages.vuelos;
 
-import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import java.util.ArrayList;
+
+import java.util.Arrays;
 import java.util.List;
 
-public class MultidestinoPage extends SeleniumWrapper {
-    public MultidestinoPage(WebDriver driver) {super(driver);}
+import static org.openqa.selenium.Keys.ENTER;
 
-    By btnCancelar = By.xpath("//div[@class='ButtonPrimitiveContentChildren__StyledButtonPrimitiveContentChildren-sc-mra4yy-0 dLfJcB'][contains(text(),'Cancelar')]");
-    By locatorInputs = By.xpath("//input[@data-test='SearchField-input']");
+public class MultidestinoPage extends SeleniumWrapper {
+    public MultidestinoPage(WebDriver driver) {
+        super(driver);
+    }
+
+    By locatorInputs = By.xpath("//input[@class='SearchFieldstyled__SearchFieldInput-sc-1f3jsso-5 jYLahH']");
     By btnBorrarTodos = By.xpath("//div[@class='ButtonPrimitiveContentChildren__StyledButtonPrimitiveContentChildren-sc-mra4yy-0 NRXsW'][contains(text(),'Borrar todos')]");
     By locatoraceptarCookies = By.xpath("//button[@id='cookies_accept']");
     By btnBuscarMulti = By.xpath("//div[@class='ButtonPrimitiveContentChildren__StyledButtonPrimitiveContentChildren-sc-mra4yy-0 dLfJcB'] [contains(text(), 'Buscar')]");
+    By locatorTextoError = By.xpath("//p[@class='Text__StyledText-sc-1dj99rd-0 kocnUz']");
 
-    public void borrarPreIngresados(boolean limpiarCampos) throws InterruptedException {
-        String popupHandle = DriverFactory.getDriver().getWindowHandles().toArray()[1].toString();
-        DriverFactory.getDriver().switchTo().window(popupHandle);
-        DriverFactory.getDriver().findElement(btnCancelar).click();
-        DriverFactory.getDriver().switchTo().defaultContent();
-        click(locatoraceptarCookies);
+    public void borrarPreIngresados(boolean limpiarCampos, String origenPrimero, String destinoPrimero, String origenSegundo, String destinoSegundo) throws InterruptedException {
+        Thread.sleep(3000);
+        switchToTabByTitleContains("Viajes de");
         try {
             if (limpiarCampos) {
                 click(btnBorrarTodos);
@@ -30,24 +31,39 @@ public class MultidestinoPage extends SeleniumWrapper {
         } catch (Exception e) {
             System.out.println("Error: Campos no se han limpiado con éxito");
         }
+
+        List<WebElement> inputs = findElements(locatorInputs);
+        WebElement primerInput = inputs.get(0);
+        primerInput.click();
+        primerInput.sendKeys(origenPrimero);
+        Thread.sleep(1000);
+        primerInput.sendKeys(ENTER);
+        Thread.sleep(1000);
+        WebElement segundoInput = inputs.get(1);
+        segundoInput.click();
+        segundoInput.sendKeys(destinoPrimero);
+        Thread.sleep(1000);
+        segundoInput.sendKeys(ENTER);
+        Thread.sleep(1000);
+        WebElement tercerInput = inputs.get(3);
+        tercerInput.sendKeys(origenSegundo);
+        Thread.sleep(1000);
+        tercerInput.sendKeys(ENTER);
+        Thread.sleep(1000);
+        WebElement cuartoInput = inputs.get(4);
+        cuartoInput.click();
+        cuartoInput.sendKeys(destinoSegundo);
+        Thread.sleep(1000);
+        cuartoInput.sendKeys(ENTER);
         Thread.sleep(1000);
         click(btnBuscarMulti);
-        List<WebElement> inputElements = DriverFactory.getDriver().findElements(locatorInputs);
-        List<WebElement> inputsVacios = new ArrayList<>();
-        for (WebElement inputElement : inputElements) {
-            String value = inputElement.getAttribute("value");
-            if (value == null || value.trim().isEmpty()) {
-                inputsVacios.add(inputElement);
-            }
-        }
-        if (inputsVacios.size() == inputElements.size()) {
-            System.out.println("Todos los campos de entrada han sido borrados de forma exitosa. \nBotón 'Borrar todos' funciona según lo esperado.");
-        } else {
-            int totalInputs = inputElements.size();
-            int contarVacios = inputsVacios.size();
-            System.out.println("El test no paso: Se encontraron " + contarVacios + " campos de entrada vacíos de un total de " + totalInputs + " campos de entrada en la página. \nBotón 'Borrar todos' no realizó su función segón lo esperado.");
-        }
+        click(locatoraceptarCookies);
     }
+
+    public String mensajeErrorMultidestino() {
+        return getText(locatorTextoError);
+    }
+
 }
 
 
