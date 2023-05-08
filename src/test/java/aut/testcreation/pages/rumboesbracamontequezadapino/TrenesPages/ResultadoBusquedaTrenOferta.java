@@ -10,6 +10,10 @@ public class ResultadoBusquedaTrenOferta extends SeleniumWrapper {
     }
 
     //Localizadores
-
-
+    By locatorSeleccionHotel = By.xpath("//div[@class='Container__StyledContainer-sc-sb5e2u-0 NYTal CardInfoPanel__TripInformationWrapper-sc-15o9r3a-1 ecqObO']");
+    //div[contains(text(), 'Ilunion Pio XII')]
+        public void seleccionaHotel(){
+            scrolling(findElement(locatorSeleccionHotel));
+            click(findElement(locatorSeleccionHotel));
+        }
 }

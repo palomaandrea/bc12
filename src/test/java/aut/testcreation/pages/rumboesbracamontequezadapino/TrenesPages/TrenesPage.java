@@ -29,7 +29,11 @@ public class TrenesPage extends SeleniumWrapper {
 
     // Para junio, julio //button[contains(text(), '15')][@class='d-1kuzy14']
 
-    By locatorMarcarDiaVuelta25M = By.xpath("//button[contains(text(), '25')]");
+    By locatorMarcarDiaVuelta25 = By.xpath("//button[contains(text(), '25')]");
+
+    By locatorMarcarDiaVuelta22 = By.xpath("//button[contains(text(), '22')]");
+    By locatorMarcarDiaVuelta13 = By.xpath("//button[contains(text(), '13')]");
+    By locatorMarcarDiaIda10 = By.xpath("//button[contains(text(), '8')]");
     By locatorFechaVuelta = By.xpath("//label[contains(text(), 'Fecha de vuelta')]");
     By locatorPasajero = By.xpath("//div[@class='d-1rd1g4p']");
     By locatorAgregarNinio = By.xpath("//button[@class='d-1ch1522']");
@@ -40,11 +44,12 @@ public class TrenesPage extends SeleniumWrapper {
     By locatorOfertaSevillaMadrid = By.xpath("//img[@alt='Madrid - Sevilla']");
 
     //https://res.cloudinary.com/lastminute-contenthub/c…ons/Europe/Spain/Barcelona/shutterstock_165497819
-    By locatorOfertaBarcelonaMadrid = By.xpath("//img[@alt='Tren + Hotel a Madrid']");
+    By locatorOfertaTrenHotelBarcelonaMadrid = By.xpath("//img[@alt='Tren + Hotel a Madrid']");
 
     By locatorObtenerMensajeSinDispo = By.xpath("//span[contains(text(), 'No hemos encontrado ninguna')]");
     By locatorSinDisponibilidad = By.xpath("//div[contains(text(), 'No hemos encontrado ningún')]");
 
+    By locatorOfertaMadridBarcelona = By.xpath("//img[@alt='Madrid - Barcelona']");
     public void soloIda(){
         click(findElement(locatorSoloIda));
     }
@@ -85,12 +90,21 @@ public class TrenesPage extends SeleniumWrapper {
         click(dia15.get(0));
 
     }
-    public void fechasIdaYVuelta() throws InterruptedException{
+    public void fechasIdaYVuelta15al25() throws InterruptedException{
+        click(findElement(locatorFechaIda));
         Thread.sleep(3000);
         List < WebElement> dia15 = findElements(locatorMarcarDiaIda15);
         click(dia15.get(0));
-        List < WebElement> dia25 = findElements(locatorMarcarDiaVuelta25M);
+        List < WebElement> dia25 = findElements(locatorMarcarDiaVuelta25);
         click(dia25.get(0));
+    }
+
+    public void fechasIdaYVuelta15al22() throws InterruptedException{
+        Thread.sleep(3000);
+        List < WebElement> dia15 = findElements(locatorMarcarDiaIda15);
+        click(dia15.get(0));
+        List < WebElement> dia22 = findElements(locatorMarcarDiaVuelta22);
+        click(dia22.get(0));
     }
 
     public void marcarPasajeroYAgregarNinnio(){
@@ -106,8 +120,8 @@ public class TrenesPage extends SeleniumWrapper {
     public void ofertaMadridSevilla(){
         click(findElement(locatorOfertaSevillaMadrid));
     }
-    public void ofertaABarcelona(){
-        click(findElement(locatorOfertaBarcelonaMadrid));
+    public void ofertaTrenHotelMadridBarcelona(){
+        click(findElement(locatorOfertaTrenHotelBarcelonaMadrid));
     }
 
     public void sendKeys(Keys key){
@@ -124,5 +138,15 @@ public class TrenesPage extends SeleniumWrapper {
 
     public String sinDisponibilidad(){
         return getText(locatorSinDisponibilidad);
+    }
+    public void ofertaMadridBarcelona(){
+        click(findElement(locatorOfertaMadridBarcelona));
+    }
+    public void fechasIdaYVuelta08al13() throws InterruptedException{
+        Thread.sleep(3000);
+        List < WebElement> dia10 = findElements(locatorMarcarDiaIda10);
+        click(dia10.get(0));
+        List < WebElement> dia13 = findElements(locatorMarcarDiaVuelta13);
+        click(dia13.get(0));
     }
 }

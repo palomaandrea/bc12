@@ -43,7 +43,7 @@ public class VuelosTest extends SeleniumTestBase {
         homePage.cerrarCookis();
         homePage.irAVuelos();
         vuelosPage.vuelaAEuropa();
-        vuelosPage.moverseALaSegundaPestana();
+        vuelosPage.moverseAOtraPestana(1);
         vuelosEuropaPage.vuelaALisboa();
         vuelosEuropaPage.moverseALaTerceraPestana();
         Assertions.assertEquals(vuelosNoResult.mensajeSinVuelos(),"No hemos encontrado ninguna oferta que se ajuste a los criterios de búsqueda, probablemente por falta de disponibilidad en fechas o destino. Por favor, vuelve a intentarlo seleccionando una fecha diferente.");
