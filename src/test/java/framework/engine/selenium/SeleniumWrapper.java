@@ -7,6 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class SeleniumWrapper {
 
@@ -118,20 +119,27 @@ public class SeleniumWrapper {
         js.executeScript("arguments[0].scrollIntoView(true);", elemento);
     }
 
-    public void moverseALaSegundaPestana() {
+    public void moverseAOtraPestana(int nro) {
         // Obtiene la lista de identificadores de las pestañas abiertas
         List<String> tabHandles = new ArrayList<>(driver.getWindowHandles());
 
         // Cambia al segundo tab (pestaña)
-        driver.switchTo().window(tabHandles.get(1));
+        driver.switchTo().window(tabHandles.get(nro));
 
-        // Abre la segunda página en la nueva pestaña
-        //driver.get("URL de la segunda página");
     }
     public void moverseALaTerceraPestana() {
         List<String> tabHandles = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabHandles.get(2));
 
+    }
+    public void moverseALaCuartaPestana() {
+        List<String> tabHandles = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabHandles.get(3));
+
+    }
+
+    public void esperarAQueLaPaginaCargue(){
+        driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
     }
 }
 
