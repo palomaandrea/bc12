@@ -1,4 +1,4 @@
-package aut.testcreation.pages;
+package aut.testcreation.pages.trenes;
 
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;

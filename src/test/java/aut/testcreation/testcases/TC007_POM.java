@@ -1,22 +1,12 @@
 package aut.testcreation.testcases;
 
-import aut.testcreation.pages.RumboHomePage;
+import aut.testcreation.pages.trenes.RumboHomePage;
 import aut.testcreation.pages.trenes.Flights;
 import aut.testcreation.pages.trenes.Trenes;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
-import framework.engine.selenium.SeleniumWrapper;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.concurrent.TimeUnit;
 
 public class TC007_POM extends SeleniumTestBase {
 
