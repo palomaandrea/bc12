@@ -55,6 +55,7 @@ public class TrenesPage extends SeleniumBase{
         Thread.sleep(3000);
         clickear(btnAgregarPasajeros);
     }
+
     public void ClickSoloIda(){
         clickear(btnSoloIda);
     }

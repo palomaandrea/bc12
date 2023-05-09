@@ -60,9 +60,9 @@ public class TestsTrenes extends TestBase {
         trenesPage.ClickDia();
         trenesPage.ClickVuelta();
         trenesPage.ClickPasajeros();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         trenesPage.AgregarPasajeros();
-        Thread.sleep(1000);
+        trenesPage.AgregarPasajeros();
         trenesPage.AgregarPasajeros();
         trenesPage.ClickBuscar();
         Assertions.assertEquals(trenesPage.obtenerTextoBusqueda(), ManejoEncodingUFT8.fixEncoding("mar. 9 may."));
