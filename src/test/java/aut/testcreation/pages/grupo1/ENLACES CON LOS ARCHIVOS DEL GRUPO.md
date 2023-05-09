@@ -1,0 +1,1 @@
+https://trello.com/b/DtfbmGx9/rumbo-testplanificaci%C3%B3n
