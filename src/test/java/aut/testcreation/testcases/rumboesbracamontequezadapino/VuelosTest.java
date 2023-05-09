@@ -99,7 +99,7 @@ public class VuelosTest extends SeleniumTestBase {
         homePage.cerrarCookis();
         homePage.irAFlashSales();
         flashSalesPage.ofertaVuelo();
-        flashSalesPage.moverseALaSegundaPestana();
+        //flashSalesPage.moverseALaSegundaPestana();
         vuelosHotelPage.ingresarorigen("Madrid (MAD) - Adolfo Suárez Barajas, España");
         vuelosHotelPage.seleccionarFechaIdaYVuelta();
         vuelosHotelPage.numeroDeAdultos();
