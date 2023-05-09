@@ -5,7 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class DriverFactory {
@@ -41,6 +40,8 @@ public class DriverFactory {
                 hiloLocal.set(new ChromeDriver());
                 getDriver().manage().deleteAllCookies();
                 getDriver().manage().window().maximize();
+
+
                 getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
                 return getDriver();
             default:
