@@ -22,12 +22,25 @@ public class TC001_POM extends SeleniumTestBase {
         formularioVuelosPage = new FormularioVuelosPage(DriverFactory.getDriver());
         serviciosAdicionalesPage = new ServiciosAdicionalesPage(DriverFactory.getDriver());
         verificacionPagoPage = new VerificacionPagoPage(DriverFactory.getDriver());
-        rumboHomePage.formularioHomeIdaYVuelta( "Buenos Aires (BUE)", "Santiago (SCL)", false);
-        ofertasVuelosPage.modificarVuelo( "Mendoza (MDZ)", "Cartagena");
+        rumboHomePage.irARumboYCookies(true);
+        rumboHomePage.seleccionarVueloIdaVuelta();
+        rumboHomePage.limpiarCampos(true, false);
+        rumboHomePage.agregarOrigen("Buenos Aires (BUE)");
+        rumboHomePage.agregarDestino("Santiago (SCL)");
+        rumboHomePage.fechas();
+        rumboHomePage.numPasajeros(false);
+        rumboHomePage.realizarBusqueda();
+        ofertasVuelosPage.cambiarPestaniaARumbo();
+        ofertasVuelosPage.modificarVuelo( true, true, "Mendoza (MDZ)", "Cartagena");
+        ofertasVuelosPage.filtrarLATAM();
+        ofertasVuelosPage.seleccionarOferta();
         tarifaVueloPage.elegirTarifa(true);
-        formularioVuelosPage.formularioLatam("Ana", "Rodriguez", "Holamundo2222@gmail.com", "9874563", false, true, true, false,"08", "1993");
+        formularioVuelosPage.datosPrincipalesContacto("Ana", "Rodriguez", "Holamundo2222@gmail.com", "9874563");
+        formularioVuelosPage.preguntarSaludoAContacto(false);
+        formularioVuelosPage.fechaNacimientoContacto("15", "1992");
+        formularioVuelosPage.checksFormularioLatam(true, true, false);
+        formularioVuelosPage.bajarYPresionarEnSgte();
         serviciosAdicionalesPage.presionarSiguiente();
-        verificacionPagoPage.verificacionYPago();
         if (verificacionPagoPage.verificacionYPago().equals("Verificación y pago")) {
             System.out.println("Test completado con éxito: La ejecución del test finaliza en la pestaña 'Verificación y pago'. \nNombre de pestaña 'Verificación y pago' ha sido encontrado y desplegado en pantalla.\n ");
         } else {

@@ -24,63 +24,86 @@ public class OfertasVuelosPage extends SeleniumWrapper {
     By locatorElegirUnited = By.xpath("//input[@id='id-United Airlines']");
     By btnVerMas = By.xpath("//button[@class='Link__StyledLink-sc-y3byev-0 kXjsgw Link__BaseLinkButton-sc-y3byev-1 jzRcNR'][contains(text(),'Ver más')]");
 
-    public void elegirPrimerOfertaQueAparezca() throws InterruptedException {
-        Thread.sleep(3000);
-        switchToTabByTitleContains("Rumbo");
-        scrolling(btnVerMas);
-        Thread.sleep(1000);
-        click(btnVerMas);
-        Thread.sleep(2000);
-        click(locatorElegirUnited);
+
+    public void cambiarPestaniaARumbo() throws InterruptedException {
         Thread.sleep(4000);
+        switchToTabByTitleContains("Rumbo");
+    }
+
+    public void seleccionarOferta() throws InterruptedException {
         findElement(locatorElegirVuelo);
         Thread.sleep(2500);
         click(locatorElegirVuelo);
     }
 
-    public void contarNumOfertas() throws InterruptedException {
-        Thread.sleep(3000);
-        switchToTabByTitleContains("Rumbo");
+    public void contarNumOfertas() {
         List<WebElement> ofertas = findElements(locatorOfertas);
         int num_ofertas = ofertas.size();
         if (num_ofertas == 15) {
-            System.out.println("Han sido desplegadas y detectadas las 15 ofertas esperadas");
+            System.out.println("Test completado con éxito: Han sido desplegadas y detectadas las 15 ofertas esperadas.");
         } else {
-            System.out.println("No se han desplegado las 15 ofertas como se esperaba");
+            System.out.println("Test sin éxito: No se han desplegado las 15 ofertas como se esperaba.");
         }
     }
 
-    public void modificarVuelo(String origenVuelo, String destinoVuelo) throws InterruptedException {
-        Thread.sleep(4000);
-        switchToTabByTitleContains("Rumbo");
+    public void modificarVuelo(boolean deseaCambiarOrigen, boolean deseaCambiarDestino, String nuevoOrigenVuelo, String nuevoDestinoVuelo) throws InterruptedException {
         click(locatorModificarVuelo);
         click(locatorSoloIda);
         List<WebElement> limpiar = findElements(btnLimpiar);
-        limpiar.get(0).click();
-        limpiar.get(1).click();
-        click(locatorOrigen);
-        write(origenVuelo, locatorOrigen);
-        Thread.sleep(1500);
-        sendKeys(DOWN, locatorOrigen);
-        Thread.sleep(1500);
-        sendKeys(ENTER, locatorOrigen);
-        Thread.sleep(1500);
-        click(locatorDestino);
-        write(destinoVuelo, locatorDestino);
-        Thread.sleep(1500);
-        sendKeys(DOWN, locatorDestino);
-        Thread.sleep(1500);
-        sendKeys(ENTER, locatorDestino);
-        Thread.sleep(1500);
+        if(deseaCambiarOrigen){
+            limpiar.get(0).click();
+            click(locatorOrigen);
+            write(nuevoOrigenVuelo, locatorOrigen);
+            Thread.sleep(1500);
+            sendKeys(DOWN, locatorOrigen);
+            Thread.sleep(1500);
+            sendKeys(ENTER, locatorOrigen);
+            Thread.sleep(1500);
+        }
+        if(deseaCambiarDestino){
+            limpiar.get(1).click();
+            click(locatorDestino);
+            write(nuevoDestinoVuelo, locatorDestino);
+            Thread.sleep(1500);
+            sendKeys(DOWN, locatorDestino);
+            Thread.sleep(1500);
+            sendKeys(ENTER, locatorDestino);
+            Thread.sleep(1500);
+        }
         click(btnBuscarOtraVez);
         Thread.sleep(3000);
-        scrolling(btnVerMas);
-        click(btnVerMas);
-        Thread.sleep(3500);
-        click(locatorElegirLatam);
-        Thread.sleep(3500);
-        findElement(locatorElegirVuelo);
-        Thread.sleep(2500);
-        click(locatorElegirVuelo);
+    }
+
+    public void filtrarLATAM() throws InterruptedException {
+        if(isDisplayed(btnVerMas)){
+            scrolling(btnVerMas);
+            click(btnVerMas);
+            Thread.sleep(3500);
+            click(locatorElegirLatam);
+            Thread.sleep(3500);
+        }else {
+            scrolling(locatorElegirLatam);
+            Thread.sleep(1500);
+            click(locatorElegirLatam);
+            Thread.sleep(3500);
+        }
+
+    }
+
+    public void filtrarUnitedAirlines() throws InterruptedException {
+
+        if(isDisplayed(btnVerMas)){
+            scrolling(btnVerMas);
+            Thread.sleep(1000);
+            click(btnVerMas);
+            Thread.sleep(2000);
+            click(locatorElegirUnited);
+            Thread.sleep(4000);
+        }else {
+            scrolling(locatorElegirUnited);
+            Thread.sleep(1500);
+            click(locatorElegirUnited);
+            Thread.sleep(4000);
+        }
     }
 }

@@ -14,7 +14,15 @@ public class TC004_POM extends SeleniumTestBase {
     void buscarVueloIda() throws InterruptedException {
         rumboHomePage = new RumboHomePage(DriverFactory.getDriver());
         ofertasVuelosPage = new OfertasVuelosPage(DriverFactory.getDriver());
-        rumboHomePage.formularioSoloIda( "Santiago (SCL)", "Buenos Aires (BUE)");
+        rumboHomePage.irARumboYCookies(true);
+        rumboHomePage.seleccionarVueloSoloIda();
+        rumboHomePage.limpiarCampos(true, false);
+        rumboHomePage.agregarOrigen("Santiago (SCL)");
+        rumboHomePage.agregarDestino("Buenos Aires (BUE)");
+        rumboHomePage.fechaSoloIda();
+        rumboHomePage.numPasajeros(false);
+        rumboHomePage.realizarBusqueda();
+        ofertasVuelosPage.cambiarPestaniaARumbo();
         ofertasVuelosPage.contarNumOfertas();
     }
 }

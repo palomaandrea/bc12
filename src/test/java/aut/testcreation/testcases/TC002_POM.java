@@ -19,11 +19,25 @@ public class TC002_POM extends SeleniumTestBase {
         tarifaVueloPage = new TarifaVueloPage(DriverFactory.getDriver());
         formularioVuelosPage = new FormularioVuelosPage(DriverFactory.getDriver());
         serviciosAdicionalesPage = new ServiciosAdicionalesPage(DriverFactory.getDriver());
-        rumboHomePage.formularioHomeIdaYVuelta( "Santiago (SCL)", "Portland (PDX)", true);
-        ofertasVuelosPage.elegirPrimerOfertaQueAparezca();
+        rumboHomePage.irARumboYCookies(true);
+        rumboHomePage.seleccionarVueloIdaVuelta();
+        rumboHomePage.limpiarCampos(true, false);
+        rumboHomePage.agregarOrigen("Santiago (SCL)");
+        rumboHomePage.agregarDestino("Portland (PDX)");
+        rumboHomePage.fechas();
+        rumboHomePage.numPasajeros(true);
+        rumboHomePage.realizarBusqueda();
+        ofertasVuelosPage.cambiarPestaniaARumbo();
+        ofertasVuelosPage.filtrarUnitedAirlines();
+        ofertasVuelosPage.seleccionarOferta();
         tarifaVueloPage.elegirTarifa(true);
-        formularioVuelosPage.formularioDosPasajeros("Ana", "Rodriguez", "Holamundo2222@gmail.com", "9874563", false, true, "15", "1992", "Gabriel", "Martinez", "15", "1991");
-        serviciosAdicionalesPage.mensajeServiciosAdicEncontrado();
+        formularioVuelosPage.datosPrincipalesContacto("Ana", "Rodriguez", "Holamundo2222@gmail.com", "9874563");
+        formularioVuelosPage.preguntarSaludoAContacto(false);
+        formularioVuelosPage.fechaNacimientoContacto("15", "1992");
+        formularioVuelosPage.preguntarSaludoASgdoPasajero(true);
+        formularioVuelosPage.datosSegundoPasajero("Gabriel", "Martinez", "15", "1991");
+        formularioVuelosPage.checksFinales(true, false);
+        formularioVuelosPage.bajarYPresionarEnSgte();
         if (serviciosAdicionalesPage.mensajeServiciosAdicEncontrado().equals("Servicios adicionales")) {
             System.out.println("Test completado con éxito: La ejecución del test finaliza en la pestaña 'Servicios adicionales'. \nMensaje: 'Servicios adicionales' ha sido encontrado y desplegado en pantalla.\n ");
         } else {
