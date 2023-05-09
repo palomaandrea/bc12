@@ -1,4 +1,4 @@
-package aut.testcreation.pages;
+package aut.testcreation.steps.pages;
 
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
@@ -12,10 +12,13 @@ public class GoogleHomePage extends SeleniumWrapper {
         super(driver);
     }
 
+
     //locators
     By barraBusquedaLocator = By.name("q");
     By btnBuscarConGoogleLocator = By.name("btnK");
     By btnVoyATenerSuerteLocator = By.name("btnI");
+
+    By palabraTsoft= By.xpath("//h3[contains(text(),'HOME - TSOFT - Make IT Real')]");
 
     //methods
     public void buscarConBotonBuscar(String busqueda){
@@ -23,9 +26,17 @@ public class GoogleHomePage extends SeleniumWrapper {
         click(btnBuscarConGoogleLocator);
     }
 
+    public void irAGoogle(){
+        navigateTo("google.com.ar");
+    }
+
     public void buscarConBotonVoyATenerSuerte(String busqueda){
         write(busqueda,barraBusquedaLocator);
         click(btnVoyATenerSuerteLocator);
+    }
+
+    public void seleccionarPalabraTsoft (){
+        isDisplayed(palabraTsoft);
     }
 
     public void navegarAlHome(){

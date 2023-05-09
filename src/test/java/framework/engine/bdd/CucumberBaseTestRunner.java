@@ -29,13 +29,14 @@ public class CucumberBaseTestRunner {
     public static WebDriver driver;
     private static DriverFactory driverFactory;
 
-    public static void setUp(){
+    public static WebDriver setUp(){
         driverFactory = new DriverFactory();
         driver = driverFactory.createWebDriver();
         if (driver != null) {
             driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
             driver.manage().window().maximize();
         }
+        return driver;
     }
 
     public static void tearDown(Scenario scenario) {

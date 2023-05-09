@@ -10,6 +10,8 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,6 +34,7 @@ public class GoogleTestRunner {
     public static void setUp(){
         driverFactory = new DriverFactory();
         driver = driverFactory.createWebDriver();
+        driver.manage().window().maximize();
         if (driver != null) {
             driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
             driver.manage().window().maximize();
