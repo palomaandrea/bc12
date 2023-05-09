@@ -19,7 +19,7 @@ public class TestsTrenes extends TestBase {
         homePage.navegarAPagina("https://www.rumbo.es/");
         homePage.aceptarCookies();
         homePage.clickTrenes();
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         trenesPage.EscribirOrigen();
         trenesPage.EscribirDestino();
         trenesPage.ClickDia();
@@ -37,7 +37,7 @@ public class TestsTrenes extends TestBase {
         homePage.navegarAPagina("https://www.rumbo.es/");
         homePage.aceptarCookies();
         homePage.clickTrenes();
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         trenesPage.ClickSoloIda();
         trenesPage.EscribirOrigen();
         trenesPage.EscribirDestino();
@@ -55,7 +55,7 @@ public class TestsTrenes extends TestBase {
         homePage.navegarAPagina("https://www.rumbo.es/");
         homePage.aceptarCookies();
         homePage.clickTrenes();
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         trenesPage.EscribirOrigen();
         trenesPage.EscribirDestino();
         trenesPage.ClickDia();
@@ -93,6 +93,25 @@ public class TestsTrenes extends TestBase {
         trenesPage.AgregarPasajeros();
         Thread.sleep(1000);
         trenesPage.AgregarNinio10Anios();
+        trenesPage.ClickBuscar();
+        Assertions.assertEquals(trenesPage.obtenerTextoBusqueda(), ManejoEncodingUFT8.fixEncoding("mar. 9 may."));
+    }
+    @Test  //5
+    public void CP001_TC005_OK() throws InterruptedException {
+        homePage = new HomePage(super.driver);
+        trenesPage = new TrenesPage(super.driver);
+        homePage.navegarAPagina("https://www.rumbo.es/");
+        homePage.aceptarCookies();
+        homePage.clickTrenes();
+        Thread.sleep(1000);
+        trenesPage.ClickSoloIda();
+        trenesPage.EscribirOrigen();
+        trenesPage.EscribirDestino();
+        trenesPage.ClickDia();
+        trenesPage.ClickPasajeros();
+        trenesPage.AgregarPasajero();
+        Thread.sleep(1000);
+        trenesPage.AgregarBebe12A23Meses();
         trenesPage.ClickBuscar();
         Assertions.assertEquals(trenesPage.obtenerTextoBusqueda(), ManejoEncodingUFT8.fixEncoding("mar. 9 may."));
     }
