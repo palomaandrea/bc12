@@ -40,7 +40,7 @@ public class HotelesTest extends SeleniumTestBase {
         hotelesPage.Buscar();
     }
 
-    //Test complejidad media
+    //Test complejidad media //
     @Test
     public void CP003_HotelFDSA_() throws InterruptedException{
         driver = DriverFactory.getDriver();
