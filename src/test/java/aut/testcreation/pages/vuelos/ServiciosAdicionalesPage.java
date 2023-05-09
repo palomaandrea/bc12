@@ -14,6 +14,7 @@ public class ServiciosAdicionalesPage extends SeleniumWrapper {
     public void presionarSiguiente() throws InterruptedException {
         Thread.sleep(2000);
         scrolling(avanzarSgte);
+        Thread.sleep(2000);
         click(avanzarSgte);
         Thread.sleep(2000);
         if (isDisplayed(noElegirAsiento)){

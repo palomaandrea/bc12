@@ -40,8 +40,6 @@ public class DriverFactory {
                 hiloLocal.set(new ChromeDriver());
                 getDriver().manage().deleteAllCookies();
                 getDriver().manage().window().maximize();
-
-
                 getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
                 return getDriver();
             default:

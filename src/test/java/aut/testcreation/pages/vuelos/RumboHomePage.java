@@ -6,8 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import java.util.List;
 import static framework.engine.utils.Constants.BASE_URL_AUT;
-import static org.openqa.selenium.Keys.DOWN;
-import static org.openqa.selenium.Keys.ENTER;
+import static org.openqa.selenium.Keys.*;
 
 public class RumboHomePage extends SeleniumWrapper {
     public RumboHomePage(WebDriver driver) {
@@ -41,16 +40,16 @@ public class RumboHomePage extends SeleniumWrapper {
         }
     }
 
-    public void seleccionarVueloIdaVuelta() {
-        click(btnVueloIdaVuelta);
-    }
-
-    public void seleccionarVueloSoloIda() {
-        click(btnVueloSoloIda);
-    }
-
-    public void seleccionarVueloMultidestino() {
-        click(btnVueloMultidestino);
+    public void seleccioneTipoDeVuelo(boolean idaYVuelta, boolean soloIda, boolean multidestino) {
+        if (idaYVuelta) {
+            click(btnVueloIdaVuelta);
+        } else if (soloIda) {
+            click(btnVueloSoloIda);
+        } else if (multidestino) {
+            click(btnVueloMultidestino);
+        } else{
+            System.out.println("Por favor, seleccione un tipo de vuelo");
+        }
     }
 
     public void limpiarCampos(boolean deseaBorrarOrigen, boolean deseaBorrarDestino) {
@@ -66,9 +65,9 @@ public class RumboHomePage extends SeleniumWrapper {
     public void agregarOrigen(String origenVuelo) throws InterruptedException {
         click(locatorOrigenVuelo);
         write(origenVuelo, locatorOrigenVuelo);
-        Thread.sleep(3000);
-        sendKeys(DOWN, locatorOrigenVuelo);
-        Thread.sleep(3000);
+        Thread.sleep(1500);
+        sendKeys(DOWN, locatorDestinoVuelo);
+        Thread.sleep(1500);
         sendKeys(ENTER, locatorOrigenVuelo);
         click(locatorOrigenVuelo);
     }
@@ -76,15 +75,15 @@ public class RumboHomePage extends SeleniumWrapper {
     public void agregarDestino(String destinoVuelo) throws InterruptedException {
         click(locatorDestinoVuelo);
         write(destinoVuelo, locatorDestinoVuelo);
-        Thread.sleep(2000);
+        Thread.sleep(1500);
         sendKeys(DOWN, locatorDestinoVuelo);
-        Thread.sleep(2000);
+        Thread.sleep(1500);
         sendKeys(ENTER, locatorDestinoVuelo);
-        Thread.sleep(2000);
+        Thread.sleep(1500);
         click(locatorDestinoVuelo);
     }
 
-    public void fechas() throws InterruptedException {
+    public void fechas() throws InterruptedException { //Se mejorara este metodo en el siguiente sprint
         click(locatorCalendario);
         click(locatorFechaIda);
         click(locatorFechaVuelta);
@@ -97,7 +96,7 @@ public class RumboHomePage extends SeleniumWrapper {
             Thread.sleep(100);
             click(locatorNumeroPasajeros);
             click(btnAumentarPasajeros);
-            Thread.sleep(2000);
+            Thread.sleep(1000);
             click(locatorNumeroPasajeros);
         } else {
             click(locatorNumeroPasajeros);

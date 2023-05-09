@@ -20,7 +20,7 @@ public class TC002_POM extends SeleniumTestBase {
         formularioVuelosPage = new FormularioVuelosPage(DriverFactory.getDriver());
         serviciosAdicionalesPage = new ServiciosAdicionalesPage(DriverFactory.getDriver());
         rumboHomePage.irARumboYCookies(true);
-        rumboHomePage.seleccionarVueloIdaVuelta();
+        rumboHomePage.seleccioneTipoDeVuelo(true, false,false);
         rumboHomePage.limpiarCampos(true, false);
         rumboHomePage.agregarOrigen("Santiago (SCL)");
         rumboHomePage.agregarDestino("Portland (PDX)");

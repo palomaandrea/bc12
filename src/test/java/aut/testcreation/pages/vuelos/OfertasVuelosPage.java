@@ -34,6 +34,7 @@ public class OfertasVuelosPage extends SeleniumWrapper {
         findElement(locatorElegirVuelo);
         Thread.sleep(2500);
         click(locatorElegirVuelo);
+        Thread.sleep(2000);
     }
 
     public void contarNumOfertas() {
@@ -78,14 +79,14 @@ public class OfertasVuelosPage extends SeleniumWrapper {
         if(isDisplayed(btnVerMas)){
             scrolling(btnVerMas);
             click(btnVerMas);
-            Thread.sleep(3500);
+            Thread.sleep(2000);
             click(locatorElegirLatam);
-            Thread.sleep(3500);
+            Thread.sleep(2100);
         }else {
             scrolling(locatorElegirLatam);
             Thread.sleep(1500);
             click(locatorElegirLatam);
-            Thread.sleep(3500);
+            Thread.sleep(1500);
         }
 
     }

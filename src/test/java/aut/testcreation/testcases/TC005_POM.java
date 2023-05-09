@@ -12,7 +12,7 @@ public class TC005_POM extends SeleniumTestBase {
     void buscarVueloIdaNoOk() throws InterruptedException {
         rumboHomePage = new RumboHomePage(DriverFactory.getDriver());
         rumboHomePage.irARumboYCookies(true);
-        rumboHomePage.seleccionarVueloSoloIda();
+        rumboHomePage.seleccioneTipoDeVuelo(false, true,false);
         rumboHomePage.limpiarCampos(true, false);
         rumboHomePage.agregarDestino("Osaka (OSA)");
         rumboHomePage.fechaSoloIda();

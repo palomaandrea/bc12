@@ -23,9 +23,9 @@ public class TC001_POM extends SeleniumTestBase {
         serviciosAdicionalesPage = new ServiciosAdicionalesPage(DriverFactory.getDriver());
         verificacionPagoPage = new VerificacionPagoPage(DriverFactory.getDriver());
         rumboHomePage.irARumboYCookies(true);
-        rumboHomePage.seleccionarVueloIdaVuelta();
+        rumboHomePage.seleccioneTipoDeVuelo(true, false,false);
         rumboHomePage.limpiarCampos(true, false);
-        rumboHomePage.agregarOrigen("Buenos Aires (BUE)");
+        rumboHomePage.agregarOrigen("Buenos Aires (AEP) - Jorge Newbery, Argentina");
         rumboHomePage.agregarDestino("Santiago (SCL)");
         rumboHomePage.fechas();
         rumboHomePage.numPasajeros(false);
