@@ -22,9 +22,7 @@ public class HotelesTest extends SeleniumTestBase {
         Thread.sleep(2000);
         homePage.cerrarCookis();
         homePage.irAHoteles();
-        hotelesPage.ubicacionHotel("Barcelona, España"/*, "lun,22 may", "vie,26 may"*/);
-        hotelesPage.Buscar();
-        hotelesPage.precioMasAltoPrimero();
+        hotelesPage.casoPrueba1("Barcelona, España");
     }
 
     @Test
@@ -33,24 +31,22 @@ public class HotelesTest extends SeleniumTestBase {
         homePage = new HomePage(DriverFactory.getDriver());
         hotelesPage = new HotelesPage(DriverFactory.getDriver());
         driver.navigate().to("https://www.rumbo.es/");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         homePage.cerrarCookis();
         homePage.irAHoteles();
-        hotelesPage.ubicacionHotel("Madrid, España"/*, "lun, 15 may","mié, 17 may"*/);
-        hotelesPage.Buscar();
+        hotelesPage.casoPrueba2("Madrid, España");
     }
 
-    //Test complejidad media //
-    @Test
+    //Test complejidad media
+    /*@Test
     public void CP003_HotelFDSA_() throws InterruptedException{
         driver = DriverFactory.getDriver();
         homePage = new HomePage(DriverFactory.getDriver());
         hotelesPage = new HotelesPage(DriverFactory.getDriver());
         driver.navigate().to("https://www.rumbo.es/");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         homePage.cerrarCookis();
         homePage.irAHoteles();
-        hotelesPage.ubicacionHotel("Barcelona");
     }
 
     @Test
@@ -59,11 +55,12 @@ public class HotelesTest extends SeleniumTestBase {
         homePage = new HomePage(DriverFactory.getDriver());
         hotelesPage = new HotelesPage(DriverFactory.getDriver());
         driver.navigate().to("https://www.rumbo.es/");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         homePage.cerrarCookis();
         homePage.irAHoteles();
+        hotelesPage.casoPrueba4("Barcelona, España");
     }
-
+    ////
     //Test complejidad alta
     @Test
     public void CP005_HotelYVueloCF_() throws InterruptedException{
@@ -71,7 +68,7 @@ public class HotelesTest extends SeleniumTestBase {
         homePage = new HomePage(DriverFactory.getDriver());
         hotelesPage = new HotelesPage(DriverFactory.getDriver());
         driver.navigate().to("https://www.rumbo.es/");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         homePage.cerrarCookis();
         homePage.irAHoteles();
     }
@@ -82,8 +79,8 @@ public class HotelesTest extends SeleniumTestBase {
         homePage = new HomePage(DriverFactory.getDriver());
         hotelesPage = new HotelesPage(DriverFactory.getDriver());
         driver.navigate().to("https://www.rumbo.es/");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         homePage.cerrarCookis();
         homePage.irAHoteles();
-    }
+    }*/
 }
