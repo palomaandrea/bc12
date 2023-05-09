@@ -50,9 +50,11 @@ public class TrenesPage extends SeleniumBase{
     public String obtenerTextoBusqueda(){
         return obtenerTexto(txtBusqueda);
     }
-    public void AgregarPasajeros() throws InterruptedException {
+    public void AgregarPasajero() throws InterruptedException {
         clickear(btnPasajeros);
         Thread.sleep(3000);
+    }
+    public void AgregarPasajeros() throws InterruptedException{
         clickear(btnAgregarPasajeros);
     }
 
