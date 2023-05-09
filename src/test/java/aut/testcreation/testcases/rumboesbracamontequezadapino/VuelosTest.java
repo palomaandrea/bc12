@@ -1,4 +1,5 @@
 package aut.testcreation.testcases.rumboesbracamontequezadapino;
+
 import aut.testcreation.pages.rumboesbracamontequezadapino.CheckoutPage;
 import aut.testcreation.pages.rumboesbracamontequezadapino.FlashSalesPage;
 import aut.testcreation.pages.rumboesbracamontequezadapino.HomePage;
@@ -29,11 +30,11 @@ public class VuelosTest extends SeleniumTestBase {
     @Tag("baja")
     public void CP001_BusquedaVuelo_IdaYVuelta_MasBarato_OK() throws InterruptedException {
         homePage = new HomePage(DriverFactory.getDriver());
-        vuelosPage= new VuelosPage(DriverFactory.getDriver());
+        vuelosPage = new VuelosPage(DriverFactory.getDriver());
         homePage.navigateTo("https://www.rumbo.es/");
         homePage.cerrarCookis();
         homePage.irAVuelos();
-        vuelosPage.viajeiIdaYVuelta("Madrid (MAD) - Adolfo Suárez Barajas, España","Tokio (TYO) - Todos los aeropuertos, Japón");
+        vuelosPage.viajeiIdaYVuelta("Madrid (MAD) - Adolfo Suárez Barajas, España", "Tokio (TYO) - Todos los aeropuertos, Japón");
         vuelosPage.buscarVuelo();
     }
 
@@ -51,7 +52,7 @@ public class VuelosTest extends SeleniumTestBase {
         vuelosPage.moverseAOtraPestana(1);
         vuelosEuropaPage.vuelaALisboa();
         vuelosEuropaPage.moverseAOtraPestana(2);
-        Assertions.assertEquals(vuelosNoResult.mensajeSinVuelos(),"La fecha de la búsqueda ha cambiado");
+        Assertions.assertEquals(vuelosNoResult.mensajeSinVuelos(), "La fecha de la búsqueda ha cambiado");
     }
 
     @Test
@@ -66,7 +67,7 @@ public class VuelosTest extends SeleniumTestBase {
         homePage.cerrarCookis();
         homePage.irAVuelos();
         vuelosPage.seleccionarMetodoPagoMastercard();
-        vuelosPage.viajeiIdaYVuelta("Madrid (MAD) - Adolfo Suárez Barajas, España","París (PAR) - Todos los aeropuertos, Francia");
+        vuelosPage.viajeiIdaYVuelta("Madrid (MAD) - Adolfo Suárez Barajas, España", "París (PAR) - Todos los aeropuertos, Francia");
         vuelosPage.buscarVuelo();
         Thread.sleep(10000);
         vuelosBusquedaPage.filtrarPorMasRapido();
@@ -76,11 +77,12 @@ public class VuelosTest extends SeleniumTestBase {
         vuelosBusquedaPage.seleccionarVuelo();
         vuelosCheckoutCartPage.elegirClassic();
         checkoutPage.verDetallesViaje();
-        Assertions.assertEquals(checkoutPage.mensajeDetalleVuelo(),"Detalles del viaje");
+        Assertions.assertEquals(checkoutPage.mensajeDetalleVuelo(), "Detalles del viaje");
 
     }
+
     @Test
-    public void CP004_BV_IdaYVuelta_Ofertas_ClaseTurista_MasEconomico() throws InterruptedException{
+    public void CP004_BV_IdaYVuelta_Ofertas_ClaseTurista_MasEconomico() throws InterruptedException {
         driver = DriverFactory.getDriver();
         homePage = new HomePage(driver);
         vuelosPage = new VuelosPage(driver);
@@ -96,7 +98,7 @@ public class VuelosTest extends SeleniumTestBase {
     }
 
     @Test
-    public void  CP005_BV_Multidestinos() throws InterruptedException{
+    public void CP005_BV_Multidestinos() throws InterruptedException {
         driver = DriverFactory.getDriver();
         homePage = new HomePage(driver);
         vuelosPage = new VuelosPage(driver);
@@ -106,12 +108,17 @@ public class VuelosTest extends SeleniumTestBase {
         homePage.irAVuelos();
         vuelosPage.IrAMultidestino();
         vuelosPage.moverseAOtraPestana(1);
-        vuelosMultidestinoPage.viajeMultidestino(true,"Santiago de Chile","Nueva York","Miami","Santiago de Chile");
+        vuelosMultidestinoPage.escogerDestinos(true, "Santiago de Chile", "Nueva York", "Miami", "Santiago de Chile");
+        vuelosMultidestinoPage.viajeMultiDestino();
+        if (vuelosMultidestinoPage.noHayVuelos()) {
+            Assertions.assertEquals(vuelosMultidestinoPage.noHayVuelosTxt(), "No hay resultados para esta búsqueda");
+        }
+
     }
 
 
     @Test
-    public void CP006_BV_UR_OfertasHotel() throws InterruptedException{
+    public void CP006_BV_UR_OfertasHotel() throws InterruptedException {
         driver = DriverFactory.getDriver();
         homePage = new HomePage(driver);
         flashSalesPage = new FlashSalesPage(driver);

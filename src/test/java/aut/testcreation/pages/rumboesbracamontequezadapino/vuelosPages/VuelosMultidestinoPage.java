@@ -21,8 +21,16 @@ public class VuelosMultidestinoPage extends SeleniumWrapper {
     By locatorInputs = By.xpath("//input[@class='SearchFieldstyled__SearchFieldInput-sc-1f3jsso-5 jYLahH']");
     By locatorBtnBuscar = By.xpath("//div[@class='ButtonPrimitiveContentChildren__StyledButtonPrimitiveContentChildren-sc-mra4yy-0 dLfJcB'] [contains(text(), 'Buscar')]");
     By locatorAceptarCookies = By.xpath("//button[@id='cookies_accept']");
+    By locatorPasajeros = By.xpath("//body/div[@id='react-view']/div[2]/div[3]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/button[1]/div[1]/div[1]");
+    By locatorBtnMas = By.xpath("//button[@aria-label='increment']");
+    By locatorBtnConfirmar = By.xpath("//div[contains(text(),'Confirmar')]");
+    By locatorFiltros = By.xpath("//body/div[@id='react-view']/div[2]/div[4]/div[1]/div[1]/div[2]/div[1]/div[1]/button[1]/div[1]");
+    By locatorCBEscalas = By.xpath("//div[@class='Select__SelectContainer-sc-2ijy2y-2 wvqZV']");
+    By locatorUnaEscala = By.xpath("//option[@value='1']");
+    By locatorPrimerVuelo = By.xpath("div[@class='ResultCardstyled__ResultCardSection-sc-vsw8q3-4 ResultCardstyled__ResultCardActions-sc-vsw8q3-5 jKgZti esbuLP']");
+    By locatorNoHayVuelos = By.xpath("ResultCardstyled__ResultCardSection-sc-vsw8q3-4 ResultCardstyled__ResultCardActions-sc-vsw8q3-5 jKgZti esbuLP");
 
-    public void viajeMultidestino(boolean limpiar, String origen0, String destino0, String destino1, String destino2) throws InterruptedException {
+    public void escogerDestinos(boolean limpiar, String origen0, String destino0, String destino1, String destino2) throws InterruptedException {
         Thread.sleep(3000);
         moverseAOtraPestana("Viajes de");
         try {
@@ -57,11 +65,11 @@ public class VuelosMultidestinoPage extends SeleniumWrapper {
         input4.sendKeys(destino1);
         Thread.sleep(3000);
         input4.sendKeys(ENTER);
-        if(!isSelected(locatorInputs)){
+        if (!isSelected(locatorInputs)) {
             input4.click();
             Thread.sleep(3000);
             input4.sendKeys(ENTER);
-            }
+        }
         WebElement input6 = inputs.get(6);
         input6.click();
         Thread.sleep(3000);
@@ -74,6 +82,37 @@ public class VuelosMultidestinoPage extends SeleniumWrapper {
         click(locatorBtnBuscar);
         click(locatorAceptarCookies);
     }
+
+    public void viajeMultiDestino() throws InterruptedException {
+        click(waitElement(locatorPasajeros));
+        Thread.sleep(3000);
+        List<WebElement> pasajeros = findElements(locatorBtnMas);
+        click(pasajeros.get(2));
+        Thread.sleep(3000);
+        click(pasajeros.get(5));
+        click(pasajeros.get(5));
+        click(pasajeros.get(6));
+        click(pasajeros.get(6));
+        click(waitElement(locatorBtnConfirmar));
+        click(waitElement(locatorFiltros));
+        List<WebElement> escalas = findElements(locatorCBEscalas);
+        click(escalas.get(0));
+        click(waitElement(locatorUnaEscala));
+        Thread.sleep(3000);
+        if(isEnabled(locatorPrimerVuelo)){
+        List<WebElement> vuelos = findElements(locatorPrimerVuelo);
+        click(vuelos.get(0));
+        }else{
+            noHayVuelos();
+        }
+    }
+    public Boolean noHayVuelos(){
+        return isDisplayed(locatorNoHayVuelos);
+    }
+    public String noHayVuelosTxt(){
+        return getText(locatorNoHayVuelos);
+    }
 }
+
 
 
