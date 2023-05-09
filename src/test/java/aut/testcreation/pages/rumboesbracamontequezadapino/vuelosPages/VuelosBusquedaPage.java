@@ -19,17 +19,18 @@ public class VuelosBusquedaPage extends SeleniumWrapper {
     By locatorFilterEscalaIda = By.xpath("//input[@aria-label ='1 escala']");
     By locatorFilterEscalaVuelta = By.xpath("//div[@class='CheckboxListstyled__CheckboxListWrapper-cncr__sc-epivn3-0 ldnIlp'][1]");
     By locatorSelectVuelo = By.xpath("//div[@class='FullTripCard__SelectedPriceContainer-sc-z8znd4-4 cbaIot']");
+    By locatorSinVuelos = By.xpath("//div[@class='alerts']");
 
     public void filtrarPorElMejor() {
         click(locatorFilterElmejor);
     }
 
     public void filtrarPorMasBarato() {
-        click(locatorFilterMasBarato);
+        click(waitElement(locatorFilterMasBarato));
     }
 
     public void filtrarPorMasRapido() {
-        click(locatorFilterMasRapido);
+        click(waitElement(locatorFilterMasRapido));
     }
 
     public void filtrarPorUnaEscala() throws InterruptedException {
@@ -44,5 +45,13 @@ public class VuelosBusquedaPage extends SeleniumWrapper {
         scroll(findElement(locatorSelectVuelo));
         List<WebElement> vuelos = findElements(locatorSelectVuelo);
         click(vuelos.get(0));
+    }
+
+    public Boolean noHayVuelos(){
+        return isDisplayed(locatorSinVuelos);
+    }
+
+    public String noHayVuelosTxt(){
+        return getText(locatorSinVuelos);
     }
 }

@@ -55,6 +55,7 @@ public class CheckoutPage extends SeleniumWrapper {
         Thread.sleep(2000);
         click(locatorTxtDetallesViaje);
     }
+
     public String mensajeDetalleVuelo(){
         return getText(locatorTxtDetallesMensaje);
     }
