@@ -156,6 +156,12 @@ public class SeleniumWrapper {
         click(diaVuelta.get(0));
 
     }
+    public void seleccionaUnDiaDia(int dia)throws InterruptedException{
+        By locatorDia = By.xpath("//button[contains(text(), "+dia+")]");
+        Thread.sleep(3000);
+        List<WebElement> day = findElements(locatorDia);
+        click(day.get(0));
+    }
 
 }
 

@@ -31,7 +31,9 @@ public class CheckoutPage extends SeleniumWrapper {
     By locatorMesNAcP1= By.xpath("//select[@aria-label='Selecciona el mes']");
     By locatorAnnioNAcP1= By.xpath("//input[@data-test='input-groups.1.travellers.1.dateOfBirth-year']");
     By locatorTipoDocP1= By.xpath("//input[@aria-label='groups.1.travellers.1.documentType']");
-    By locatorSelectTipoDocP1= By.xpath("//select[@aria-label='groups.1.travellers.1.documentType']");
+    By locatorSelectTipoDocP1= By.xpath("//body/div[@id='root']/div[1]/div[2]/div[1]/div[1]/div[2]/div[5]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[5]/div[2]/div[1]/div[1]/div[1]/select[1]");
+    //select[@aria-label='groups.1.travellers.1.documentType']
+    //body/div[@id='root']/div[1]/div[2]/div[1]/div[1]/div[2]/div[5]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[5]/div[2]/div[1]/div[1]/div[1]/select[1]
     By locatorNroDocP1= By.xpath("//input[@data-test='input-groups.1.travellers.1.documentNumber']");
 
     By locatorNombreP2= By.xpath("//input[@data-test='input-groups.1.travellers.2.name']");
@@ -40,13 +42,16 @@ public class CheckoutPage extends SeleniumWrapper {
     By locatorMesNAcP2= By.xpath("//select[@aria-label='Selecciona el mes']");
     By locatorAnnioNAcP2= By.xpath("//input[@data-test='input-groups.1.travellers.2.dateOfBirth-year']");
     By locatorTipoDocP2= By.xpath("//input[@aria-label='groups.1.travellers.2.documentType']");
-    By locatorSelectTipoDocP2= By.xpath("//select[@aria-label='groups.1.travellers.2.documentType']");
+    //body/div[@id='root']/div[1]/div[2]/div[1]/div[1]/div[2]/div[5]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[5]/div[2]/div[1]/div[1]/div[1]/select[1]
+    By locatorSelectTipoDocP2= By.xpath("//body/div[@id='root']/div[1]/div[2]/div[1]/div[1]/div[2]/div[5]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[5]/div[2]/div[1]/div[1]/div[1]/select[1]");
+    //select[@aria-label='groups.1.travellers.2.documentType']
     By locatorNroDocP2= By.xpath("//input[@data-test='input-groups.1.travellers.2.documentNumber']");
     By locatorAlquilerAuto= By.xpath("");
     By locatorSinSeguro= By.xpath("");
     By locatorRecibirOfertas=  By.xpath("");
     By locatorBtnSiguiente= By.xpath("//button[contains(text(),'Siguiente')]");
     By locatorError = By.xpath("//div[@class='CheckoutError___StyledDiv4-sc-vrmdfh-4 jIcyeg']");
+    By locatorErrorDelFuturo= By.xpath("//div[@class='sc-httYMd hMkEaN css-4cffwv']");
 
 
     public void verDetallesViaje() throws InterruptedException {
@@ -99,9 +104,10 @@ public class CheckoutPage extends SeleniumWrapper {
     }
 
     public void datosDocumentoP1(String numeroDoc, String value) throws InterruptedException{
-        click(findElement(locatorTipoDocP1));
-        Thread.sleep(2000);
+        //click(findElement(locatorTipoDocP1));
+        Thread.sleep(5000);
         write(value, locatorTipoDocP1);
+        sendKeys (DOWN, locatorTipoDocP1);
         sendKeys (DOWN, locatorTipoDocP1);
         //Select selectorTipoDoc = new Select(findElement(locatorSelectTipoDocP1));
         //selectorTipoDoc.selectByValue(value);
@@ -123,12 +129,14 @@ public class CheckoutPage extends SeleniumWrapper {
         Select selectorMes = new Select(findElements(locatorMesNAcP1).get(1));
         selectorMes.selectByValue(mes);
     }
-    public void datosDocumentoP2(String numeroDoc, String value){
+    public void datosDocumentoP2(String numeroDoc, String value) throws InterruptedException{
         scrolling(findElement(locatorTipoDocP2));
-        click(findElement(locatorTipoDocP2));
+        //click(findElement(locatorTipoDocP2));
+        Thread.sleep(5000);
         sendKeys (DOWN, locatorTipoDocP2);
-        Select selectorTipoDoc = new Select(findElement(locatorSelectTipoDocP2));
-        selectorTipoDoc.selectByValue(value);
+        sendKeys (DOWN, locatorTipoDocP2);
+        //Select selectorTipoDoc = new Select(findElement(locatorSelectTipoDocP2));
+        //selectorTipoDoc.selectByValue(value);
         click(findElement(locatorNroDocP2));
         write(numeroDoc, locatorNroDocP2);
     }
@@ -149,6 +157,10 @@ public class CheckoutPage extends SeleniumWrapper {
         scrolling(findElement(locatorError));
         Thread.sleep(3000);
         return getText(locatorError);
+    }
+
+    public String obtenerErrorDelFuturo(){
+        return getText(locatorErrorDelFuturo);
     }
 
 
