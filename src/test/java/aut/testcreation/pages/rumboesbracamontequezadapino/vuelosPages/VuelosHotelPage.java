@@ -74,7 +74,9 @@ public class VuelosHotelPage extends SeleniumWrapper {
         click(opcion.get(0));
         Thread.sleep(10000);
         scroll(findElement(locatorDetalles));
+        Thread.sleep(10000);
         click(waitElement(locatorDetalles));
+        Thread.sleep(10000);
         click(waitElement(locatorCerrar));
         scroll(findElement(locatorDetallesPrecio));
         click(waitElement(locatorDetallesPrecio));

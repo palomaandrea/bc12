@@ -28,7 +28,7 @@ public class VuelosTest extends SeleniumTestBase {
 
     @Test
     @Tag("baja")
-    public void CP001_BusquedaVuelo_IdaYVuelta_MasBarato_OK() throws InterruptedException {
+    public void CP001_BusquedaVuelo_IdaYVuelta_MasBarato() throws InterruptedException {
         driver = DriverFactory.getDriver();
         homePage = new HomePage(driver);
         vuelosPage = new VuelosPage(driver);
@@ -40,7 +40,7 @@ public class VuelosTest extends SeleniumTestBase {
 
     @Test
     @Tag("baja")
-    public void CP002_BusquedaVuelo_DestinosUrbanos_NOOK() throws InterruptedException {
+    public void CP002_BV_DestinosUrbanos() throws InterruptedException {
         driver = DriverFactory.getDriver();
         homePage = new HomePage(driver);
         vuelosPage = new VuelosPage(driver);
@@ -69,7 +69,7 @@ public class VuelosTest extends SeleniumTestBase {
         vuelosPage.seleccionarMetodoPagoMastercard();
         vuelosPage.viajeiIdaYVuelta("Madrid (MAD) - Adolfo Suárez Barajas, España", "París (PAR) - Todos los aeropuertos, Francia");
         vuelosPage.buscarVuelo();
-        Thread.sleep(10000);
+        Thread.sleep(11000);
         vuelosBusquedaPage.filtrarPorMasRapido();
         Thread.sleep(9000);
         vuelosBusquedaPage.filtrarPorUnaEscala();
@@ -82,7 +82,7 @@ public class VuelosTest extends SeleniumTestBase {
     }
 
     @Test
-    public void CP004_BV_IdaYVuelta_Ofertas_ClaseTurista_MasEconomico() throws InterruptedException {
+    public void CP004_BV_IdaYVuelta_Ofertas() throws InterruptedException {
         driver = DriverFactory.getDriver();
         homePage = new HomePage(driver);
         vuelosPage = new VuelosPage(driver);
@@ -93,7 +93,21 @@ public class VuelosTest extends SeleniumTestBase {
         homePage.navigateTo("https://www.rumbo.es/");
         homePage.irAVuelos();
         vuelosPage.ofertaLondres();
-        //vuelosALondresPage.viajeALondres("Madrid (MAD) Adolfo Suárez Barajas, España");
+        vuelosPage.moverseAOtraPestana(1);
+        vuelosALondresPage.viajeALondres("Madrid (MAD) Adolfo Suárez Barajas, España");
+        Thread.sleep(11000);
+        vuelosBusquedaPage.filtrarPorMasBarato();
+        Thread.sleep(9000);
+        vuelosBusquedaPage.filtrarPorUnaEscala();
+        Thread.sleep(9000);
+        vuelosBusquedaPage.seleccionarVuelo();
+        if (vuelosBusquedaPage.noHayVuelos()) {
+            Assertions.assertEquals(vuelosBusquedaPage.noHayVuelosTxt(), "Lo sentimos, el viaje seleccionado ya no está disponible, pero tenemos muchas otras opciones. ¡Échales un vistazo!");
+        }else{
+            vuelosCheckoutCartPage.elegirClassic();
+            checkoutPage.verDetallesViaje();
+            checkoutPage.mensajeDetalleVuelo();
+        }
     }
 
     @Test
