@@ -22,6 +22,9 @@ public class TrenesPage extends SeleniumBase{
     By btnBuscar=By.xpath("//*[@id='hub-csw-container']/div/div/form/div[2]/div[4]/div/button");
     By txtBusqueda=By.xpath("//*[@id=\"scrollableHeader\"]/div/div/div/div[1]/div/div/div/div/div[2]/div/div[1]");
     By btnSoloIda=By.xpath("//*[@id='hub-csw-container']/div/div/form/div[1]/div/div/div[2]");
+    By btnAniadirNinio=By.xpath("//*[@id=\"hub-csw-container\"]/div/div/form/div[2]/div[3]/div[1]/div/div[2]/div/section/div/div[2]/button");
+    By btnNinio10Anios=By.xpath("//*[@id=\"hub-csw-container\"]/div/div/form/div[2]/div[3]/div[1]/div/div[2]/div/section/div/div[2]/div/div/ul/li[11]");
+
     public void EscribirOrigen() throws InterruptedException {
         //List<WebElement> origenes = buscarElementosWeb(btnOrigen);
         clickear(btnOrigen);
@@ -56,6 +59,12 @@ public class TrenesPage extends SeleniumBase{
     }
     public void AgregarPasajeros() throws InterruptedException{
         clickear(btnAgregarPasajeros);
+    }
+    public void AgregarNinio10Anios() throws InterruptedException {
+        clickear(btnAniadirNinio);
+        Thread.sleep(1000);
+        clickear(btnNinio10Anios);
+
     }
 
     public void ClickSoloIda(){

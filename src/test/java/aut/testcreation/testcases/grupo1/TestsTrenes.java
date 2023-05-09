@@ -49,7 +49,7 @@ public class TestsTrenes extends TestBase {
     }
 
     @Test  //3
-    public void CP001_TC003_OK() throws InterruptedException {
+    public void CP001_TC003_BORDE() throws InterruptedException {
         homePage = new HomePage(super.driver);
         trenesPage = new TrenesPage(super.driver);
         homePage.navegarAPagina("https://www.rumbo.es/");
@@ -69,6 +69,30 @@ public class TestsTrenes extends TestBase {
         trenesPage.AgregarPasajeros();
         Thread.sleep(1000);
         trenesPage.AgregarPasajeros();
+        trenesPage.ClickBuscar();
+        Assertions.assertEquals(trenesPage.obtenerTextoBusqueda(), ManejoEncodingUFT8.fixEncoding("mar. 9 may."));
+    }
+    @Test  //4
+    public void CP001_TC004_BORDE() throws InterruptedException {
+        homePage = new HomePage(super.driver);
+        trenesPage = new TrenesPage(super.driver);
+        homePage.navegarAPagina("https://www.rumbo.es/");
+        homePage.aceptarCookies();
+        homePage.clickTrenes();
+        Thread.sleep(3000);
+        trenesPage.EscribirOrigen();
+        trenesPage.EscribirDestino();
+        trenesPage.ClickDia();
+        trenesPage.ClickVuelta();
+        trenesPage.ClickPasajeros();
+        trenesPage.AgregarPasajero();
+        trenesPage.AgregarPasajeros();
+        Thread.sleep(1000);
+        trenesPage.AgregarPasajeros();
+        Thread.sleep(1000);
+        trenesPage.AgregarPasajeros();
+        Thread.sleep(1000);
+        trenesPage.AgregarNinio10Anios();
         trenesPage.ClickBuscar();
         Assertions.assertEquals(trenesPage.obtenerTextoBusqueda(), ManejoEncodingUFT8.fixEncoding("mar. 9 may."));
     }
