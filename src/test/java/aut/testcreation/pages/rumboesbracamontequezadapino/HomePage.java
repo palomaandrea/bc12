@@ -31,6 +31,7 @@ public class HomePage extends SeleniumWrapper {
     }
 
     public void irAVuelos() {
+        click(findElement(locatorRechazarCookis));
         click(locatorVuelos);
     }
 
@@ -38,7 +39,7 @@ public class HomePage extends SeleniumWrapper {
         click(locatorHoteles);
     }
 
-    public void irAFlashSales(){
+    public void irAFlashSales() {
         scroll(findElement(locatorFlashsales));
         click(locatorFlashsales);
     }

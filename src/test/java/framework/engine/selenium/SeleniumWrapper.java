@@ -153,18 +153,8 @@ public class SeleniumWrapper {
         click(diaIda.get(0));
         List < WebElement> diaVuelta = findElements(locatorDiaVuelta);
         click(diaVuelta.get(0));
-    }
 
-    /* void switchToMapa() throws InterruptedException {
-        By locatorIFMapa = By.xpath("//iframe[@id='ssIFrame_google']");
-        By locatorBtnSalir = By.xpath("//svg[@aria-label='close']");
-        WebElement iframeElement = driver.findElement(locatorIFMapa);
-        Thread.sleep(3000);
-        driver.switchTo().frame(iframeElement);
-        System.out.println(driver.getCurrentUrl());
-        click(locatorBtnSalir);
-        click(locatorBtnSalir);
-        driver.switchTo().defaultContent();*/
+    }
 
 }
 

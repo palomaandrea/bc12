@@ -14,12 +14,13 @@ public class FlashSalesPage extends SeleniumWrapper {
     }
     By locatorTxtOfertasDeLaSemana = By.xpath("//span[contains(text(),'Ofertas de la semana')]");
     By locatorSelectOferta = By.xpath("//div[@class='slick-list']");
+    By locatorSelectOferta1 = By.xpath("//div[contains(text(),'Villa Nautica at Paradise Island')]");
 
-    public void ofertaVuelo() throws InterruptedException{
+    public void ofertaVuelo(){
         scroll(findElement(locatorTxtOfertasDeLaSemana));
+        click(waitElement(locatorSelectOferta1));
+        /*List<WebElement> ofertasSemana = findElements(locatorSelectOferta);
         Thread.sleep(5000);
-        List<WebElement> ofertasSemana = findElements(locatorSelectOferta);
-        Thread.sleep(5000);
-        click(ofertasSemana.get(1));
+        click(ofertasSemana.get(2));*/
     }
 }

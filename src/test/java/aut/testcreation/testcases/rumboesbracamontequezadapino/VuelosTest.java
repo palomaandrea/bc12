@@ -29,10 +29,10 @@ public class VuelosTest extends SeleniumTestBase {
     @Test
     @Tag("baja")
     public void CP001_BusquedaVuelo_IdaYVuelta_MasBarato_OK() throws InterruptedException {
-        homePage = new HomePage(DriverFactory.getDriver());
-        vuelosPage = new VuelosPage(DriverFactory.getDriver());
+        driver = DriverFactory.getDriver();
+        homePage = new HomePage(driver);
+        vuelosPage = new VuelosPage(driver);
         homePage.navigateTo("https://www.rumbo.es/");
-        homePage.cerrarCookis();
         homePage.irAVuelos();
         vuelosPage.viajeiIdaYVuelta("Madrid (MAD) - Adolfo Suárez Barajas, España", "Tokio (TYO) - Todos los aeropuertos, Japón");
         vuelosPage.buscarVuelo();
@@ -41,12 +41,12 @@ public class VuelosTest extends SeleniumTestBase {
     @Test
     @Tag("baja")
     public void CP002_BusquedaVuelo_DestinosUrbanos_NOOK() throws InterruptedException {
-        homePage = new HomePage(DriverFactory.getDriver());
-        vuelosPage = new VuelosPage(DriverFactory.getDriver());
-        vuelosEuropaPage = new VuelosEuropaPage(DriverFactory.getDriver());
-        vuelosNoResult = new VuelosNoResult(DriverFactory.getDriver());
+        driver = DriverFactory.getDriver();
+        homePage = new HomePage(driver);
+        vuelosPage = new VuelosPage(driver);
+        vuelosEuropaPage = new VuelosEuropaPage(driver);
+        vuelosNoResult = new VuelosNoResult(driver);
         homePage.navigateTo("https://www.rumbo.es/");
-        homePage.cerrarCookis();
         homePage.irAVuelos();
         vuelosPage.vuelaAEuropa();
         vuelosPage.moverseAOtraPestana(1);
@@ -58,13 +58,13 @@ public class VuelosTest extends SeleniumTestBase {
     @Test
     @Tag("media")
     public void CP003_BVI_Mastercard_MasRapido_CEscalas() throws InterruptedException {
-        homePage = new HomePage(DriverFactory.getDriver());
-        vuelosPage = new VuelosPage(DriverFactory.getDriver());
-        vuelosBusquedaPage = new VuelosBusquedaPage(DriverFactory.getDriver());
-        vuelosCheckoutCartPage = new VuelosCheckoutCartPage(DriverFactory.getDriver());
-        checkoutPage = new CheckoutPage(DriverFactory.getDriver());
+        driver = DriverFactory.getDriver();
+        homePage = new HomePage(driver);
+        vuelosPage = new VuelosPage(driver);
+        vuelosBusquedaPage = new VuelosBusquedaPage(driver);
+        vuelosCheckoutCartPage = new VuelosCheckoutCartPage(driver);
+        checkoutPage = new CheckoutPage(driver);
         homePage.navigateTo("https://www.rumbo.es/");
-        homePage.cerrarCookis();
         homePage.irAVuelos();
         vuelosPage.seleccionarMetodoPagoMastercard();
         vuelosPage.viajeiIdaYVuelta("Madrid (MAD) - Adolfo Suárez Barajas, España", "París (PAR) - Todos los aeropuertos, Francia");
@@ -91,7 +91,6 @@ public class VuelosTest extends SeleniumTestBase {
         vuelosCheckoutCartPage = new VuelosCheckoutCartPage(driver);
         checkoutPage = new CheckoutPage(driver);
         homePage.navigateTo("https://www.rumbo.es/");
-        homePage.cerrarCookis();
         homePage.irAVuelos();
         vuelosPage.ofertaLondres();
         //vuelosALondresPage.viajeALondres("Madrid (MAD) Adolfo Suárez Barajas, España");
@@ -105,7 +104,6 @@ public class VuelosTest extends SeleniumTestBase {
         vuelosMultidestinoPage = new VuelosMultidestinoPage(driver);
         homePage.navigateTo("https://www.rumbo.es/");
         homePage.cerrarCookis();
-        homePage.irAVuelos();
         vuelosPage.IrAMultidestino();
         vuelosPage.moverseAOtraPestana(1);
         vuelosMultidestinoPage.escogerDestinos(true, "Santiago de Chile", "Nueva York", "Miami", "Santiago de Chile");
@@ -115,8 +113,6 @@ public class VuelosTest extends SeleniumTestBase {
         }
 
     }
-
-
     @Test
     public void CP006_BV_UR_OfertasHotel() throws InterruptedException {
         driver = DriverFactory.getDriver();
@@ -128,12 +124,6 @@ public class VuelosTest extends SeleniumTestBase {
         homePage.irAFlashSales();
         flashSalesPage.ofertaVuelo();
         flashSalesPage.moverseAOtraPestana(1);
-        vuelosHotelPage.seleccionarFechaIdaYVuelta();
-        vuelosHotelPage.numeroDeAdultos();
-        vuelosHotelPage.corroborarInfo();
-        System.out.println(driver.getCurrentUrl());
-
-        //vuelosHotelPage.claseBusiness();
-        vuelosHotelPage.buscar();
+        vuelosHotelPage.datosHotel();
     }
 }
