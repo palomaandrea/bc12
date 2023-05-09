@@ -35,15 +35,21 @@ public class BusquedaTrenNormal extends SeleniumWrapper {
 
     public void estacionAlmeria() throws InterruptedException{
         Thread.sleep(5000);
-        scrolling(findElement(locatorAlmeria));
         click(findElement(locatorAlmeria));
     }
 
     public void seleccionaTicketMasBarato() throws InterruptedException{
-        scrolling(findElement(locatorBtnMasBarato));
+
         Thread.sleep(5000);
         List<WebElement> ticketMasBarato = findElements(locatorTickets);
         click(ticketMasBarato.get(0));
 
+    }
+    public void bajarAEstacion(){
+        scrolling(findElement(locatorAlmeria));
+    }
+
+    public void irATicket(){
+        scrolling(findElement(locatorBtnMasBarato));
     }
 }

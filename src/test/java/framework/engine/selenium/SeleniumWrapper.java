@@ -131,11 +131,6 @@ public class SeleniumWrapper {
         driver.switchTo().window(tabHandles.get(2));
 
     }
-    public void moverseALaCuartaPestana() {
-        List<String> tabHandles = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tabHandles.get(3));
-
-    }
 
     public void esperarAQueLaPaginaCargue(){
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
