@@ -86,4 +86,12 @@ public class SeleniumBase {
 
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
+    public void switchPestaniaPorTitulo(String pestania) {
+        for (String ventana : driver.getWindowHandles()) {
+            driver.switchTo().window(ventana);
+            if (driver.getTitle().contains(pestania)) {
+                return;
+            }
+        }
+    }
 }
