@@ -3,6 +3,8 @@ package aut.testcreation.testcases.grupo1;
 import aut.testcreation.base.TestBase;
 import aut.testcreation.pages.grupo1.HomePage;
 import aut.testcreation.pages.grupo1.TrenesPage;
+import aut.testcreation.utilities.ManejoEncodingUFT8;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class TestsTrenes extends TestBase {
@@ -18,6 +20,12 @@ public class TestsTrenes extends TestBase {
         homePage.clickTrenes();
         Thread.sleep(3000);
         trenesPage.EscribirOrigen();
+        trenesPage.EscribirDestino();
+        trenesPage.ClickDia();
+        trenesPage.ClickVuelta();
+        trenesPage.ClickPasajeros();
+        trenesPage.ClickBuscar();
+        Assertions.assertEquals(trenesPage.obtenerTextoBusqueda(), ManejoEncodingUFT8.fixEncoding("mar. 9 may."));
 
         /*
 

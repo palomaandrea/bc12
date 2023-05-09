@@ -14,13 +14,15 @@ public class TrenesPage extends SeleniumBase{
 
     //Locators 01
     By btnOrigen=By.xpath("//input[@placeholder='Origen']");
-    By btnOrigenAlicante=By.xpath("//input[contains(@placeholder,'Origen') and contains(@value,'Alicante')]");
-    /*By btnDestino=By.xpath("//*[@id=':Rqhl6lalaqlql2m:']");
-    By btnClickDia=By.xpath("//*[@id='hub-csw-container']/div/div/form/div[2]/div[2]/div[1]/div/fieldset/div[1]/button");
-    By btnDiaIda=By.xpath("//*[@id='hub-csw-container']/div/div/form/div[2]/div[2]/div[1]/div/div/div/div/section/div/div/div[2]/div[2]/button[15]");
-    By btnDiaVuelta=By.xpath("//*[@id='hub-csw-container']/div/div/form/div[2]/div[2]/div[1]/div/div/div/div/section/div/div/div[3]/div[2]/button[2]");
-    By btnMasAdultos=By.xpath("//*[@id='hub-csw-container']/div/div/form/div[2]/div[3]/div[1]/div/div[2]/div/section/div/div[1]/div[2]/button[2]");
+    By btnDestino=By.xpath("//input[@placeholder='Destino']");
+    By btnDiaIda=By.xpath("//*[@id=\"hub-csw-container\"]/div/div/form/div[2]/div[2]/div[1]/div/div/div/div/section/div/div/div[2]/div[2]/button[1]");
+    By btnDiaVuelta=By.xpath("//*[@id=\"hub-csw-container\"]/div/div/form/div[2]/div[2]/div[1]/div/div/div/div/section/div/div/div[2]/div[2]/button[2]");
+    By btnPasajeros=By.xpath("//*[@id='hub-csw-container']/div/div/form/div[2]/div[3]/div[1]/div/div[1]/button");
     By btnBuscar=By.xpath("//*[@id='hub-csw-container']/div/div/form/div[2]/div[4]/div/button");
+    By txtBusqueda=By.xpath("//*[@id=\"scrollableHeader\"]/div/div/div/div[1]/div/div/div/div/div[2]/div/div[1]");
+    /*
+
+
     By btnSoloIda=By.xpath("//*[@id='hub-csw-container']/div/div/form/div[1]/div/div/div[2]");
 
      */
@@ -28,12 +30,29 @@ public class TrenesPage extends SeleniumBase{
         //List<WebElement> origenes = buscarElementosWeb(btnOrigen);
         clickear(btnOrigen);
         Thread.sleep(3000);
-        escribir("Alicante",btnOrigen);
-        Thread.sleep(3000);
-        clickear(btnOrigenAlicante);
         escribir(Keys.TAB,btnOrigen);
-        //clickear(btnOrigen);
-        //Thread.sleep(3000);
-        //clickear(btnOrigenAlicante);
     }
+    public void EscribirDestino() throws InterruptedException {
+        //List<WebElement> origenes = buscarElementosWeb(btnOrigen);
+        clickear(btnDestino);
+        Thread.sleep(3000);
+        escribir("Barcelona",btnDestino);
+        escribir(Keys.TAB,btnDestino);
+    }
+    public void ClickDia(){
+        clickear(btnDiaIda);
+    }
+    public void ClickVuelta(){
+        clickear(btnDiaVuelta);
+    }
+    public void ClickPasajeros(){
+        clickear(btnPasajeros);
+    }
+    public void ClickBuscar(){
+        clickear(btnBuscar);
+    }
+    public String obtenerTextoBusqueda(){
+        return obtenerTexto(txtBusqueda);
+    }
+
 }
