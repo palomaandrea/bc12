@@ -36,14 +36,13 @@ public class TestsTrenes extends TestBase {
         homePage.aceptarCookies();
         homePage.clickTrenes();
         Thread.sleep(3000);
+        trenesPage.ClickSoloIda();
         trenesPage.EscribirOrigen();
         trenesPage.EscribirDestino();
         trenesPage.ClickDia();
-        trenesPage.ClickVuelta();
         trenesPage.ClickPasajeros();
         trenesPage.AgregarPasajeros();
         trenesPage.ClickBuscar();
         Assertions.assertEquals(trenesPage.obtenerTextoBusqueda(), ManejoEncodingUFT8.fixEncoding("mar. 9 may."));
-
     }
 }
