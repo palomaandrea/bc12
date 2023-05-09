@@ -37,6 +37,12 @@ public class Trenes extends SeleniumWrapper {
         waitForElementToBeVisible(By.xpath(xpath), tiempo);
     }
 
+    public void esperarVisibleLocatedyclick(String xpath, int tiempo) throws InterruptedException {
+        waitForElementToBeVisible(By.xpath(xpath), tiempo);
+        clickear(xpath);
+        Thread.sleep(500);
+    }
+
     public void  esperarClickeable(String xpath, int tiempo){
         waitForElementToBeClickable(By.xpath(xpath), tiempo);
     }
@@ -71,31 +77,45 @@ public class Trenes extends SeleniumWrapper {
         esperarVisibleLocated(xpath,10);
         clickear(xpath);
         escribirInput(xpath, texto);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         teclaAbajo(xpath);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         teclaEnter(xpath);
     }
 
     public void completarInputDestino(String xpath, String texto) throws InterruptedException {
         esperarVisibleLocated(xpath,10);
         clickear(xpath);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         escribirInput(xpath, texto);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         teclaAbajo(xpath);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         teclaEnter(xpath);
         scroll(xpath);
     }
 
-    public void seleccionarFechaIda(String xpath, String xpath2){
+    public void seleccionarFechaIdayVuelta(String xpath, String xpath2){
         scroll(xpath);
         esperarVisibleLocated(xpath,10);
         clickear(xpath);
         clickear(xpath2);
 
     }
+
+    public void seleccionarFechaIda(String xpath){
+        scroll(xpath);
+        esperarVisibleLocated(xpath,10);
+        clickear(xpath);
+
+    }
+
+    public  void  seleccionarPasajero(String xpath){
+        scroll(xpath);
+        esperarVisibleLocated(xpath,10);
+        clickear(xpath);
+    }
+
     public  void  seleccionarPasajeros(String xpath, String xpath2, String xpath3,String xpath4){
         scroll(xpath);
         esperarVisibleLocated(xpath,10);

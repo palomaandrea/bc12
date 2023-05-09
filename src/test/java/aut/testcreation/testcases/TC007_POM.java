@@ -23,30 +23,25 @@ public class TC007_POM extends SeleniumTestBase {
         rumboHomePage.navegarAlHome();
         rumboHomePage.aceptarCoockies();
 
-        //Paso1
+        //Paso1 hacer click en trenes
         rumboHomePage.elegirTrenes();
         trenes = new Trenes(DriverFactory.getDriver());
-        //Paso 2 Esperar a que carguen los elementos
-        trenes.esperarVisibleLocated("//input[contains(@placeholder, 'Origen')]", 20);
+        //Paso 2 Seleccionar solo ida
+        trenes.esperarVisibleLocatedyclick("//div[contains(text(),'Solo ida')]", 20);
         //Paso 3 Hacer click en Input Origen y escribir
         trenes.completarInputOrigen("//input[contains(@placeholder, 'Origen')]", "madrid");
-        //paso 4
+        //paso 4 completar Input Destino
         trenes.completarInputDestino("//input[contains(@placeholder, 'Destino')]", "Barcelona");
-        //paso 5
-        trenes.seleccionarFechaIda("//button[@aria-label='Fecha de ida']",
-                "//button[@aria-label='Fecha de vuelta']");
-        //paso 6
+        //paso 5 elegir fecha ida
+        trenes.seleccionarFechaIda("//button[@aria-label='Fecha de ida']");
+        //paso 6 elegir cantidad de pasajeros
         trenes.seleccionarPasajeros("//label[contains(text(),'Pasajero')]",
                 "//button[@aria-label='Aumentar el número de adultos']",
                 "//button[@aria-label='Aumentar el número de niños']",
                 "//li[contains(text(),'3 años')]");
-        //Paso 7
+        //Paso 7 hacer click en buscar
         trenes.clickBuscar("/html/body/div[1]/div[2]/div/div[2]/div/div/div[5]/div/div/div/div/div/form/div[2]/div[4]/div/button");
-        //paso 8
-        flights = new Flights(DriverFactory.getDriver());
-        flights.esperarClickeable("//h5[contains(text(),'Más barato')]", 10);
-        //paso 9
-        flights.clickear("//h5[contains(text(),'Más barato')]");
+
 
 
     }

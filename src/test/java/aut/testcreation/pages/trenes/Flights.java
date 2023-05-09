@@ -66,49 +66,16 @@ public class Flights extends SeleniumWrapper {
         implicitWait(10);
     }
 
-    public void completarInputOrigen(String xpath,String texto) throws InterruptedException {
-        esperarVisibleLocated(xpath,10);
-        clickear(xpath);
-        teclaAbajo(xpath);
-        escribirInput(xpath, texto);
-        teclaAbajo(xpath);
-        teclaEnter(xpath);
-    }
-    public void completarInputDestino(String xpath,String texto) throws InterruptedException {
-        clickear(xpath);
-        escribirInput(xpath, texto);
-        teclaAbajo(xpath);
-        teclaAbajo(xpath);
-        teclaAbajo(xpath);
-        teclaAbajo(xpath);
-        teclaAbajo(xpath);
-        teclaAbajo(xpath);
 
-        teclaEnter(xpath);
-    }
-
-    public void seleccionarFechaIda(String xpath, String xpath2) throws InterruptedException {
-        scroll(xpath);
-        esperarVisibleLocated(xpath,10);
-        clickear(xpath);
-        clickear(xpath2);
-
-    }
-    public  void  seleccionarPasajeros(String xpath, String xpath2, String xpath3,String xpath4) throws InterruptedException {
-        scroll(xpath);
-        esperarVisibleLocated(xpath,10);
-        clickear(xpath);
-        esperarVisibleLocated(xpath2, 10);
-        clickear(xpath2);
-        esperarVisibleLocated(xpath3,10);
-        clickear(xpath3);
-        esperarVisibleLocated(xpath4,10);
-        clickear(xpath4);
-
-
-    }
     public void clickBuscar(String xpath) throws InterruptedException {
         esperarVisibleLocated(xpath,10);
         clickear(xpath);
     }
+
+    public void esperarYSeleccionarBoleto(String xpath, int tiempo) throws InterruptedException {
+        waitForElementToBeVisible(By.xpath(xpath), tiempo);
+        clickear(xpath);
+        Thread.sleep(500);
+    }
+
 }
