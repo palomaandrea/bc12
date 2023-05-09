@@ -25,11 +25,13 @@ public class VuelosBusquedaPage extends SeleniumWrapper {
         click(locatorFilterElmejor);
     }
 
-    public void filtrarPorMasBarato() {
+    public void filtrarPorMasBarato() throws InterruptedException{
+        Thread.sleep(11000);
         click(waitElement(locatorFilterMasBarato));
     }
 
-    public void filtrarPorMasRapido() {
+    public void filtrarPorMasRapido() throws InterruptedException{
+        Thread.sleep(11000);
         click(waitElement(locatorFilterMasRapido));
     }
 
