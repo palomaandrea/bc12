@@ -26,13 +26,13 @@ public class TC002 {
     @FindBy(xpath = "/html/body/div[1]/div[1]/div/div[2]/div/div/div[3]/div/div[2]/div/ul/li[8]/div/a" )
     WebElement btntrenes;
 
-    @FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[1]/div/div/div[2]")
+    @FindBy(xpath = "//*[@id=\"hub-csw-container\"]/div/div/form/div[1]/div/div/div[2]")
     WebElement btnsoloida;
 
     @FindBy(xpath = "//*[@id=':Rqhl6lalaqlql2m:']")
     WebElement btnclickdestino;
 
-    @FindBy(xpath = "//*[@id=\"hub-csw-container\"]/div/div/form/div[2]/div[2]/div/div/div/div/button")
+   @FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[2]/div[2]/div/div/div/div/button")
     WebElement btnclickdia;
 
     @FindBy(xpath = "//*[@id='hub-csw-container']/div/div/form/div[2]/div[2]/div[1]/div/div/div/div/section/div/div/div[2]/div[2]/button[15]")
@@ -100,7 +100,7 @@ public class TC002 {
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-       // btndiavuelta.click();
+        //btndiavuelta.click();
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
