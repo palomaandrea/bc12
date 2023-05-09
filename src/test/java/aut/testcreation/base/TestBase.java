@@ -28,6 +28,6 @@ public class TestBase {
 
     @AfterEach
     public void close(){
-        driver.close();
+        //driver.close();
     }
 }
