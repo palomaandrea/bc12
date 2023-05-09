@@ -42,8 +42,14 @@ public class HotelesPage extends SeleniumWrapper {
     //Localizadores para caso de prueba con filtros
     By locatorFechaEntrada1 = By.xpath("//button[contains(text(),'24')]");
     By locatorFechaSalida1 = By.xpath("//button[contains(text(),'26')]");
-    By locatorBtnEstrellas = By.xpath("//div[@alt = 'Estrellas']");
-    By locatorBtnRangoDePrecio = By.xpath("//div[@alt = 'Precio']");
+    By locatorBtnEstrellas = By.xpath("//img[@alt = 'Estrellas']");
+    By locatorBoxEstrellas = By.xpath("//li[@id = 'exp_elem_hotel_stars_3']");
+    By locatorBtnRangoDePrecio = By.xpath("//img[@alt = 'Precio']");
+    By locatorRangoPrecio = By.xpath("//div[contains(text(), '100')]");
+    By locatorBtnAplicar = By.xpath("//button[@class = 'sc-eZYOHW khSA-dJ']");
+
+    //<div class="sc-fYdXmn hgOFNA"><div class="sc-cmEail jmpLbV">Limpiar</div><div class="sc-eZYOHW khSA-dJ">Aplicar</div></div>
+
     public void casoPrueba2(String buscarAlojamiento)throws InterruptedException{
         click(locatorSelectorUbicacionHotel);
         write(buscarAlojamiento, locatorSelectorUbicacionHotel);
@@ -55,7 +61,10 @@ public class HotelesPage extends SeleniumWrapper {
         click(waitElement(locatorHuesped));
         click(waitElement(locatorBtnBuscar));
         click(waitElement(locatorBtnEstrellas));
-        click(waitElement(locatorBtnRangoDePrecio));
+        click(waitElement(locatorBoxEstrellas));
+        click(waitElement(locatorBtnAplicar));
+        //click(waitElement(locatorBtnRangoDePrecio));
+        //click(waitElement(locatorRangoPrecio));
         Thread.sleep(5000);
     }
     //Localizadores
