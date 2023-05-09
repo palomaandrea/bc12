@@ -148,7 +148,6 @@ public class CheckoutPage extends SeleniumWrapper {
     }
 
     public Boolean obtenerError(){
-        findElements(locatorError);
         return isDisplayed(locatorError);
     }
     public String imprimirError() throws InterruptedException{
