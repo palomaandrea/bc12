@@ -20,12 +20,17 @@ public class HotelesPage extends SeleniumBase{
     By locatorBtnHuesped = By.xpath("//*[@id=\"hub-csw-container\"]/div/div[2]/div/form/div/div[3]/div[1]/div/div[1]/button");
     By locatorBtnClickBuscar = By.xpath("//*[@id=\"hub-csw-container\"]/div/div[2]/div/form/div/div[4]/div/button");
 
-    public void busquedaHotelPorDestinoYFechaPorCalendario(String destino){
+    public void busquedaHotelPorDestinoYFechaPorCalendario(String destino) throws InterruptedException {
         escribir(destino,locatorBuscarAlojamientoBar);
+        Thread.sleep(2000);
         clickear(locatorBtnClickDia);
+        Thread.sleep(2000);
         clickear(locatorBtnClickDiaIda);
+        Thread.sleep(2000);
         clickear(locatorBtnClickDiaVuelta);
+        Thread.sleep(2000);
         clickear(locatorBtnHuesped);
+        Thread.sleep(2000);
         clickear(locatorBtnClickBuscar);
 
 

@@ -13,12 +13,17 @@ public class TestHoteles extends TestBase {
     HotelesPage hotelespage;
 
     @Test
-    public void CP001_BusquedaHotelesOK(){
+    public void CP001_BusquedaHotelesOK() throws InterruptedException {
         homePage=new HomePage(super.driver);
         hotelespage=new HotelesPage(super.driver);
         homePage.navegarAPagina("https://www.rumbo.es/");
         homePage.aceptarCookies();
         homePage.clickHoteles();
+
+        hotelespage.busquedaHotelPorDestinoYFechaPorCalendario("Córdoba, España");
+
+
+
 
     }
 
