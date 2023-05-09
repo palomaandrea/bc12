@@ -27,38 +27,23 @@ public class TestsTrenes extends TestBase {
         trenesPage.ClickBuscar();
         Assertions.assertEquals(trenesPage.obtenerTextoBusqueda(), ManejoEncodingUFT8.fixEncoding("mar. 9 may."));
 
-        /*
+    }
+    @Test
+    public void CP001_TC002_NOOK() throws InterruptedException {
+        homePage = new HomePage(super.driver);
+        trenesPage = new TrenesPage(super.driver);
+        homePage.navegarAPagina("https://www.rumbo.es/");
+        homePage.aceptarCookies();
+        homePage.clickTrenes();
+        Thread.sleep(3000);
+        trenesPage.EscribirOrigen();
+        trenesPage.EscribirDestino();
+        trenesPage.ClickDia();
+        trenesPage.ClickVuelta();
+        trenesPage.ClickPasajeros();
+        trenesPage.AgregarPasajeros();
+        trenesPage.ClickBuscar();
+        Assertions.assertEquals(trenesPage.obtenerTextoBusqueda(), ManejoEncodingUFT8.fixEncoding("mar. 9 may."));
 
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        By locatorbtnorigen = By.xpath("//*[@id=':Rmhl6lalaqlql2m:']");
-        WebElement btnorigen = wait.until(ExpectedConditions.presenceOfElementLocated(locatorbtnorigen));
-
-        btnorigen.sendKeys("A Coruña");
-
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        By locatorbtndestino = By.xpath("//*[@id=':Rqhl6lalaqlql2m:']");
-        WebElement btndestino = wait.until(ExpectedConditions.presenceOfElementLocated(locatorbtndestino));
-
-        btndestino.sendKeys("Barcelona");
-
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        btnclickdia.click();
-        btndiaida.click();
-
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        btndiavuelta.click();
-
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        //btnmasadultos.click();
-
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        btnbuscar.click();
-         */
     }
 }
