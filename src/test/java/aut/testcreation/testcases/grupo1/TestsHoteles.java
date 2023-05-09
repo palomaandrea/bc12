@@ -1,14 +1,11 @@
 package aut.testcreation.testcases.grupo1;
 
 import aut.testcreation.base.TestBase;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import aut.testcreation.pages.grupo1.HomePage;
 import aut.testcreation.pages.grupo1.HotelesPage;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 
-public class TestHoteles extends TestBase {
+public class TestsHoteles extends TestBase {
     HomePage homePage;
     HotelesPage hotelespage;
 
