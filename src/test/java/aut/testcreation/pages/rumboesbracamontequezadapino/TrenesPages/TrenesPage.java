@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
+import static org.openqa.selenium.Keys.DOWN;
 
 
 public class TrenesPage extends SeleniumWrapper {
@@ -32,7 +33,7 @@ public class TrenesPage extends SeleniumWrapper {
     By locatorFechaVuelta = By.xpath("//label[contains(text(), 'Fecha de vuelta')]");
     By locatorPasajero = By.xpath("//div[@class='d-1rd1g4p']");
     By locatorAgregarNinio = By.xpath("//button[@class='d-1ch1522']");
-    By locatorEdadNinno = By.xpath("//li[contains(text(), '4 años')]");
+
     By locatorBtnBuscar = By.xpath("//button[@aria-label='Buscar']");
 
     By locatorOfertaSevillaMadrid = By.xpath("//img[@alt='Madrid - Sevilla']");
@@ -64,9 +65,16 @@ public class TrenesPage extends SeleniumWrapper {
         click(locatorSeleccionaCiudad);
     }
 
-    public void marcarPasajeroYAgregarNinnio(){
-        click(findElement(locatorPasajero));
+    public void marcarPasajeroYAgregarNinnio(String edadNino) throws InterruptedException{
+        By locatorEdadNinno = By.xpath("//li[contains(text(), '"+edadNino+"')]");
+        //li[contains(text(),'4 años')]
+        By locatorNinoCss = By.cssSelector("div.csw-portal:nth-child(20) div.d-7x7x2l div.d-fjquq8 section.d-k5h9t1 div.d-fje0wm div.d-5i3qyh div:nth-child(2) div.d-14b12h7 ul.d-g93eyo > li.d-1468w14:nth-child(5)");
+        //click(findElement(locatorPasajero));
         click(findElement(locatorAgregarNinio));
+        //write(edadNino, locatorAgregarNinio);
+        Thread.sleep(5000);
+        //sendKeys (DOWN, locatorAgregarNinio);
+        findElement(locatorEdadNinno);
         click(findElement(locatorEdadNinno));
     }
 

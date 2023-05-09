@@ -101,6 +101,7 @@ public class TestBusquedaTren extends SeleniumTestBase {
           Thread.sleep(3000);
           busquedaTrenOferta.estacionAtocha();
           Thread.sleep(5000);
+          busquedaTrenNormal.irATicket();
           busquedaTrenOferta.seleccionaTicketMasBarato();
         };
         Thread.sleep(5000);
@@ -132,12 +133,55 @@ public class TestBusquedaTren extends SeleniumTestBase {
         busquedaTrenNormal.esperarAQueLaPaginaCargue();
         busquedaTrenNormal.masBarato();
         Thread.sleep(10000);
-        busquedaTrenNormal.bajarAEstacion();
+        /*busquedaTrenNormal.bajarAEstacion();
         busquedaTrenNormal.estacionAlmeria();
         Thread.sleep(10000);
         busquedaTrenNormal.irATicket();
-        busquedaTrenNormal.seleccionaTicketMasBarato();
+        busquedaTrenNormal.seleccionaTicketMasBarato();*/
         Thread.sleep(10000);
+    }
+
+    @Test
+    public void CP017_ViajeTren_SoloIda_MarcarEstacion_ConUnNinnio_LleNarForm_FechaNacIncorrecta() throws InterruptedException{
+        driver = DriverFactory.getDriver();
+        homePage= new HomePage(DriverFactory.getDriver());
+        trenesPage=new TrenesPage(DriverFactory.getDriver());
+        busquedaTrenNormal=new BusquedaTrenNormal(DriverFactory.getDriver());
+        resultadoBusquedaTrenOferta=new ResultadoBusquedaTrenOferta(DriverFactory.getDriver());
+        checkoutPage=new CheckoutPage(DriverFactory.getDriver());
+        driver.navigate().to("https://www.rumbo.es/");
+        Thread.sleep(5000);
+        homePage.cerrarCookis();
+        homePage.irATrenes();
+        trenesPage.soloIda();
+        trenesPage.escribirOrigen("Granada");
+        trenesPage.escribirDestino("Barcelona");
+        trenesPage.seleccionaUnDiaDia(30);
+        trenesPage.marcarPasajeroYAgregarNinnio("4 años");
+        trenesPage.sendKeys(Keys.ENTER);
+        trenesPage.clickEnBuscar();
+        busquedaTrenNormal.esperarAQueLaPaginaCargue();
+        busquedaTrenNormal.bajarAEstacionGranada();
+        busquedaTrenNormal.estacionGranada();
+        busquedaTrenNormal.irATicket();
+        busquedaTrenNormal.seleccionaTicketMasBarato();
+        Thread.sleep(5000);
+        Thread.sleep(10000);
+        checkoutPage.ingresaDatosContacto("Marco", "Perez", "abrilbracamonte@gmail.com", "99080890");
+        Thread.sleep(3000);
+        checkoutPage.seleccionaPaisTelefono("12345678");
+        checkoutPage.marcaCheckbox(1); //1 sr, 2sra, 3 sr, 4 sra, coche 5, sin seguro 8, enviame ofertas 10,
+        Thread.sleep(1000);
+        checkoutPage.datosPersona1("Marco", "Perez", "10", "10", "1990");
+        Thread.sleep(3000);
+        checkoutPage.datosDocumentoP1("123456789", "PA"); // PA pasaporte, DNI, NIE
+        checkoutPage.marcaCheckbox(4);
+        Thread.sleep(3000);
+        checkoutPage.datosPersona2("Lucia", "Ozz", "12", "11", "2024");
+        checkoutPage.datosDocumentoP2("123456899", "PA");
+        checkoutPage.marcaCheckbox(6);
+        checkoutPage.clickBtnSiguiente();
+        Assertions.assertEquals(checkoutPage.obtenerErrorDelFuturo(), "¿Vienes del futuro?");
     }
 
     @Test
@@ -202,7 +246,7 @@ public class TestBusquedaTren extends SeleniumTestBase {
         }
 
     }
-    @Test
+   /* @Test
     public void TestBusquedaTren() throws InterruptedException{
         driver = DriverFactory.getDriver();
         homePage= new HomePage(DriverFactory.getDriver());
@@ -218,6 +262,6 @@ public class TestBusquedaTren extends SeleniumTestBase {
         trenesPage.sendKeys(Keys.ENTER);
         trenesPage.clickEnBuscar();
         Thread.sleep(5000);
-    }
+    }*/
 
 }

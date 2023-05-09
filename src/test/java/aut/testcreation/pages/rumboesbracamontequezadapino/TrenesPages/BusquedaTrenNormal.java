@@ -20,6 +20,8 @@ public class BusquedaTrenNormal extends SeleniumWrapper {
     ////li[@class='Tabs__ListElement-cncr__sc-61rlvo-1 ezUVfc active']
     //h5[contains(text(), 'Más barato')]
     By locatorAlmeria = By.xpath("//input[@aria-label='Almería (LEI)']");
+    By locatorGranada = By.xpath("//span[contains(text(),'Estación de Granada (YJG)')]");
+    //span[contains(text(),'Estación de Granada (YJG)')]
     By locatorTickets = By.xpath("//div[@class='FullTripCard__PaymentContainer-sc-z8znd4-3 juamvE']");
     public void buscarDeNuevo(){
         scrolling(findElement(locatorNuevaBusqueda));
@@ -34,7 +36,7 @@ public class BusquedaTrenNormal extends SeleniumWrapper {
     }
 
     public void estacionAlmeria() throws InterruptedException{
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         click(findElement(locatorAlmeria));
     }
 
@@ -51,5 +53,13 @@ public class BusquedaTrenNormal extends SeleniumWrapper {
 
     public void irATicket(){
         scrolling(findElement(locatorBtnMasBarato));
+    }
+    public void bajarAEstacionGranada() throws InterruptedException{
+        Thread.sleep(1000);
+        scrolling(findElement(locatorGranada));
+    }
+    public void estacionGranada() throws InterruptedException{
+        Thread.sleep(3000);
+        click(findElement(locatorGranada));
     }
 }
