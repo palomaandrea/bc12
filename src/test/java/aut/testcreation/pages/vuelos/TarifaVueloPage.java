@@ -21,7 +21,6 @@ public class TarifaVueloPage extends SeleniumWrapper {
             Thread.sleep(1000);
             click(getElegirTarifaFlex);
         }
-
     }
 }
 

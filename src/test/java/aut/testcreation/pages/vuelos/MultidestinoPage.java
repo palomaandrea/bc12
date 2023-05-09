@@ -4,24 +4,18 @@ import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import java.util.Arrays;
 import java.util.List;
-
 import static org.openqa.selenium.Keys.ENTER;
 
 public class MultidestinoPage extends SeleniumWrapper {
-    public MultidestinoPage(WebDriver driver) {
-        super(driver);
-    }
-
+    public MultidestinoPage(WebDriver driver) {super(driver);}
     By locatorInputs = By.xpath("//input[@class='SearchFieldstyled__SearchFieldInput-sc-1f3jsso-5 jYLahH']");
     By btnBorrarTodos = By.xpath("//div[@class='ButtonPrimitiveContentChildren__StyledButtonPrimitiveContentChildren-sc-mra4yy-0 NRXsW'][contains(text(),'Borrar todos')]");
     By locatoraceptarCookies = By.xpath("//button[@id='cookies_accept']");
     By btnBuscarMulti = By.xpath("//div[@class='ButtonPrimitiveContentChildren__StyledButtonPrimitiveContentChildren-sc-mra4yy-0 dLfJcB'] [contains(text(), 'Buscar')]");
     By locatorTextoError = By.xpath("//p[@class='Text__StyledText-sc-1dj99rd-0 kocnUz']");
 
-    public void borrarPreIngresados(boolean limpiarCampos, String origenPrimero, String destinoPrimero, String origenSegundo, String destinoSegundo) throws InterruptedException {
+    public void repetirOrigenesDestinos(boolean limpiarCampos, String origenPrimero, String destinoPrimero, String origenSegundo, String destinoSegundo) throws InterruptedException {
         Thread.sleep(3000);
         switchToTabByTitleContains("Viajes de");
         try {
@@ -31,7 +25,6 @@ public class MultidestinoPage extends SeleniumWrapper {
         } catch (Exception e) {
             System.out.println("Error: Campos no se han limpiado con éxito");
         }
-
         List<WebElement> inputs = findElements(locatorInputs);
         WebElement primerInput = inputs.get(0);
         primerInput.click();
@@ -65,11 +58,3 @@ public class MultidestinoPage extends SeleniumWrapper {
     }
 
 }
-
-
-
-
-
-
-
-

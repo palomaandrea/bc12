@@ -10,11 +10,9 @@ import static org.openqa.selenium.Keys.DOWN;
 import static org.openqa.selenium.Keys.ENTER;
 
 public class RumboHomePage extends SeleniumWrapper {
-
     public RumboHomePage(WebDriver driver) {
         super(driver);
     }
-
     By btnAceptarCoockies = By.xpath("//button[@class='iubenda-cs-accept-btn iubenda-cs-btn-primary']");
     By btnVueloIdaVuelta = By.xpath("//div[@class='d-vfn33k']");
     By btnVueloSoloIda = By.xpath("//div[@class='d-1s1pmhl']");
@@ -30,6 +28,7 @@ public class RumboHomePage extends SeleniumWrapper {
     By btnBuscar = By.xpath("//button[@class='d-1jmk4ql']");
     By errOrigenVuelo = By.xpath("//span[@class = 'd-1toc9z2'][contains(text(),'Introduce ciudad o aeropuerto de origen')]");
     By btnAumentarPasajeros = By.xpath("//button[@aria-label='Aumentar el número de adultos']");
+
     public void formularioHomeIdaYVuelta(String origenVuelo, String destinoVuelo, boolean deseaAgregarUnPasajero) throws InterruptedException {
         navigateTo(BASE_URL_AUT);
         click(btnAceptarCoockies);
@@ -62,11 +61,9 @@ public class RumboHomePage extends SeleniumWrapper {
             Thread.sleep(2000);
             click(locatorNumeroPasajeros);
             click(btnBuscar);
-
         }else {
             click(locatorNumeroPasajeros);
             click(btnBuscar);
-
         }
     }
 
@@ -78,11 +75,11 @@ public class RumboHomePage extends SeleniumWrapper {
         limpiar.get(0).click();
         click(locatorOrigenVuelo);
         write(origenVuelo, locatorOrigenVuelo);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         sendKeys(DOWN, locatorOrigenVuelo);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         sendKeys(ENTER, locatorOrigenVuelo);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         click(locatorDestinoVuelo);
         write(destinoVuelo, locatorDestinoVuelo);
         Thread.sleep(1000);
@@ -95,11 +92,10 @@ public class RumboHomePage extends SeleniumWrapper {
         click(btnBuscar);
     }
 
-    public void opcionMultidestino() throws InterruptedException {
+    public void opcionMultidestino() {
         navigateTo(BASE_URL_AUT);
         click(btnAceptarCoockies);
         click(btnVueloMultidestino);
-        switchToTabByTitleContains("Viajes");
     }
 
     public void formularioIdaSinOrigen(String destinoVuelo) throws InterruptedException {
@@ -118,7 +114,6 @@ public class RumboHomePage extends SeleniumWrapper {
         click(locatorFechaSoloIda);
         click(locatorNumeroPasajeros);
         click(btnBuscar);
-        switchToTabByTitleContains("Rumbo");
     }
 
     public String mensajeErrorOrigen() {

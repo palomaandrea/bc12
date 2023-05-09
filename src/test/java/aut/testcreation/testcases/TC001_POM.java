@@ -25,7 +25,7 @@ public class TC001_POM extends SeleniumTestBase {
         rumboHomePage.formularioHomeIdaYVuelta( "Buenos Aires (BUE)", "Santiago (SCL)", false);
         ofertasVuelosPage.modificarVuelo( "Mendoza (MDZ)", "Cartagena");
         tarifaVueloPage.elegirTarifa(true);
-        formularioVuelosPage.formularioLatam("Francisca", "Benavides", "Holamundo2222@gmail.com", "9255874", false, true, true, false,"08", "1993");
+        formularioVuelosPage.formularioLatam("Ana", "Rodriguez", "Holamundo2222@gmail.com", "9874563", false, true, true, false,"08", "1993");
         serviciosAdicionalesPage.presionarSiguiente();
         verificacionPagoPage.verificacionYPago();
         if (verificacionPagoPage.verificacionYPago().equals("Verificación y pago")) {
