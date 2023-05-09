@@ -51,7 +51,7 @@ public class CheckoutPage extends SeleniumWrapper {
     By locatorRecibirOfertas=  By.xpath("");
     By locatorBtnSiguiente= By.xpath("//button[contains(text(),'Siguiente')]");
     By locatorError = By.xpath("//div[@class='CheckoutError___StyledDiv4-sc-vrmdfh-4 jIcyeg']");
-    By locatorErrorDelFuturo= By.xpath("//div[@class='sc-httYMd hMkEaN css-4cffwv']");
+    By locatorErrorDelFuturo= By.xpath("//div[contains(text(),'¿Vienes del futuro?')]");
 
 
     public void verDetallesViaje() throws InterruptedException {
@@ -108,7 +108,6 @@ public class CheckoutPage extends SeleniumWrapper {
         Thread.sleep(5000);
         write(value, locatorTipoDocP1);
         sendKeys (DOWN, locatorTipoDocP1);
-        sendKeys (DOWN, locatorTipoDocP1);
         //Select selectorTipoDoc = new Select(findElement(locatorSelectTipoDocP1));
         //selectorTipoDoc.selectByValue(value);
         click(findElement(locatorNroDocP1));
@@ -133,7 +132,6 @@ public class CheckoutPage extends SeleniumWrapper {
         scrolling(findElement(locatorTipoDocP2));
         //click(findElement(locatorTipoDocP2));
         Thread.sleep(5000);
-        sendKeys (DOWN, locatorTipoDocP2);
         sendKeys (DOWN, locatorTipoDocP2);
         //Select selectorTipoDoc = new Select(findElement(locatorSelectTipoDocP2));
         //selectorTipoDoc.selectByValue(value);
@@ -160,6 +158,7 @@ public class CheckoutPage extends SeleniumWrapper {
     }
 
     public String obtenerErrorDelFuturo(){
+        scrolling(findElement(locatorErrorDelFuturo));
         return getText(locatorErrorDelFuturo);
     }
 

@@ -174,11 +174,11 @@ public class TestBusquedaTren extends SeleniumTestBase {
         Thread.sleep(1000);
         checkoutPage.datosPersona1("Marco", "Perez", "10", "10", "1990");
         Thread.sleep(3000);
-        checkoutPage.datosDocumentoP1("123456789", "PA"); // PA pasaporte, DNI, NIE
+        checkoutPage.datosDocumentoP1("123456789", "Pasaporte"); // PA pasaporte, DNI, NIE
         checkoutPage.marcaCheckbox(4);
         Thread.sleep(3000);
         checkoutPage.datosPersona2("Lucia", "Ozz", "12", "11", "2024");
-        checkoutPage.datosDocumentoP2("123456899", "PA");
+        checkoutPage.datosDocumentoP2("123456899", "Pasaporte");
         checkoutPage.marcaCheckbox(6);
         checkoutPage.clickBtnSiguiente();
         Assertions.assertEquals(checkoutPage.obtenerErrorDelFuturo(), "¿Vienes del futuro?");
