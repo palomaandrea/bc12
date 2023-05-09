@@ -67,7 +67,7 @@ public class TestBusquedaTren extends SeleniumTestBase {
         trenesPage.idaYVuelta();
         trenesPage.escribirOrigen("Agde");
         trenesPage.escribirDestino("Girona");
-        trenesPage.fechasIdaYVuelta15al22();
+        trenesPage.seleccionaDosDias(15, 22);
         trenesPage.sendKeys(Keys.ENTER);
         trenesPage.clickEnBuscar();
         Thread.sleep(5000);
@@ -117,21 +117,22 @@ public class TestBusquedaTren extends SeleniumTestBase {
         trenesPage.idaYVuelta();
         trenesPage.escribirOrigen("Almeria");
         trenesPage.escribirDestino("Madrid");
-        trenesPage.fechasIdaYVuelta08al13();
+        trenesPage.seleccionaDosDias(8, 13);
         trenesPage.clickEnBuscar();
         Thread.sleep(2000);
         busquedaTrenNormal.buscarDeNuevo();
         Thread.sleep(2000);
         trenesPage.idaYVuelta();
-        trenesPage.fechasIdaYVuelta15al25();
+        trenesPage.fechaNuevaBusqueda();
+        trenesPage.seleccionaDosDias(15, 25);
         trenesPage.sendKeys(Keys.ENTER);
         trenesPage.clickEnBuscar();
-        //busquedaTrenNormal.esperarAQueLaPaginaCargue();
-        //busquedaTrenNormal.masBarato();
-        //Thread.sleep(10000);
-        //busquedaTrenNormal.estacionAlmeria();
-        //Thread.sleep(10000);
-        //busquedaTrenNormal.seleccionaTicketMasBarato();
+        busquedaTrenNormal.esperarAQueLaPaginaCargue();
+        busquedaTrenNormal.masBarato();
+        Thread.sleep(10000);
+        busquedaTrenNormal.estacionAlmeria();
+        Thread.sleep(10000);
+        busquedaTrenNormal.seleccionaTicketMasBarato();
         Thread.sleep(10000);
     }
 
@@ -160,11 +161,11 @@ public class TestBusquedaTren extends SeleniumTestBase {
             Thread.sleep(1000);
             busquedaTrenOferta.seleccionarHotel();
             Thread.sleep(5000);
-            busquedaTrenOferta.moverseALaTerceraPestana();
+            busquedaTrenOferta.moverseAOtraPestana(2);
             resultadoBusquedaTrenOferta.esperarAQueLaPaginaCargue();
             Thread.sleep(5000);
             resultadoBusquedaTrenOferta.seleccionaHotel();
-            resultadoBusquedaTrenOferta.moverseALaCuartaPestana();
+            resultadoBusquedaTrenOferta.moverseAOtraPestana(3);
             Thread.sleep(5000);
         }
 
@@ -181,7 +182,7 @@ public class TestBusquedaTren extends SeleniumTestBase {
         trenesPage.soloIda();
         trenesPage.escribirOrigen("Madrid");
         trenesPage.escribirDestino("Barcelona");
-        trenesPage.fechaIda();
+        trenesPage.seleccionaUnDia(15);
         trenesPage.sendKeys(Keys.ENTER);
         trenesPage.clickEnBuscar();
         Thread.sleep(5000);

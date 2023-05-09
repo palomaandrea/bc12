@@ -4,9 +4,8 @@ import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import java.util.List;
+
 
 public class TrenesPage extends SeleniumWrapper {
 
@@ -21,29 +20,23 @@ public class TrenesPage extends SeleniumWrapper {
     By locatorLugarOrigen = By.xpath("//input[@placeholder= 'Origen']");
 
     By locatorSeleccionaCiudad = By.xpath("//li[@data-option-index='0']");
-    By locatorSeleccionaCiudad2 = By.xpath("//li[@data-option-index='7']");
     By locatorLugarDestino = By.xpath("//input[@placeholder= 'Destino']");
     By locatorFechaIda = By.xpath("//button[@aria-label='Fecha de ida']");
-    By locatorMarcarDiaIda15 = By.xpath("//button[contains(text(), '15')]");
-    //class="d-1z9ad3" [@class='d-1kuzy14'] //button[contains(text(), '15')]
 
-    // Para junio, julio //button[contains(text(), '15')][@class='d-1kuzy14']
+    int diaIda;
+    //By locatorMarcarDiaIda15 = By.xpath("//button[contains(text(), "+diaIda+")]");
+    int diaVuelta;
 
-    By locatorMarcarDiaVuelta25 = By.xpath("//button[contains(text(), '25')]");
+    By locatorMarcarDiaVuelta25 = By.xpath("//button[contains(text(), "+diaVuelta+")]");
 
-    By locatorMarcarDiaVuelta22 = By.xpath("//button[contains(text(), '22')]");
-    By locatorMarcarDiaVuelta13 = By.xpath("//button[contains(text(), '13')]");
-    By locatorMarcarDiaIda10 = By.xpath("//button[contains(text(), '8')]");
     By locatorFechaVuelta = By.xpath("//label[contains(text(), 'Fecha de vuelta')]");
     By locatorPasajero = By.xpath("//div[@class='d-1rd1g4p']");
     By locatorAgregarNinio = By.xpath("//button[@class='d-1ch1522']");
     By locatorEdadNinno = By.xpath("//li[contains(text(), '4 años')]");
     By locatorBtnBuscar = By.xpath("//button[@aria-label='Buscar']");
 
-    //https://res.cloudinary.com/lastminute-contenthub/i…s/Europe/Spain/Sevilla/shutterstock_108544976.jpg
     By locatorOfertaSevillaMadrid = By.xpath("//img[@alt='Madrid - Sevilla']");
 
-    //https://res.cloudinary.com/lastminute-contenthub/c…ons/Europe/Spain/Barcelona/shutterstock_165497819
     By locatorOfertaTrenHotelBarcelonaMadrid = By.xpath("//img[@alt='Tren + Hotel a Madrid']");
 
     By locatorObtenerMensajeSinDispo = By.xpath("//span[contains(text(), 'No hemos encontrado ninguna')]");
@@ -69,42 +62,6 @@ public class TrenesPage extends SeleniumWrapper {
         write(destino, locatorLugarDestino);
         Thread.sleep(2000);
         click(locatorSeleccionaCiudad);
-    }
-
-    public void marcarDestino() throws InterruptedException{
-        Thread.sleep(3000);
-        findElement(locatorSeleccionaCiudad2);
-        click(locatorSeleccionaCiudad2);
-    }
-
-    public void fechaIda() throws InterruptedException{
-        Thread.sleep(3000);
-        List < WebElement> dia15 = findElements(locatorMarcarDiaIda15);
-        click(dia15.get(0));
-
-    }
-
-    public void marcarDia() throws InterruptedException{
-        Thread.sleep(3000);
-        List < WebElement> dia15 = findElements(locatorMarcarDiaIda15);
-        click(dia15.get(0));
-
-    }
-    public void fechasIdaYVuelta15al25() throws InterruptedException{
-        click(findElement(locatorFechaIda));
-        Thread.sleep(3000);
-        List < WebElement> dia15 = findElements(locatorMarcarDiaIda15);
-        click(dia15.get(0));
-        List < WebElement> dia25 = findElements(locatorMarcarDiaVuelta25);
-        click(dia25.get(0));
-    }
-
-    public void fechasIdaYVuelta15al22() throws InterruptedException{
-        Thread.sleep(3000);
-        List < WebElement> dia15 = findElements(locatorMarcarDiaIda15);
-        click(dia15.get(0));
-        List < WebElement> dia22 = findElements(locatorMarcarDiaVuelta22);
-        click(dia22.get(0));
     }
 
     public void marcarPasajeroYAgregarNinnio(){
@@ -142,11 +99,8 @@ public class TrenesPage extends SeleniumWrapper {
     public void ofertaMadridBarcelona(){
         click(findElement(locatorOfertaMadridBarcelona));
     }
-    public void fechasIdaYVuelta08al13() throws InterruptedException{
-        Thread.sleep(3000);
-        List < WebElement> dia10 = findElements(locatorMarcarDiaIda10);
-        click(dia10.get(0));
-        List < WebElement> dia13 = findElements(locatorMarcarDiaVuelta13);
-        click(dia13.get(0));
+
+    public void fechaNuevaBusqueda(){
+        click(findElement(locatorFechaIda));
     }
 }

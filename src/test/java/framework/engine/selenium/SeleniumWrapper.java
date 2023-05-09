@@ -127,20 +127,35 @@ public class SeleniumWrapper {
         driver.switchTo().window(tabHandles.get(nro));
 
     }
-    public void moverseALaTerceraPestana() {
-        List<String> tabHandles = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tabHandles.get(2));
 
+    public void moverseAOtraPestana(String text) {
+        for (String pestana : driver.getWindowHandles()) {
+            driver.switchTo().window(pestana);
+            if (driver.getTitle().contains(text)) {
+                return;
+            }
+        }
     }
-    public void moverseALaCuartaPestana() {
-        List<String> tabHandles = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tabHandles.get(3));
-
-    }
-
     public void esperarAQueLaPaginaCargue(){
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
     }
+    public void seleccionaUnDia(int dia)throws InterruptedException{
+        By locatorDia = By.xpath("//button[contains(text(), "+dia+")]");
+        Thread.sleep(3000);
+        List<WebElement> day = findElements(locatorDia);
+        click(day.get(11));
+    }
+    public void seleccionaDosDias(int dia1, int dia2) throws InterruptedException{
+        By locatorDiaIda= By.xpath("//button[contains(text(), "+dia1+")]");
+        By locatorDiaVuelta= By.xpath("//button[contains(text(), "+dia2+")]");
+        Thread.sleep(3000);
+        List < WebElement> diaIda = findElements(locatorDiaIda);
+        click(diaIda.get(0));
+        List < WebElement> diaVuelta = findElements(locatorDiaVuelta);
+        click(diaVuelta.get(0));
+
+    }
+
 }
 
 

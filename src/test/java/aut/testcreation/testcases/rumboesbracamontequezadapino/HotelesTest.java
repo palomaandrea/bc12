@@ -14,7 +14,7 @@ public class HotelesTest extends SeleniumTestBase {
 
     //Test complejidad baja
     @Test
-    public void CP001_HotelMV_OK() throws InterruptedException{
+    public void CP007_HotelMV_OK() throws InterruptedException{
         driver = DriverFactory.getDriver();
         homePage = new HomePage(DriverFactory.getDriver());
         hotelesPage = new HotelesPage(DriverFactory.getDriver());
@@ -26,7 +26,7 @@ public class HotelesTest extends SeleniumTestBase {
     }
 
     @Test
-    public void CP002_HotelEYRP_Error() throws InterruptedException{
+    public void CP008_HotelEYRP_Error() throws InterruptedException{
         driver = DriverFactory.getDriver();
         homePage = new HomePage(DriverFactory.getDriver());
         hotelesPage = new HotelesPage(DriverFactory.getDriver());
@@ -37,9 +37,13 @@ public class HotelesTest extends SeleniumTestBase {
         hotelesPage.casoPrueba2("Madrid, España");
     }
 
+
     //Test complejidad media
     /*@Test
     public void CP003_HotelFDSA_() throws InterruptedException{
+    //Test complejidad media //
+    @Test
+    public void CP009_HotelFDSA_() throws InterruptedException{
         driver = DriverFactory.getDriver();
         homePage = new HomePage(DriverFactory.getDriver());
         hotelesPage = new HotelesPage(DriverFactory.getDriver());
@@ -50,7 +54,7 @@ public class HotelesTest extends SeleniumTestBase {
     }
 
     @Test
-    public void CP004_HotelAM_() throws InterruptedException{
+    public void CP010_HotelAM_() throws InterruptedException{
         driver = DriverFactory.getDriver();
         homePage = new HomePage(DriverFactory.getDriver());
         hotelesPage = new HotelesPage(DriverFactory.getDriver());
@@ -63,7 +67,7 @@ public class HotelesTest extends SeleniumTestBase {
     ////
     //Test complejidad alta
     @Test
-    public void CP005_HotelYVueloCF_() throws InterruptedException{
+    public void CP011_HotelYVueloCF_() throws InterruptedException{
         driver = DriverFactory.getDriver();
         homePage = new HomePage(DriverFactory.getDriver());
         hotelesPage = new HotelesPage(DriverFactory.getDriver());
@@ -74,7 +78,7 @@ public class HotelesTest extends SeleniumTestBase {
     }
 
     @Test
-    public void CP006_HotelCF_() throws InterruptedException{
+    public void CP012_HotelCF_() throws InterruptedException{
         driver = DriverFactory.getDriver();
         homePage = new HomePage(DriverFactory.getDriver());
         hotelesPage = new HotelesPage(DriverFactory.getDriver());
