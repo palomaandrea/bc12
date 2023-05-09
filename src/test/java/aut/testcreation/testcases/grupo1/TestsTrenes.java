@@ -11,7 +11,7 @@ public class TestsTrenes extends TestBase {
     HomePage homePage;
     TrenesPage trenesPage;
 
-    @Test
+    @Test  //1
     public void CP001_TC001_NOOK() throws InterruptedException {
         homePage = new HomePage(super.driver);
         trenesPage = new TrenesPage(super.driver);
@@ -28,7 +28,7 @@ public class TestsTrenes extends TestBase {
         Assertions.assertEquals(trenesPage.obtenerTextoBusqueda(), ManejoEncodingUFT8.fixEncoding("mar. 9 may."));
 
     }
-    @Test
+    @Test  //2
     public void CP001_TC002_NOOK() throws InterruptedException {
         homePage = new HomePage(super.driver);
         trenesPage = new TrenesPage(super.driver);
