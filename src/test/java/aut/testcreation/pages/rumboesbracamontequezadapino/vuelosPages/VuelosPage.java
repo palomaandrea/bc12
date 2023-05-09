@@ -31,15 +31,13 @@ public class VuelosPage extends SeleniumWrapper {
     public void viajeiIdaYVuelta(String origen, String destino) throws InterruptedException {
         click(waitElement(locatorSelectorSentidoViaje));
         write(origen, locatorInputOrigen);
-        Thread.sleep(2000);
-        sendKeys(DOWN, locatorInputOrigen);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         sendKeys(ENTER, locatorInputOrigen);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         write(destino, locatorInputDestino);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         sendKeys(DOWN, locatorInputDestino);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         sendKeys(ENTER, locatorInputDestino);
         click(waitElement(locatorSelectIda));
         click(waitElement(locatorSelectVuelta));

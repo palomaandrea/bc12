@@ -1,5 +1,6 @@
 package aut.testcreation.testcases.rumboesbracamontequezadapino;
 
+import aut.testcreation.pages.rumboesbracamontequezadapino.CheckoutPage;
 import aut.testcreation.pages.rumboesbracamontequezadapino.HomePage;
 import aut.testcreation.pages.rumboesbracamontequezadapino.TrenesPages.BusquedaTrenNormal;
 import aut.testcreation.pages.rumboesbracamontequezadapino.TrenesPages.BusquedaTrenOferta;
@@ -27,6 +28,7 @@ public class TestBusquedaTren extends SeleniumTestBase {
     BusquedaTrenOferta busquedaTrenOferta;
 
     BusquedaTrenNormal busquedaTrenNormal;
+    CheckoutPage checkoutPage;
 
     @Test
     public void CP013_ViajeTren_Oferta_SinDisponibilidad() throws InterruptedException{
@@ -117,21 +119,23 @@ public class TestBusquedaTren extends SeleniumTestBase {
         trenesPage.idaYVuelta();
         trenesPage.escribirOrigen("Almeria");
         trenesPage.escribirDestino("Madrid");
-        trenesPage.seleccionaDosDias(8, 13);
+        trenesPage.seleccionaDosDias(9, 14);
         trenesPage.clickEnBuscar();
         Thread.sleep(2000);
         busquedaTrenNormal.buscarDeNuevo();
         Thread.sleep(2000);
         trenesPage.idaYVuelta();
         trenesPage.fechaNuevaBusqueda();
-        trenesPage.seleccionaDosDias(15, 25);
+        trenesPage.seleccionaDosDias(14, 26);
         trenesPage.sendKeys(Keys.ENTER);
         trenesPage.clickEnBuscar();
         busquedaTrenNormal.esperarAQueLaPaginaCargue();
         busquedaTrenNormal.masBarato();
         Thread.sleep(10000);
+        busquedaTrenNormal.bajarAEstacion();
         busquedaTrenNormal.estacionAlmeria();
         Thread.sleep(10000);
+        busquedaTrenNormal.irATicket();
         busquedaTrenNormal.seleccionaTicketMasBarato();
         Thread.sleep(10000);
     }
@@ -143,6 +147,7 @@ public class TestBusquedaTren extends SeleniumTestBase {
         trenesPage=new TrenesPage(DriverFactory.getDriver());
         busquedaTrenOferta=new BusquedaTrenOferta(DriverFactory.getDriver());
         resultadoBusquedaTrenOferta=new ResultadoBusquedaTrenOferta(DriverFactory.getDriver());
+        checkoutPage=new CheckoutPage(DriverFactory.getDriver());
         driver.navigate().to("https://www.rumbo.es/");
         homePage.esperarAQueLaPaginaCargue();
         homePage.cerrarCookis();
@@ -167,6 +172,33 @@ public class TestBusquedaTren extends SeleniumTestBase {
             resultadoBusquedaTrenOferta.seleccionaHotel();
             resultadoBusquedaTrenOferta.moverseAOtraPestana(3);
             Thread.sleep(5000);
+            resultadoBusquedaTrenOferta.seleccionaConDesayuno();
+            Thread.sleep(5000);
+            resultadoBusquedaTrenOferta.seleccionaHotelTren();
+            if(checkoutPage.obtenerError()){
+                System.out.println(checkoutPage.imprimirError());
+            }else {
+                Thread.sleep(10000);
+                checkoutPage.ingresaDatosContacto("Marco", "Perez", "marco1_perez1990@gmail.com", "99080890");
+                Thread.sleep(3000);
+                checkoutPage.seleccionaPaisTelefono("12345678");
+                checkoutPage.marcaCheckbox(1); //1 sr, 2sra, 3 sr, 4 sra, coche 5, sin seguro 8, enviame ofertas 10,
+                Thread.sleep(1000);
+                checkoutPage.datosPersona1("Marco", "Perez", "10", "10", "1990");
+                Thread.sleep(3000);
+                checkoutPage.datosDocumentoP1("123456789", "PA"); // PA pasaporte, DNI, NIE
+                checkoutPage.marcaCheckbox(4);
+                Thread.sleep(3000);
+                checkoutPage.datosPersona2("Lucia", "Ozz", "12", "11", "1990");
+                checkoutPage.datosDocumentoP2("12345678", "DNI");
+                checkoutPage.marcaCheckbox(5);
+                checkoutPage.marcaCheckbox(8);
+                checkoutPage.marcaCheckbox(10);
+                checkoutPage.clickBtnSiguiente();
+                Assertions.assertEquals(checkoutPage.obtenerErrorCorreo(), "Introduce un email válido");
+            }
+
+
         }
 
     }

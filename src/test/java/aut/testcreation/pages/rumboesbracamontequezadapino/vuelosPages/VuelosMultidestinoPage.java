@@ -80,15 +80,19 @@ public class VuelosMultidestinoPage extends SeleniumWrapper {
         Thread.sleep(3000);
         input7.sendKeys(ENTER);
         click(locatorBtnBuscar);
+        Thread.sleep(3000);
         click(locatorAceptarCookies);
+        Thread.sleep(3000);
+
     }
 
     public void viajeMultiDestino() throws InterruptedException {
+
         click(waitElement(locatorPasajeros));
         Thread.sleep(3000);
         List<WebElement> pasajeros = findElements(locatorBtnMas);
         click(pasajeros.get(2));
-        Thread.sleep(3000);
+
         click(pasajeros.get(5));
         click(pasajeros.get(5));
         click(pasajeros.get(6));

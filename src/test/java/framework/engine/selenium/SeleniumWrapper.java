@@ -136,6 +136,7 @@ public class SeleniumWrapper {
             }
         }
     }
+  
     public void esperarAQueLaPaginaCargue(){
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
     }

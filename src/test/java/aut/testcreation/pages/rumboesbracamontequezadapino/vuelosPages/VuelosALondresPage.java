@@ -12,11 +12,13 @@ public class VuelosALondresPage extends SeleniumWrapper {
         super(driver);
     }
     By locatorSelectorSentidoViaje = By.xpath("//div[contains(text(),'Ida y vuelta')]");
-    By locatorInputOrigen = By.xpath("//input[@value placeholder= 'Ciudad o aeropuerto']");
-    By locatorTxtCalendario = By.xpath("//span[@class='lmn-sw-form-responsive--no-right-icon']");
-    By locatorSelectIda = By.xpath("//div[@data-date='17-4-2023']");
-    By locatorSelectVuelta = By.xpath("//div[@data-date='24-4-2023']");
-    By locatorTxtPasajeros = By.xpath("//span[@class='icon icon-adult icon--filled']");
+    By locatorCKOrigen = By.xpath("//header/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]");
+    By locatorInputOrigen = By.xpath("//input[@type='text']");
+    By locatorInputDestino = By.xpath("//input[@id='input-qfgqh']");
+    By locatorTxtCalendario = By.xpath("//header/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]");
+    By locatorSelectIda = By.xpath("//header/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[2]/div[11]");
+    By locatorSelectVuelta = By.xpath("//header/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[2]/div[18]");
+    By locatorTxtPasajeros = By.xpath("//div[@class='passengersText lmn-sw-responsive-form-field lmn-sw-tooltip-responsive__text']");
     By locatorSelectorAnadirPasajero = By.xpath("//div[@class='lmn-sw-selectionControls__control lmn-sw-selectionControls__control-plus']");
     By locatorSelectClase = By.xpath("//span[@class='icon icon-seat icon--filled']");
     By locatorSelectClaseTurista = By.xpath("//div[@data-value='P']");
@@ -24,21 +26,24 @@ public class VuelosALondresPage extends SeleniumWrapper {
 
     public void viajeALondres(String origen) throws InterruptedException{
         Thread.sleep(2000);
-        click(locatorSelectorSentidoViaje);
-        click(locatorInputOrigen);
+        click(waitElement(locatorSelectorSentidoViaje));
+        click(waitElement(locatorCKOrigen));
         Thread.sleep(2000);
         write(origen,locatorInputOrigen);
         Thread.sleep(2000);
         sendKeys (DOWN, locatorInputOrigen);
         Thread.sleep(2000);
         sendKeys(ENTER, locatorInputOrigen);
-        click(locatorTxtCalendario);
-        click(locatorSelectIda);
-        click(locatorSelectVuelta);
-        click(locatorTxtPasajeros);
-        click(locatorSelectorAnadirPasajero);
-        click(locatorSelectClase);
-        click(locatorSelectClaseTurista);
-        click(locatorBtnBuscar);
+        Thread.sleep(2000);
+        sendKeys(ENTER, locatorInputOrigen);
+        Thread.sleep(2000);
+        click(waitElement(locatorTxtCalendario));
+        click(waitElement(locatorSelectIda));
+        click(waitElement(locatorSelectVuelta));
+        //click(waitElement(locatorTxtPasajeros));
+        //click(waitElement(locatorSelectorAnadirPasajero));
+        //click(waitElement(locatorSelectClase));
+        //click(waitElement(locatorSelectClaseTurista));
+        click(waitElement(locatorBtnBuscar));
     }
 }
