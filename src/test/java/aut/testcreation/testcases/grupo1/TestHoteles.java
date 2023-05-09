@@ -22,8 +22,16 @@ public class TestHoteles extends TestBase {
 
         hotelespage.busquedaHotelPorDestinoYFechaPorCalendario("Córdoba, España");
 
+    }
 
-
+    @Test
+    public void CP001_BusquedaHotelesCualquierDestinoOK() throws InterruptedException {
+        homePage=new HomePage(super.driver);
+        hotelespage=new HotelesPage(super.driver);
+        homePage.navegarAPagina("https://www.rumbo.es/");
+        homePage.aceptarCookies();
+        homePage.clickHoteles();
+        hotelespage.busquedaHotelPorCualquierDestinoYFechaFlexible();
 
     }
 
