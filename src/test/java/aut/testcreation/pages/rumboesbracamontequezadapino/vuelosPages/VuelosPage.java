@@ -14,6 +14,7 @@ public class VuelosPage extends SeleniumWrapper {
     }
 
     By locatorSelectorSentidoViaje = By.xpath("//div[contains(text(),'Ida y vuelta')]");
+    By locatorSelectorSentidoMulti = By.xpath("//a[contains(text(),'Multidestino')]");
     By locatorInputOrigen = By.xpath("//input[@aria-label= 'Origen']");
     By locatorInputDestino = By.xpath("//input[@aria-label= 'Destino']");
     By locatorSelectIda = By.xpath("//button[contains(text(), '17')]");
@@ -34,6 +35,7 @@ public class VuelosPage extends SeleniumWrapper {
         sendKeys(DOWN, locatorInputOrigen);
         Thread.sleep(2000);
         sendKeys(ENTER, locatorInputOrigen);
+        Thread.sleep(2000);
         write(destino, locatorInputDestino);
         Thread.sleep(2000);
         sendKeys(DOWN, locatorInputDestino);
@@ -67,5 +69,9 @@ public class VuelosPage extends SeleniumWrapper {
         scroll(findElement(locatorTxtOfertaLondres));
         click(locatorTxtOfertaLondres);
     }
+
+  public void IrAMultidestino (){
+    click(locatorSelectorSentidoMulti);
+  }
 
 }
