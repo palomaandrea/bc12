@@ -24,6 +24,8 @@ public class BusquedaTrenOferta extends SeleniumWrapper {
 
     By locatorAtocha = By.xpath("//input[@aria-label='Puerta de Atocha (XOC)']");
     By locatorTickets = By.xpath("//div[@class='FullTripCard__PaymentContainer-sc-z8znd4-3 juamvE']");
+
+
     public void seleccionarHotel(){
 
         click(locatorHotel);
@@ -66,4 +68,14 @@ public class BusquedaTrenOferta extends SeleniumWrapper {
     public String sinFechas(){
         return getText(locatorTxtNuevaBusqueda);
     }
+
+    public void bajarAEstacion(){
+        scrolling(findElement(locatorAtocha));
+    }
+
+    public void irATicket(){
+        scrolling(findElement(locatorBtnMasBarato));
+    }
+
+
 }
