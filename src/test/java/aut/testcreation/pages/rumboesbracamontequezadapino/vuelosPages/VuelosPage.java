@@ -35,6 +35,7 @@ public class VuelosPage extends SeleniumWrapper {
         sendKeys(DOWN, locatorInputOrigen);
         Thread.sleep(2000);
         sendKeys(ENTER, locatorInputOrigen);
+        Thread.sleep(2000);
         write(destino, locatorInputDestino);
         Thread.sleep(2000);
         sendKeys(DOWN, locatorInputDestino);
