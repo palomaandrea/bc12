@@ -15,7 +15,7 @@ public class TC006_POM extends SeleniumTestBase {
         rumboHomePage = new RumboHomePage(DriverFactory.getDriver());
         multidestinoPage = new MultidestinoPage(DriverFactory.getDriver());
         rumboHomePage.irARumboYCookies(true);
-        rumboHomePage.seleccionarVueloMultidestino();
+        rumboHomePage.seleccioneTipoDeVuelo(false, false,true);
         multidestinoPage.cambiarPestaniaAMultidestino();
         multidestinoPage.repetirOrigenesDestinos(true, "Santiago de chile","Santiago de chile","Santiago de chile","Santiago de chile");
         multidestinoPage.buscarMultidestino();

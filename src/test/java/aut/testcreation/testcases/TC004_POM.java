@@ -15,7 +15,7 @@ public class TC004_POM extends SeleniumTestBase {
         rumboHomePage = new RumboHomePage(DriverFactory.getDriver());
         ofertasVuelosPage = new OfertasVuelosPage(DriverFactory.getDriver());
         rumboHomePage.irARumboYCookies(true);
-        rumboHomePage.seleccionarVueloSoloIda();
+        rumboHomePage.seleccioneTipoDeVuelo(false, true,false);
         rumboHomePage.limpiarCampos(true, false);
         rumboHomePage.agregarOrigen("Santiago (SCL)");
         rumboHomePage.agregarDestino("Buenos Aires (BUE)");

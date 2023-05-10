@@ -75,6 +75,7 @@ public class SeleniumWrapper {
         return driver.getTitle();
     }
 
+
     public void scrolling(By locator) {
         WebElement element = driver.findElement(locator);
         JavascriptExecutor js = (JavascriptExecutor) driver;

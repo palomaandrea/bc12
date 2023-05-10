@@ -21,7 +21,7 @@ public class TC003_POM extends SeleniumTestBase {
         tarifaVueloPage = new TarifaVueloPage(DriverFactory.getDriver());
         formularioVuelosPage = new FormularioVuelosPage(DriverFactory.getDriver());
         rumboHomePage.irARumboYCookies(true);
-        rumboHomePage.seleccionarVueloIdaVuelta();
+        rumboHomePage.seleccioneTipoDeVuelo(true, false,false);
         rumboHomePage.limpiarCampos(true, false);
         rumboHomePage.agregarOrigen("Santiago (SCL)");
         rumboHomePage.agregarDestino("Cancún (CUN)");
