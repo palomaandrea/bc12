@@ -105,3 +105,5 @@ task tagsTest(type: Test) {
 test {
     useJUnitPlatform {}
 }
+sourceCompatibility = JavaVersion.VERSION_16
+targetCompatibility = JavaVersion.VERSION_16
