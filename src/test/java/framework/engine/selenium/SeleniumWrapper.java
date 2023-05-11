@@ -1,6 +1,7 @@
 package framework.engine.selenium;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.JavascriptExecutor;
@@ -8,6 +9,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SeleniumWrapper {
 
@@ -136,6 +139,19 @@ public class SeleniumWrapper {
         }
     }
   
+
+
+
+    public void seleccionaUnDiaDia(int dia)throws InterruptedException{
+        By locatorDia = By.xpath("//button[contains(text(), "+dia+")]");
+        Thread.sleep(3000);
+        List<WebElement> day = findElements(locatorDia);
+        click(day.get(0));
+    }
+
+
+
+
     public void esperarAQueLaPaginaCargue(){
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
     }
@@ -155,11 +171,50 @@ public class SeleniumWrapper {
         click(diaVuelta.get(0));
 
     }
-    public void seleccionaUnDiaDia(int dia)throws InterruptedException{
-        By locatorDia = By.xpath("//button[contains(text(), "+dia+")]");
-        Thread.sleep(3000);
-        List<WebElement> day = findElements(locatorDia);
-        click(day.get(0));
+
+
+    public void hacerenter(By localizador) {
+        driver.findElement(localizador).submit();
+    }
+
+    public void espera() {
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+    }
+
+    public void dobleClick(By localizador) {
+        Actions act = new Actions(driver);
+        WebElement ele = driver.findElement(localizador);
+        act.doubleClick(ele).perform();
+    }
+
+    public void scroll(By localizador) {
+        WebElement elemento = driver.findElement(localizador);
+        js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", elemento);
+
+    }
+
+    public void validacionText(By localizador, String text) {
+        assertEquals(text, driver.findElement(localizador).getText());
+
+    }
+
+    public void clickear(By localizador) {
+        driver.findElement(localizador).click();
+    }
+
+    public void escribir(String texto, By localizador) {
+        driver.findElement(localizador).sendKeys(texto);
+    }
+
+    public boolean estaDesplegado(By localizador) {
+        try {
+            return driver.findElement(localizador).isDisplayed();
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+
+
     }
 
 }

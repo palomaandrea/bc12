@@ -1,4 +1,4 @@
-package TrabajoGrupalGNV.Pages;
+package aut.TrabajoGrupalGNV.Pages;
 
 
 import framework.engine.selenium.SeleniumWrapper;

@@ -1,7 +1,7 @@
 package aut.testcreation.steps;
 
-import TrabajoGrupalGNV.Pages.HomePage;
-import TrabajoGrupalGNV.Pages.PageHotel;
+import aut.TrabajoGrupalGNV.Pages.HomePage;
+import aut.TrabajoGrupalGNV.Pages.PageHotel;
 import io.cucumber.java8.En;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

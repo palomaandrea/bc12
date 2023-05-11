@@ -61,7 +61,7 @@ public class Checkout extends SeleniumWrapper {
                                    int tiempo) throws InterruptedException {
 
         // Hacer scroll al final de la página para asegurarse de que todos los elementos estén visibles
-        scroll("//span[@class='traveller-info__traveller-label-title']");
+        scroll(By.xpath("//span[@class='traveller-info__traveller-label-title']"));
         Thread.sleep(300);
 
         // Esperar a que el elemento esté visible antes de hacer clic en él

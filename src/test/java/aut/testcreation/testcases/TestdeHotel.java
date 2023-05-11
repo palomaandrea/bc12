@@ -1,7 +1,7 @@
 package aut.testcreation.testcases;
 
-import TrabajoGrupalGNV.Pages.HomePage;
-import TrabajoGrupalGNV.Pages.PageHotel;
+import aut.TrabajoGrupalGNV.Pages.HomePage;
+import aut.TrabajoGrupalGNV.Pages.PageHotel;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;

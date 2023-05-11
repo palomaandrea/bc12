@@ -1,5 +1,5 @@
-package TrabajoGrupalGNV.Steps;
-import TrabajoGrupalGNV.Pages.*;
+package aut.TrabajoGrupalGNV.Steps;
+import aut.TrabajoGrupalGNV.Pages.*;
 import io.cucumber.java8.En;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

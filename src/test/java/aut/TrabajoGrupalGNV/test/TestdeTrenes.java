@@ -1,6 +1,6 @@
-package TrabajoGrupalGNV.test;
+package aut.TrabajoGrupalGNV.test;
 
-import TrabajoGrupalGNV.Pages.*;
+import aut.TrabajoGrupalGNV.Pages.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
