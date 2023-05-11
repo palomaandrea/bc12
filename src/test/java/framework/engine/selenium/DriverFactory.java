@@ -42,7 +42,7 @@ public class DriverFactory {
     }
 
     public WebDriver createWebDriver() {
-        String webDriver = System.getProperty("browser", "edge");
+        String webDriver = System.getProperty("browser", "chrome");
         switch (webDriver) {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
@@ -50,6 +50,9 @@ public class DriverFactory {
             case "edge":
                 WebDriverManager.edgedriver().setup();
                 return new EdgeDriver();
+            case "chrome":
+                WebDriverManager.chromedriver().setup();
+                return new ChromeDriver();
             default:
                 throw new RuntimeException("Error en el webdriver: " + webDriver);
         }
