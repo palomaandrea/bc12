@@ -1,7 +1,7 @@
 package aut.testcreation.testcases.rumboesbracamontequezadapino;
 
-import aut.testcreation.pages.rumboesbracamontequezadapino.HomePage;
-import aut.testcreation.pages.rumboesbracamontequezadapino.HotelesPage.HotelesPage;
+import aut.rumboesbracamontequezadapino.HomePage;
+import aut.rumboesbracamontequezadapino.HotelesPage.HotelesPage;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import org.junit.jupiter.api.Test;

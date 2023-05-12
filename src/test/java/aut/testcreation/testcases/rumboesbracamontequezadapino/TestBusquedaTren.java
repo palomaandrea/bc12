@@ -1,20 +1,17 @@
 package aut.testcreation.testcases.rumboesbracamontequezadapino;
 
-import aut.testcreation.pages.rumboesbracamontequezadapino.CheckoutPage;
-import aut.testcreation.pages.rumboesbracamontequezadapino.HomePage;
-import aut.testcreation.pages.rumboesbracamontequezadapino.TrenesPages.BusquedaTrenNormal;
-import aut.testcreation.pages.rumboesbracamontequezadapino.TrenesPages.BusquedaTrenOferta;
-import aut.testcreation.pages.rumboesbracamontequezadapino.TrenesPages.ResultadoBusquedaTrenOferta;
-import aut.testcreation.pages.rumboesbracamontequezadapino.TrenesPages.TrenesPage;
+import aut.rumboesbracamontequezadapino.CheckoutPage;
+import aut.rumboesbracamontequezadapino.HomePage;
+import aut.rumboesbracamontequezadapino.TrenesPages.BusquedaTrenNormal;
+import aut.rumboesbracamontequezadapino.TrenesPages.BusquedaTrenOferta;
+import aut.rumboesbracamontequezadapino.TrenesPages.ResultadoBusquedaTrenOferta;
+import aut.rumboesbracamontequezadapino.TrenesPages.TrenesPage;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
-import framework.engine.selenium.SeleniumWrapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-
-import static framework.engine.utils.Constants.BASE_URL_AUT;
 
 public class TestBusquedaTren extends SeleniumTestBase {
 

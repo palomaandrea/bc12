@@ -1,7 +1,6 @@
-package aut.testcreation.pages.rumboesbracamontequezadapino.vuelosPages;
+package aut.rumboesbracamontequezadapino.vuelosPages;
 
 import framework.engine.selenium.SeleniumWrapper;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

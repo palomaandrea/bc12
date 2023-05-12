@@ -1,15 +1,14 @@
 package aut.testcreation.testcases.rumboesbracamontequezadapino;
 
-import aut.testcreation.pages.rumboesbracamontequezadapino.CheckoutPage;
-import aut.testcreation.pages.rumboesbracamontequezadapino.FlashSalesPage;
-import aut.testcreation.pages.rumboesbracamontequezadapino.HomePage;
-import aut.testcreation.pages.rumboesbracamontequezadapino.vuelosPages.*;
+import aut.rumboesbracamontequezadapino.CheckoutPage;
+import aut.rumboesbracamontequezadapino.FlashSalesPage;
+import aut.rumboesbracamontequezadapino.HomePage;
+import aut.rumboesbracamontequezadapino.vuelosPages.*;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class VuelosTest extends SeleniumTestBase {

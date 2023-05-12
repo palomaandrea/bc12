@@ -138,9 +138,7 @@ public class Checkout extends SeleniumWrapper {
     }
 
     public void hacerScroll (String xpath){
-
         scroll(xpath);
-
     }
 
     public void completarInputOrigen(String xpath,String texto) throws InterruptedException {

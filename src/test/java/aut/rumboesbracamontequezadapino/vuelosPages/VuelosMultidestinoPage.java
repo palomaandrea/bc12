@@ -1,4 +1,4 @@
-package aut.testcreation.pages.rumboesbracamontequezadapino.vuelosPages;
+package aut.rumboesbracamontequezadapino.vuelosPages;
 
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
@@ -9,7 +9,6 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 import static org.openqa.selenium.Keys.ENTER;
-import static org.openqa.selenium.Keys.RETURN;
 
 public class VuelosMultidestinoPage extends SeleniumWrapper {
     public VuelosMultidestinoPage(WebDriver driver) {

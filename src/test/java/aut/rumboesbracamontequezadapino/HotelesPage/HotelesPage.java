@@ -1,13 +1,8 @@
-package aut.testcreation.pages.rumboesbracamontequezadapino.HotelesPage;
+package aut.rumboesbracamontequezadapino.HotelesPage;
 
 import framework.engine.selenium.SeleniumWrapper;
-import gherkin.lexer.Th;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-
-import static org.openqa.selenium.Keys.DOWN;
-import static org.openqa.selenium.Keys.ENTER;
 
 public class HotelesPage extends SeleniumWrapper {
     public HotelesPage(WebDriver driver) {

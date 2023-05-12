@@ -3,6 +3,7 @@ package framework.engine.selenium;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.JavascriptExecutor;
 import java.nio.charset.StandardCharsets;
@@ -215,6 +216,59 @@ public class SeleniumWrapper {
         }
 
 
+    }
+
+    public void scrolling(By locator) {
+        WebElement element = driver.findElement(locator);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
+    public void seleccionarComboBoxPorTextoVisible(By locator, String valor) {
+        WebElement elemento = findElement(locator);
+        Select select = new Select(elemento);
+        select.selectByVisibleText(valor);
+    }
+
+    public void switchToTabByTitleContains(String searchStr) {
+        for (String ventana : driver.getWindowHandles()) {
+            driver.switchTo().window(ventana);
+            if (driver.getTitle().contains(searchStr)) {
+                return;
+            }
+        }
+    }
+    // Métodos de espera
+    public WebElement waitForElementToBeClickable(By locator, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    public WebElement waitForElementToBeVisible(By locator, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public Boolean waitForUrlToContain(String urlPart, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+        return wait.until(ExpectedConditions.urlContains(urlPart));
+    }
+
+    public void waitInMs(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void implicitWait(int seconds) {
+        driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+    }
+
+    public void scroll (String xpath){
+        WebElement element = driver.findElement(By.xpath(xpath));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
 }

@@ -1,4 +1,4 @@
-package aut.testcreation.pages.rumboesbracamontequezadapino.vuelosPages;
+package aut.rumboesbracamontequezadapino.vuelosPages;
 
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.WebDriver;
