@@ -10,7 +10,7 @@ import java.util.Properties;
 public class SeleniumTestBase {
 
     private DriverFactory driverFactory;
-    WebDriver driver;
+    protected WebDriver driver;
     static Properties properties;
 
     @BeforeAll
